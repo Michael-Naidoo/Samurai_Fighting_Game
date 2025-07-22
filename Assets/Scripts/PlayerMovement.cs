@@ -22,10 +22,19 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -20f; // Gravity strength
     private Vector2 currentVelocity; // To store our custom velocity
     public LayerMask groundLayer; // Assign your ground layer in the Inspector
+
+    // Check Transforms and Radius
     public Transform groundCheck; // An empty GameObject child at the player's feet
-    public float groundCheckRadius = 0.2f; // Radius for ground detection
+    public Transform leftWallCheck; // An empty GameObject child on the player's left side
+    public Transform rightWallCheck; // An empty GameObject child on the player's right side
+    public float groundCheckRadius = 0.2f; // Radius for ground detection (also used for wall checks for simplicity)
+
+    // Reference to the player's main collider for BoxCast/CapsuleCast
+    private Collider2D playerCollider;
 
     [SerializeField] private bool Grounded;
+    [SerializeField] private bool againstLeftWall;
+    [SerializeField] private bool againstRightWall;
 
     public DetectTriggerOverlay HHB;
     public DetectTriggerOverlay LHB;
@@ -63,10 +72,16 @@ public class PlayerMovement : MonoBehaviour
         HLA.canceled += OnHLACancelled;
         LHA.performed += OnLHA;
         LHA.canceled += OnLHACancelled;
-        LLA.performed += OnLLACancelled; // Typo corrected from OnLLACancelled to OnLLA and then OnLLACancelled
-        LLA.performed += OnLLA;
+        LLA.performed += OnLLA; // Corrected from OnLLACancelled to OnLLA
+        LLA.canceled += OnLLACancelled;
 
-        // No longer needed: rb2D = gameObject.GetComponent<Rigidbody2D>();
+
+        // Get the player's main collider
+        playerCollider = GetComponent<Collider2D>();
+        if (playerCollider == null)
+        {
+            Debug.LogError("PlayerMovement: No Collider2D found on this GameObject. A collider is required for collision detection.");
+        }
     }
 
     private void OnDisable()
@@ -84,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         LHA.performed -= OnLHA;
         LHA.canceled -= OnLHACancelled;
         LHA.Disable();
-        LLA.performed -= OnLLA; // Corrected
+        LLA.performed -= OnLLA;
         LLA.canceled -= OnLLACancelled;
         LLA.Disable();
     }
@@ -166,29 +181,85 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (currentVelocity.y < 0) // Reset vertical velocity if grounded and moving downwards
         {
-            currentVelocity.y = 0f; // 0 value to keep it "stuck" to the ground
+            currentVelocity.y = 0f; // Set to 0 to prevent downward movement into the ground
         }
 
-        // Horizontal Movement
-        currentVelocity.x = moveInput.x * moveSpeed;
+        // --- Horizontal Movement with Collision Prediction ---
+        float targetXVelocity = moveInput.x * moveSpeed;
+        float moveAmountX = targetXVelocity * Time.deltaTime; // The distance we want to move this frame
+
+        // Perform a BoxCast (or CapsuleCast depending on your player's collider shape)
+        // in the direction of horizontal movement
+        RaycastHit2D hit = new RaycastHit2D();
+        
+        // Ensure playerCollider is not null before using it
+        if (playerCollider == null)
+        {
+            currentVelocity.x = 0; // Prevent movement if collider is missing
+            Debug.LogError("PlayerMovement: playerCollider is null. Cannot perform BoxCast for horizontal collision.");
+        }
+        else
+        {
+            Vector2 origin = playerCollider.bounds.center; // Center of the player's collider
+            // Use playerCollider.bounds.size directly for the BoxCast
+            // Make size slightly smaller than actual collider to prevent sticking (e.g., 90% of actual size)
+            Vector2 size = playerCollider.bounds.size * 0.9f;
+            
+            float distance = Mathf.Abs(moveAmountX); // Distance to check is the magnitude of desired movement
+            Vector2 direction = Vector2.right * Mathf.Sign(moveAmountX); // Direction is left or right
+
+            // Only cast if there's horizontal movement intended
+            if (moveAmountX != 0)
+            {
+                hit = Physics2D.BoxCast(
+                    origin,
+                    size,
+                    0f, // Angle
+                    direction,
+                    distance,
+                    groundLayer // Check against groundLayer (which should include walls)
+                );
+            }
+
+            if (hit.collider != null && hit.distance > 0f) // If we hit something and it's not the player's own collider
+            {
+                // We hit a wall, so stop horizontal movement
+                currentVelocity.x = 0f;
+                // Optional: Snap player right up to the wall to prevent gaps
+                // transform.position = hit.point - direction * (playerCollider.bounds.extents.x + 0.001f); 
+                // This snapping can be complex to get right without jitter, often better to just stop movement.
+            }
+            else
+            {
+                // No collision in the way, so apply the desired horizontal velocity
+                currentVelocity.x = targetXVelocity;
+            }
+        }
+        // --- End Horizontal Movement with Collision Prediction ---
+
 
         // Jump
-        if (moveInput.y > 0.1f && Grounded) // Check for jump input and if grounded
+        // Check for jump input and if grounded
+        // We use moveInput.y > 0.1f to allow for a slight joystick push up, adjust as needed for button input
+        if (moveInput.y > 0.1f && Grounded) 
         {
             currentVelocity.y = jumpForce;
-            Grounded = false; // Immediately set to false to allow falling
+            Grounded = false; // Immediately set to false to allow falling after jump
         }
 
         // Apply movement
         transform.Translate(currentVelocity * Time.deltaTime);
 
-        // Grounded Check (Raycast or OverlapCircle)
-        // Using OverlapCircle for 2D character ground check
+        // Grounded and Wall Checks (OverlapCircle still used for status, not for stopping movement)
+        // These are for 'status' flags (e.g., for animations, or enabling wall jump)
+        // The actual prevention of movement is handled by the BoxCast above.
         Grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        againstLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, groundCheckRadius, groundLayer);
+        againstRightWall = Physics2D.OverlapCircle(rightWallCheck.position, groundCheckRadius, groundLayer);
 
 
-        Debug.Log(moveInput);
-
+        Debug.Log(moveInput); // Still useful for debugging input
+        
         cd -= Time.deltaTime;
         selectionTimer -= Time.deltaTime;
 
@@ -200,16 +271,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // No longer needed: OnCollisionEnter2D and OnCollisionExit2D
-    // You handle ground checks manually now.
-
-    // Optional: Draw a gizmo to visualize the ground check area in the editor
+    // Optional: Draw gizmos to visualize the check areas in the editor
     private void OnDrawGizmos()
     {
         if (groundCheck != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+        if (leftWallCheck != null)
+        {
+            Gizmos.color = Color.cyan; // Different color for wall checks
+            Gizmos.DrawWireSphere(leftWallCheck.position, groundCheckRadius);
+        }
+        if (rightWallCheck != null)
+        {
+            Gizmos.color = Color.cyan; // Different color for wall checks
+            Gizmos.DrawWireSphere(rightWallCheck.position, groundCheckRadius);
+        }
+
+        // Draw a gizmo for the BoxCast area
+        if (playerCollider != null)
+        {
+            Gizmos.color = Color.blue;
+            // Draw a wire cube representing the bounds used for the BoxCast
+            Gizmos.DrawWireCube(playerCollider.bounds.center, playerCollider.bounds.size * 0.9f);
         }
     }
 
