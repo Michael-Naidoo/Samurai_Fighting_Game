@@ -25,8 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     // Check Transforms and Radius
     public Transform groundCheck; // An empty GameObject child at the player's feet
-    public Transform leftWallCheck; // An empty GameObject child on the player's left side
-    public Transform rightWallCheck; // An empty GameObject child on the player's right side
+    // These `leftWallCheck` and `rightWallCheck` transforms can still be useful for visually setting
+    // the general area for wall checks, but the raycast origins will be more precise.
+    public Transform leftWallCheck; 
+    public Transform rightWallCheck; 
     public float groundCheckRadius = 0.2f; // Radius for ground detection (also used for wall checks for simplicity)
 
     // Reference to the player's main collider for BoxCast/CapsuleCast
@@ -35,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool Grounded;
     [SerializeField] private bool againstLeftWall;
     [SerializeField] private bool againstRightWall;
+    [SerializeField] private RaycastHit2D approachingLeftWall;
+    [SerializeField] private RaycastHit2D approachingRightWall;
+    // Small offset to ensure the ray starts just outside the player's collider
+    public float raycastOffset = 0.01f; // A very small value, adjust if needed
 
     public DetectTriggerOverlay HHB;
     public DetectTriggerOverlay LHB;
@@ -72,15 +78,15 @@ public class PlayerMovement : MonoBehaviour
         HLA.canceled += OnHLACancelled;
         LHA.performed += OnLHA;
         LHA.canceled += OnLHACancelled;
-        LLA.performed += OnLLA; // Corrected from OnLLACancelled to OnLLA
+        LLA.performed += OnLLA; 
         LLA.canceled += OnLLACancelled;
-
-
+        
         // Get the player's main collider
         playerCollider = GetComponent<Collider2D>();
         if (playerCollider == null)
         {
-            Debug.LogError("PlayerMovement: No Collider2D found on this GameObject. A collider is required for collision detection.");
+            Debug.LogError(
+                "PlayerMovement: No Collider2D found on this GameObject. A collider is required for collision detection.");
         }
     }
 
@@ -106,13 +112,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext context)
     {
-        // Read movement input from the player when performed
         moveInput = context.ReadValue<Vector2>();
     }
 
     private void OnMoveCancelled(InputAction.CallbackContext context)
     {
-        // Reset movement when input is cancelled
         moveInput = Vector2.zero;
     }
 
@@ -125,10 +129,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnHHACancelled(InputAction.CallbackContext context)
-    {
-        // Optional: Add logic if releasing HHA does something
-    }
+    private void OnHHACancelled(InputAction.CallbackContext context) {}
 
     private void OnHLA(InputAction.CallbackContext context)
     {
@@ -139,10 +140,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnHLACancelled(InputAction.CallbackContext context)
-    {
-        // Optional: Add logic if releasing HLA does something
-    }
+    private void OnHLACancelled(InputAction.CallbackContext context) {}
 
     private void OnLHA(InputAction.CallbackContext context)
     {
@@ -153,10 +151,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnLHACancelled(InputAction.CallbackContext context)
-    {
-        // Optional: Add logic if releasing LHA does something
-    }
+    private void OnLHACancelled(InputAction.CallbackContext context) {}
 
     private void OnLLA(InputAction.CallbackContext context)
     {
@@ -167,10 +162,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnLLACancelled(InputAction.CallbackContext context)
-    {
-        // Optional: Add logic if releasing LLA does something
-    }
+    private void OnLLACancelled(InputAction.CallbackContext context) {}
 
     private void Update()
     {
@@ -186,79 +178,106 @@ public class PlayerMovement : MonoBehaviour
 
         // --- Horizontal Movement with Collision Prediction ---
         float targetXVelocity = moveInput.x * moveSpeed;
-        float moveAmountX = targetXVelocity * Time.deltaTime; // The distance we want to move this frame
+        float moveDistanceThisFrame = targetXVelocity * Time.deltaTime; 
 
-        // Perform a BoxCast (or CapsuleCast depending on your player's collider shape)
-        // in the direction of horizontal movement
-        RaycastHit2D hit = new RaycastHit2D();
+        // Initialize raycast hits for the current frame
+        approachingLeftWall = new RaycastHit2D();
+        approachingRightWall = new RaycastHit2D();
+
+        // Calculate player's half-width for accurate raycast origin and hit point calculation
+        float playerHalfWidth = playerCollider.bounds.extents.x;
+
+        // Determine the maximum distance the ray should check
+        // It should be at least enough to cover the current frame's intended movement
+        // plus the player's half-width to project from the center to the edge, plus a small buffer.
+        float maxRayDistance = Mathf.Abs(moveDistanceThisFrame) + raycastOffset;
         
-        // Ensure playerCollider is not null before using it
-        if (playerCollider == null)
-        {
-            currentVelocity.x = 0; // Prevent movement if collider is missing
-            Debug.LogError("PlayerMovement: playerCollider is null. Cannot perform BoxCast for horizontal collision.");
-        }
-        else
-        {
-            Vector2 origin = playerCollider.bounds.center; // Center of the player's collider
-            // Use playerCollider.bounds.size directly for the BoxCast
-            // Make size slightly smaller than actual collider to prevent sticking (e.g., 90% of actual size)
-            Vector2 size = playerCollider.bounds.size * 0.9f;
-            
-            float distance = Mathf.Abs(moveAmountX); // Distance to check is the magnitude of desired movement
-            Vector2 direction = Vector2.right * Mathf.Sign(moveAmountX); // Direction is left or right
+        // Default horizontal velocity to target, will be clamped if a wall is hit
+        currentVelocity.x = targetXVelocity;
 
-            // Only cast if there's horizontal movement intended
-            if (moveAmountX != 0)
+        if (playerCollider != null) // Ensure collider exists before casting rays
+        {
+            if (moveInput.x < 0) // Moving Left
             {
-                hit = Physics2D.BoxCast(
-                    origin,
-                    size,
-                    0f, // Angle
-                    direction,
-                    distance,
-                    groundLayer // Check against groundLayer (which should include walls)
-                );
+                // Raycast origin from the left edge of the player
+                Vector2 rayOriginLeft = new Vector2(transform.position.x - playerHalfWidth, playerCollider.bounds.center.y);
+                
+                approachingLeftWall = Physics2D.Raycast(rayOriginLeft, Vector2.left, maxRayDistance, groundLayer);
+
+                // Visualize the raycast for debugging in Scene view
+                Debug.DrawRay(rayOriginLeft, Vector2.left * maxRayDistance, Color.red);
+
+                if (approachingLeftWall.collider != null) // If a wall is detected
+                {
+                    // Calculate the actual distance the player's edge can move
+                    float actualMoveDistance = approachingLeftWall.distance - playerHalfWidth - raycastOffset;
+                    
+                    // Clamp the horizontal velocity if we're about to hit a wall
+                    if (actualMoveDistance < Mathf.Abs(moveDistanceThisFrame))
+                    {
+                        currentVelocity.x = -actualMoveDistance / Time.deltaTime;
+                        if (currentVelocity.x > 0) currentVelocity.x = 0; // Prevent pushing backwards if already past hit point
+                    }
+                    againstLeftWall = actualMoveDistance <= 0.05f; // Set status if very close to wall
+                } else {
+                    againstLeftWall = false; // Not against wall if no hit
+                }
             }
-
-            if (hit.collider != null && hit.distance > 0f) // If we hit something and it's not the player's own collider
+            else if (moveInput.x > 0) // Moving Right
             {
-                // We hit a wall, so stop horizontal movement
+                // Raycast origin from the right edge of the player
+                Vector2 rayOriginRight = new Vector2(transform.position.x + playerHalfWidth, playerCollider.bounds.center.y);
+
+                approachingRightWall = Physics2D.Raycast(rayOriginRight, Vector2.right, maxRayDistance, groundLayer);
+
+                // Visualize the raycast for debugging in Scene view
+                Debug.DrawRay(rayOriginRight, Vector2.right * maxRayDistance, Color.red);
+
+                if (approachingRightWall.collider != null) // If a wall is detected
+                {
+                    float actualMoveDistance = approachingRightWall.distance - playerHalfWidth - raycastOffset;
+
+                    if (actualMoveDistance < moveDistanceThisFrame)
+                    {
+                        currentVelocity.x = actualMoveDistance / Time.deltaTime;
+                        if (currentVelocity.x < 0) currentVelocity.x = 0; // Prevent pushing backwards
+                    }
+                    againstRightWall = actualMoveDistance <= 0.05f; // Set status if very close to wall
+                } else {
+                    againstRightWall = false; // Not against wall if no hit
+                }
+            }
+            else // No horizontal input
+            {
                 currentVelocity.x = 0f;
-                // Optional: Snap player right up to the wall to prevent gaps
-                // transform.position = hit.point - direction * (playerCollider.bounds.extents.x + 0.001f); 
-                // This snapping can be complex to get right without jitter, often better to just stop movement.
+                againstLeftWall = false; // Reset status
+                againstRightWall = false; // Reset status
             }
-            else
-            {
-                // No collision in the way, so apply the desired horizontal velocity
-                currentVelocity.x = targetXVelocity;
-            }
+        }
+        else // Fallback if playerCollider is null
+        {
+            currentVelocity.x = 0f;
+            againstLeftWall = false;
+            againstRightWall = false;
         }
         // --- End Horizontal Movement with Collision Prediction ---
 
 
         // Jump
-        // Check for jump input and if grounded
-        // We use moveInput.y > 0.1f to allow for a slight joystick push up, adjust as needed for button input
         if (moveInput.y > 0.1f && Grounded) 
         {
             currentVelocity.y = jumpForce;
-            Grounded = false; // Immediately set to false to allow falling after jump
+            Grounded = false; 
         }
 
         // Apply movement
         transform.Translate(currentVelocity * Time.deltaTime);
 
-        // Grounded and Wall Checks (OverlapCircle still used for status, not for stopping movement)
-        // These are for 'status' flags (e.g., for animations, or enabling wall jump)
-        // The actual prevention of movement is handled by the BoxCast above.
+        // Grounded Check
         Grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        againstLeftWall = Physics2D.OverlapCircle(leftWallCheck.position, groundCheckRadius, groundLayer);
-        againstRightWall = Physics2D.OverlapCircle(rightWallCheck.position, groundCheckRadius, groundLayer);
 
 
-        Debug.Log(moveInput); // Still useful for debugging input
+        Debug.Log(moveInput); 
         
         cd -= Time.deltaTime;
         selectionTimer -= Time.deltaTime;
@@ -279,29 +298,59 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+        
+        // These are just for general reference if you want specific points
         if (leftWallCheck != null)
         {
-            Gizmos.color = Color.cyan; // Different color for wall checks
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(leftWallCheck.position, groundCheckRadius);
         }
         if (rightWallCheck != null)
         {
-            Gizmos.color = Color.cyan; // Different color for wall checks
+            Gizmos.color = Color.cyan; 
             Gizmos.DrawWireSphere(rightWallCheck.position, groundCheckRadius);
         }
 
-        // Draw a gizmo for the BoxCast area
         if (playerCollider != null)
         {
             Gizmos.color = Color.blue;
-            // Draw a wire cube representing the bounds used for the BoxCast
-            Gizmos.DrawWireCube(playerCollider.bounds.center, playerCollider.bounds.size * 0.9f);
+            // Draw a wire cube representing the player's collider bounds
+            Gizmos.DrawWireCube(playerCollider.bounds.center, playerCollider.bounds.size);
+            
+            // Visualize the actual raycasts for horizontal movement
+            float playerHalfWidth = playerCollider.bounds.extents.x;
+            float raycastOffset = 0.01f;
+            // Use the current velocity (or target velocity for a full expected ray) for gizmo length
+            float maxGizmoRayDistance = Mathf.Abs(currentVelocity.x * Time.deltaTime) + playerHalfWidth + raycastOffset; 
+            // Clamp minimum length so you always see it
+            if (maxGizmoRayDistance < 0.1f) maxGizmoRayDistance = 0.1f; 
+
+            if (moveInput.x < 0) // If player is trying to move Left
+            {
+                Vector2 rayOrigin = new Vector2(transform.position.x - playerHalfWidth, playerCollider.bounds.center.y);
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawLine(rayOrigin, rayOrigin + Vector2.left * maxGizmoRayDistance);
+                if (approachingLeftWall.collider != null)
+                {
+                    Gizmos.DrawWireSphere(approachingLeftWall.point, 0.05f); // Hit point
+                }
+            }
+            else if (moveInput.x > 0) // If player is trying to move Right
+            {
+                Vector2 rayOrigin = new Vector2(transform.position.x + playerHalfWidth, playerCollider.bounds.center.y);
+                Gizmos.color = Color.magenta;
+                Gizmos.DrawLine(rayOrigin, rayOrigin + Vector2.right * maxGizmoRayDistance);
+                if (approachingRightWall.collider != null)
+                {
+                    Gizmos.DrawWireSphere(approachingRightWall.point, 0.05f); // Hit point
+                }
+            }
         }
     }
 
     public void IncreaseSpeed()
     {
-        moveSpeed += 0.5f; // Adjust increment as moveSpeed is now meters/second
+        moveSpeed += 0.5f; 
         selectionTimer = 45;
         button1.SetActive(false);
         button2.SetActive(false);
@@ -319,7 +368,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseJump()
     {
-        jumpForce += 1f; // Adjust increment for jumpForce
+        jumpForce += 1f;
         selectionTimer = 45;
         button1.SetActive(false);
         button2.SetActive(false);
