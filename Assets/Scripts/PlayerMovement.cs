@@ -42,14 +42,19 @@ public class PlayerMovement : MonoBehaviour
     // Small offset to ensure the ray starts just outside the player's collider
     public float raycastOffset = 0.01f; // A very small value, adjust if needed
 
-    public DetectTriggerOverlay HHB;
-    public DetectTriggerOverlay LHB;
+    public Transform HHB;
+    public Transform LHB;
     private float cd;
 
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
     public float selectionTimer;
+    [SerializeField]private Vector2 attackDirection;
+    [SerializeField]private float attackDistance;
+    [SerializeField]private LayerMask player1Layer;
+    [SerializeField]private LayerMask player2Layer;
+    private RaycastHit2D player;
 
     private void OnEnable()
     {
@@ -122,9 +127,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnHHA(InputAction.CallbackContext context)
     {
-        if (HHB.isInRange && cd <= 0)
+        Debug.Log(context);
+
+        if (gameObject.layer == player1Layer)
         {
-            HHB.Dummy.GetComponent<DummyStats>().DecrementHP(2 * Strength);
+            player = Physics2D.Raycast(HHB.position, attackDirection, attackDistance, player2Layer);
+        }
+        else if (gameObject.layer == player2Layer)
+        {
+            player = Physics2D.Raycast(HHB.position, attackDirection, attackDistance, player1Layer);
+        }
+        
+        if (player && cd <= 0)
+        {
+            player.collider.GetComponent<DummyStats>().DecrementHP(Strength);
             cd = 0.25f;
         }
     }
@@ -133,9 +149,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnHLA(InputAction.CallbackContext context)
     {
-        if (HHB.isInRange && cd <= 0)
+        Debug.Log(context);
+       // if (HHB.isInRange && cd <= 0)
         {
-            HHB.Dummy.GetComponent<DummyStats>().DecrementHP(Strength);
+          //  HHB.Dummy.GetComponent<DummyStats>().DecrementHP(Strength);
             cd = 0.25f;
         }
     }
@@ -144,9 +161,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnLHA(InputAction.CallbackContext context)
     {
-        if (LHB.isInRange && cd <= 0)
+        Debug.Log(context);
+       // if (LHB.isInRange && cd <= 0)
         {
-            LHB.Dummy.GetComponent<DummyStats>().DecrementHP(2 * Strength);
+          //  LHB.Dummy.GetComponent<DummyStats>().DecrementHP(2 * Strength);
             cd = 0.25f;
         }
     }
@@ -155,9 +173,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnLLA(InputAction.CallbackContext context)
     {
-        if (LHB.isInRange && cd <= 0)
+        Debug.Log(context);
+       // if (LHB.isInRange && cd <= 0)
         {
-            LHB.Dummy.GetComponent<DummyStats>().DecrementHP(Strength);
+           // LHB.Dummy.GetComponent<DummyStats>().DecrementHP(Strength);
             cd = 0.25f;
         }
     }
