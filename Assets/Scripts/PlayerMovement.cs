@@ -56,7 +56,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private LayerMask player2Layer;
     private Collider2D player;
 
-    public void OnEnable()
+    private void Awake()
+    {
+        playerCollider = gameObject.GetComponent<Collider2D>();
+    }
+
+    /*public void OnEnable()
     {
         // Find the action map and move action
         var actionMap = inputActions.FindActionMap("BasicControls");
@@ -113,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
         LLA.performed -= OnLLA;
         LLA.canceled -= OnLLACancelled;
         LLA.Disable();
-    }
+    }*/
 
     public void OnMove(InputAction.CallbackContext context)
     {
