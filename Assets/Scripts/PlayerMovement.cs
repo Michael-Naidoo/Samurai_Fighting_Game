@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private float attackDistance;
     [SerializeField]private LayerMask player1Layer;
     [SerializeField]private LayerMask player2Layer;
-    private RaycastHit2D player;
+    private Collider2D player;
 
     private void OnEnable()
     {
@@ -118,6 +118,19 @@ public class PlayerMovement : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
+        if (gameObject.CompareTag("Player1"))
+        {
+            GameObject other = GameObject.FindWithTag("Player2");
+            CalculateDirection(other);
+        }
+        else
+        {
+            if (gameObject.CompareTag("Player2"))
+            {
+                GameObject other = GameObject.FindWithTag("Player1");
+                CalculateDirection(other);
+            }
+        }
     }
 
     private void OnMoveCancelled(InputAction.CallbackContext context)
@@ -127,20 +140,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnHHA(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
-
-        if (gameObject.layer == player1Layer)
+        Debug.DrawLine(HHB.position, new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
+        if (gameObject.CompareTag("Player1"))
         {
-            player = Physics2D.Raycast(HHB.position, attackDirection, attackDistance, player2Layer);
+            Debug.Log(context);
+            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
         }
-        else if (gameObject.layer == player2Layer)
+        else if (gameObject.CompareTag("Player2"))
         {
-            player = Physics2D.Raycast(HHB.position, attackDirection, attackDistance, player1Layer);
+            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
         }
         
         if (player && cd <= 0)
         {
-            player.collider.GetComponent<DummyStats>().DecrementHP(Strength);
+            player.GetComponent<DummyStats>().DecrementHP(Strength);
             cd = 0.25f;
         }
     }
@@ -161,10 +176,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnLHA(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
-       // if (LHB.isInRange && cd <= 0)
+        Debug.DrawLine(LHB.position, new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
+        if (gameObject.CompareTag("Player1"))
         {
-          //  LHB.Dummy.GetComponent<DummyStats>().DecrementHP(2 * Strength);
+            Debug.Log(context);
+            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+        }
+        else if (gameObject.CompareTag("Player2"))
+        {
+            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+        }
+        
+        if (player && cd <= 0)
+        {
+            player.GetComponent<DummyStats>().DecrementHP(Strength);
             cd = 0.25f;
         }
     }
@@ -318,6 +345,12 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
         
+        if (player)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, player.transform.position);
+        }
+        
         // These are just for general reference if you want specific points
         if (leftWallCheck != null)
         {
@@ -392,5 +425,17 @@ public class PlayerMovement : MonoBehaviour
         button1.SetActive(false);
         button2.SetActive(false);
         button3.SetActive(false);
+    }
+    
+    public void CalculateDirection(GameObject other)
+    {
+        if (gameObject.transform.position.x <= other.transform.position.x)
+        {
+            attackDirection.x = 1;
+        }
+        else if (gameObject.transform.position.x > other.transform.position.x)
+        {
+            attackDirection.x = -1;
+        }
     }
 }
