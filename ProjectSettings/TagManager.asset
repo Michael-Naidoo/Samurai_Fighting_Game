@@ -8,6 +8,10 @@ TagManager:
   - Dummy
   - hhb
   - lhb
+  - Player1
+  - Player2
+  - Player1Health
+  - Player2Health
   layers:
   - Default
   - TransparentFX
@@ -16,8 +20,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Player1
+  - Player2
   - 
   - 
   - 

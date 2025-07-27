@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]private LayerMask player2Layer;
     private Collider2D player;
 
-    private void OnEnable()
+    public void OnEnable()
     {
         // Find the action map and move action
         var actionMap = inputActions.FindActionMap("BasicControls");
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         // Disable input actions and unsubscribe events
         moveAction.performed -= OnMove;
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         LLA.Disable();
     }
 
-    private void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
         if (gameObject.CompareTag("Player1"))
@@ -133,12 +133,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnMoveCancelled(InputAction.CallbackContext context)
+    public void OnMoveCancelled(InputAction.CallbackContext context)
     {
         moveInput = Vector2.zero;
     }
 
-    private void OnHHA(InputAction.CallbackContext context)
+    public void OnHHA(InputAction.CallbackContext context)
     {
         Debug.DrawLine(HHB.position, new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
         if (gameObject.CompareTag("Player1"))
@@ -160,9 +160,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnHHACancelled(InputAction.CallbackContext context) {}
+    public void OnHHACancelled(InputAction.CallbackContext context) {}
 
-    private void OnHLA(InputAction.CallbackContext context)
+    public void OnHLA(InputAction.CallbackContext context)
     {
         Debug.Log(context);
        // if (HHB.isInRange && cd <= 0)
@@ -172,9 +172,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnHLACancelled(InputAction.CallbackContext context) {}
+    public void OnHLACancelled(InputAction.CallbackContext context) {}
 
-    private void OnLHA(InputAction.CallbackContext context)
+    public void OnLHA(InputAction.CallbackContext context)
     {
         Debug.DrawLine(LHB.position, new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
         if (gameObject.CompareTag("Player1"))
@@ -196,9 +196,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnLHACancelled(InputAction.CallbackContext context) {}
+    public void OnLHACancelled(InputAction.CallbackContext context) {}
 
-    private void OnLLA(InputAction.CallbackContext context)
+    public void OnLLA(InputAction.CallbackContext context)
     {
         Debug.Log(context);
        // if (LHB.isInRange && cd <= 0)
@@ -208,9 +208,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void OnLLACancelled(InputAction.CallbackContext context) {}
+    public void OnLLACancelled(InputAction.CallbackContext context) {}
 
-    private void Update()
+    public void Update()
     {
         // Manual Gravity
         if (!Grounded)
@@ -337,7 +337,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Optional: Draw gizmos to visualize the check areas in the editor
-    private void OnDrawGizmos()
+    public void OnDrawGizmos()
     {
         if (groundCheck != null)
         {
