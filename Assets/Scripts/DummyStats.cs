@@ -26,11 +26,12 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            gameManager = GameManager.instance;
+            
         }
 
         private void Start()
         {
+            gameManager = GameManager.instance;
             if (gameObject.CompareTag("Player1"))
             {
                 HPDislay = GameObject.FindWithTag("Player1Health").GetComponent<Slider>();
