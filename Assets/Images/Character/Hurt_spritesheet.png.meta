@@ -1,0 +1,1183 @@
+fileFormatVersion: 2
+guid: 1672aa8506e0fff4abdf2687fec6ecb9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7913312834904366143
+    second: Hurt_spritesheet_0
+  - first:
+      213: -1353074341137121750
+    second: Hurt_spritesheet_1
+  - first:
+      213: -9014334348036059503
+    second: Hurt_spritesheet_2
+  - first:
+      213: 4587446457904102903
+    second: Hurt_spritesheet_3
+  - first:
+      213: -7960174299262036482
+    second: Hurt_spritesheet_4
+  - first:
+      213: -1470916070709309202
+    second: Hurt_spritesheet_5
+  - first:
+      213: 2815993167545136483
+    second: Hurt_spritesheet_6
+  - first:
+      213: 7312560859393089895
+    second: Hurt_spritesheet_7
+  - first:
+      213: 7135674372642251496
+    second: Hurt_spritesheet_8
+  - first:
+      213: -4510188321052594950
+    second: Hurt_spritesheet_9
+  - first:
+      213: 1715514671655855725
+    second: Hurt_spritesheet_10
+  - first:
+      213: -6014042962936331979
+    second: Hurt_spritesheet_11
+  - first:
+      213: -8813331208687174583
+    second: Hurt_spritesheet_12
+  - first:
+      213: 2603313758098936270
+    second: Hurt_spritesheet_13
+  - first:
+      213: -8220632755113982210
+    second: Hurt_spritesheet_14
+  - first:
+      213: 1102398303646983699
+    second: Hurt_spritesheet_15
+  - first:
+      213: 8266722007270381188
+    second: Hurt_spritesheet_16
+  - first:
+      213: 6364280586556860963
+    second: Hurt_spritesheet_17
+  - first:
+      213: -1718147576234986310
+    second: Hurt_spritesheet_18
+  - first:
+      213: 2203439156173424030
+    second: Hurt_spritesheet_19
+  - first:
+      213: -283917753225344379
+    second: Hurt_spritesheet_20
+  - first:
+      213: -8508104598878531545
+    second: Hurt_spritesheet_21
+  - first:
+      213: -3603233630138233556
+    second: Hurt_spritesheet_22
+  - first:
+      213: -5016023740962435212
+    second: Hurt_spritesheet_23
+  - first:
+      213: -5961542199385959694
+    second: Hurt_spritesheet_24
+  - first:
+      213: 4863220246856734086
+    second: Hurt_spritesheet_25
+  - first:
+      213: 7834823896017567394
+    second: Hurt_spritesheet_26
+  - first:
+      213: -2867114577654102253
+    second: Hurt_spritesheet_27
+  - first:
+      213: 1625443006822079719
+    second: Hurt_spritesheet_28
+  - first:
+      213: 2327033167010641515
+    second: Hurt_spritesheet_29
+  - first:
+      213: 7179540736627120327
+    second: Hurt_spritesheet_30
+  - first:
+      213: 1857189912428631507
+    second: Hurt_spritesheet_31
+  - first:
+      213: -4436272912006326946
+    second: Hurt_spritesheet_32
+  - first:
+      213: 1371285841635336319
+    second: Hurt_spritesheet_33
+  - first:
+      213: -6740661347138154764
+    second: Hurt_spritesheet_34
+  - first:
+      213: -7745853138973198843
+    second: Hurt_spritesheet_35
+  - first:
+      213: -5825083362758155365
+    second: Hurt_spritesheet_36
+  - first:
+      213: -4014950911097301203
+    second: Hurt_spritesheet_37
+  - first:
+      213: 307996605637989327
+    second: Hurt_spritesheet_38
+  - first:
+      213: -311294264603806118
+    second: Hurt_spritesheet_39
+  - first:
+      213: 2753662158133246507
+    second: Hurt_spritesheet_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hurt_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 8841
+        width: 607
+        height: 634
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c36cf637e34e2290800000000000000
+      internalID: -7913312834904366143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 8841
+        width: 605
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e73dd3e0ae83de0800000000000000
+      internalID: -1353074341137121750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2510
+        y: 8841
+        width: 564
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e45b2aba6a6e280800000000000000
+      internalID: -9014334348036059503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3590
+        y: 8841
+        width: 502
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fd7f758f32e9af30800000000000000
+      internalID: 4587446457904102903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 4661
+        y: 8841
+        width: 508
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5da4e46a7c78190800000000000000
+      internalID: -7960174299262036482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 5743
+        y: 8841
+        width: 540
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee055fe70a1469be0800000000000000
+      internalID: -1470916070709309202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 6827
+        y: 8841
+        width: 585
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3657479bdda641720800000000000000
+      internalID: 2815993167545136483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 7760
+        width: 599
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 761ec86ab5f6b7560800000000000000
+      internalID: 7312560859393089895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 2514
+        y: 7760
+        width: 535
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e223361902070360800000000000000
+      internalID: 7135674372642251496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 3585
+        y: 7760
+        width: 500
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc6b853e979861c0800000000000000
+      internalID: -4510188321052594950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 4661
+        y: 7760
+        width: 510
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d66a403318bbec710800000000000000
+      internalID: 1715514671655855725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 5743
+        y: 7760
+        width: 544
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5310e3af9c3d98ca0800000000000000
+      internalID: -6014042962936331979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 6679
+        width: 589
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94c3652f5f1c0b580800000000000000
+      internalID: -8813331208687174583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 6679
+        width: 577
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec1df5ee114d02420800000000000000
+      internalID: 2603313758098936270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 3581
+        y: 6679
+        width: 500
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef68d7260127aed80800000000000000
+      internalID: -8220632755113982210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 4661
+        y: 6679
+        width: 513
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3162fd99a618c4f00800000000000000
+      internalID: 1102398303646983699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 5743
+        y: 6679
+        width: 548
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 486514cdddb49b270800000000000000
+      internalID: 8266722007270381188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 6827
+        y: 6679
+        width: 592
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ae2ac5977725850800000000000000
+      internalID: 6364280586556860963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 5598
+        width: 523
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab4b0dee1e9e728e0800000000000000
+      internalID: -1718147576234986310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 5598
+        width: 513
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9547ebfc30349e10800000000000000
+      internalID: 2203439156173424030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 3579
+        y: 5598
+        width: 501
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58a8395ce425f0cf0800000000000000
+      internalID: -283917753225344379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 4661
+        y: 5598
+        width: 516
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7205af7f1f32de980800000000000000
+      internalID: -8508104598878531545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 5743
+        y: 5598
+        width: 553
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2d8ed8aa1ebefdc0800000000000000
+      internalID: -3603233630138233556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 6828
+        y: 5598
+        width: 594
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47f020fcbf0836ab0800000000000000
+      internalID: -5016023740962435212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 4517
+        width: 502
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f2591c84f8544da0800000000000000
+      internalID: -5961542199385959694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1417
+        y: 4517
+        width: 503
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685126e4c01ad7340800000000000000
+      internalID: 4863220246856734086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 2499
+        y: 4517
+        width: 504
+        height: 635
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ae7edf92d2eabc60800000000000000
+      internalID: 7834823896017567394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 4661
+        y: 4517
+        width: 519
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31745947b76f538d0800000000000000
+      internalID: -2867114577654102253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 5744
+        y: 4517
+        width: 556
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ecd5408dcbbe8610800000000000000
+      internalID: 1625443006822079719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 3436
+        width: 522
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b66b83416584b4020800000000000000
+      internalID: 2327033167010641515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 3436
+        width: 526
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c81b19d24ad2a360800000000000000
+      internalID: 7179540736627120327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 2499
+        y: 3436
+        width: 529
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d55fb2b26016c910800000000000000
+      internalID: 1857189912428631507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 3580
+        y: 3436
+        width: 533
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e55dc297a413f62c0800000000000000
+      internalID: -4436272912006326946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 4662
+        y: 3436
+        width: 536
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7062342539c70310800000000000000
+      internalID: 1371285841635336319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 5744
+        y: 3436
+        width: 560
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fecf94e73c5472a0800000000000000
+      internalID: -6740661347138154764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 2355
+        width: 564
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50678210c93318490800000000000000
+      internalID: -7745853138973198843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 1420
+        y: 2355
+        width: 568
+        height: 637
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9323cf4b85292fa0800000000000000
+      internalID: -5825083362758155365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 2502
+        y: 2355
+        width: 571
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d271a612b670848c0800000000000000
+      internalID: -4014950911097301203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 3583
+        y: 2355
+        width: 575
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc3141fe749364400800000000000000
+      internalID: 307996605637989327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 4664
+        y: 2355
+        width: 579
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a567ca1048f0eabf0800000000000000
+      internalID: -311294264603806118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hurt_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 5745
+        y: 2355
+        width: 583
+        height: 636
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2ab7fea429f63620800000000000000
+      internalID: 2753662158133246507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hurt_spritesheet_0: -7913312834904366143
+      Hurt_spritesheet_1: -1353074341137121750
+      Hurt_spritesheet_10: 1715514671655855725
+      Hurt_spritesheet_11: -6014042962936331979
+      Hurt_spritesheet_12: -8813331208687174583
+      Hurt_spritesheet_13: 2603313758098936270
+      Hurt_spritesheet_14: -8220632755113982210
+      Hurt_spritesheet_15: 1102398303646983699
+      Hurt_spritesheet_16: 8266722007270381188
+      Hurt_spritesheet_17: 6364280586556860963
+      Hurt_spritesheet_18: -1718147576234986310
+      Hurt_spritesheet_19: 2203439156173424030
+      Hurt_spritesheet_2: -9014334348036059503
+      Hurt_spritesheet_20: -283917753225344379
+      Hurt_spritesheet_21: -8508104598878531545
+      Hurt_spritesheet_22: -3603233630138233556
+      Hurt_spritesheet_23: -5016023740962435212
+      Hurt_spritesheet_24: -5961542199385959694
+      Hurt_spritesheet_25: 4863220246856734086
+      Hurt_spritesheet_26: 7834823896017567394
+      Hurt_spritesheet_27: -2867114577654102253
+      Hurt_spritesheet_28: 1625443006822079719
+      Hurt_spritesheet_29: 2327033167010641515
+      Hurt_spritesheet_3: 4587446457904102903
+      Hurt_spritesheet_30: 7179540736627120327
+      Hurt_spritesheet_31: 1857189912428631507
+      Hurt_spritesheet_32: -4436272912006326946
+      Hurt_spritesheet_33: 1371285841635336319
+      Hurt_spritesheet_34: -6740661347138154764
+      Hurt_spritesheet_35: -7745853138973198843
+      Hurt_spritesheet_36: -5825083362758155365
+      Hurt_spritesheet_37: -4014950911097301203
+      Hurt_spritesheet_38: 307996605637989327
+      Hurt_spritesheet_39: -311294264603806118
+      Hurt_spritesheet_4: -7960174299262036482
+      Hurt_spritesheet_40: 2753662158133246507
+      Hurt_spritesheet_5: -1470916070709309202
+      Hurt_spritesheet_6: 2815993167545136483
+      Hurt_spritesheet_7: 7312560859393089895
+      Hurt_spritesheet_8: 7135674372642251496
+      Hurt_spritesheet_9: -4510188321052594950
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

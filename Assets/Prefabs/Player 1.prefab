@@ -180,7 +180,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -323,6 +323,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6a292d1f-3068-4e27-8826-02fe10fc6712
     m_ActionName: 'BasicControls/SwapWeapon[/DualShock4GamepadHID/rightShoulder]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 942f6035-70e1-4b49-a8b2-9341ae84fafd
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6674f7c9-ca7d-4ead-8fd1-eec26c9caa95
+    m_ActionName: UI/Submit
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7b9631d-cca4-461a-aa8a-2f03e65c8f72
+    m_ActionName: UI/Cancel
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2646111-f765-47c6-b3bf-ec96f12c5e9a
+    m_ActionName: 'UI/Point[/Mouse/position,/Simulated Touchscreen/touch0/position,/Simulated
+      Touchscreen/touch1/position,/Simulated Touchscreen/touch2/position,/Simulated
+      Touchscreen/touch3/position,/Simulated Touchscreen/touch4/position,/Simulated
+      Touchscreen/touch5/position,/Simulated Touchscreen/touch6/position,/Simulated
+      Touchscreen/touch7/position,/Simulated Touchscreen/touch8/position,/Simulated
+      Touchscreen/touch9/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b8ac39d9-a8bf-49ab-9bcf-3763596dc255
+    m_ActionName: 'UI/Click[/Mouse/leftButton,/Simulated Touchscreen/touch0/press,/Simulated
+      Touchscreen/touch1/press,/Simulated Touchscreen/touch2/press,/Simulated Touchscreen/touch3/press,/Simulated
+      Touchscreen/touch4/press,/Simulated Touchscreen/touch5/press,/Simulated Touchscreen/touch6/press,/Simulated
+      Touchscreen/touch7/press,/Simulated Touchscreen/touch8/press,/Simulated Touchscreen/touch9/press]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 12674fa2-87a3-4b85-aae9-1e86b4ad7dba
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d2760a1-2273-4c8b-9e04-284e8e01b690
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ad8d8c61-6d7d-4256-9429-d87ec26f275d
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9b23db84-5809-472d-86c9-18e25b141b53
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f7f0e760-9f8b-4551-99d3-8bf87b959b21
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controler
   m_DefaultActionMap: BasicControls
@@ -358,10 +406,6 @@ MonoBehaviour:
   raycastOffset: 0.01
   HHB: {fileID: 1489522565049356658}
   LHB: {fileID: 775111957985786259}
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
-  selectionTimer: 0
   attackDirection: {x: 1, y: 0}
   attackDistance: 2
   player1Layer:
@@ -434,6 +478,7 @@ MonoBehaviour:
   lowParry: 0
   highParry: 0
   maxParryTimer: 0.2
+  gameManager: {fileID: 0}
   attackType: 0
 --- !u!114 &5987369279297911574
 MonoBehaviour:

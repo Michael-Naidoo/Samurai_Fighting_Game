@@ -406,10 +406,6 @@ MonoBehaviour:
   raycastOffset: 0.01
   HHB: {fileID: 1489522565049356658}
   LHB: {fileID: 775111957985786259}
-  button1: {fileID: 0}
-  button2: {fileID: 0}
-  button3: {fileID: 0}
-  selectionTimer: 0
   attackDirection: {x: 1, y: 0}
   attackDistance: 2
   player1Layer:
@@ -482,6 +478,7 @@ MonoBehaviour:
   lowParry: 0
   highParry: 0
   maxParryTimer: 0.2
+  gameManager: {fileID: 0}
   attackType: 0
 --- !u!114 &8528378088127271328
 MonoBehaviour:
