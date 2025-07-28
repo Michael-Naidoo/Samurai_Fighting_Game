@@ -13,6 +13,7 @@ namespace DefaultNamespace
         private float lowParryTimer = 0.2f;
         private float highParryTimer = 0.2f;
         [SerializeField] private float maxParryTimer = 0.2f;
+        public GameManager gameManager;
 
         public enum AttackType
         {
@@ -22,6 +23,11 @@ namespace DefaultNamespace
         }
 
         public AttackType attackType;
+
+        private void Awake()
+        {
+            gameManager = GameManager.instance;
+        }
 
         private void Start()
         {
@@ -65,7 +71,7 @@ namespace DefaultNamespace
         {
             if (HP <= 0)
             {
-                HP = 100;
+                Die();
             }
 
             if (lowParryTimer > 0)
@@ -97,6 +103,18 @@ namespace DefaultNamespace
         {
             highParry = true;
             highParryTimer = maxParryTimer;
+        }
+
+        public void Die()
+        {
+            if (gameObject.CompareTag("Player1"))
+            {
+                gameManager.PlayerDied(0);
+            }
+            else if (gameObject.CompareTag("Player2"))
+            {
+                gameManager.PlayerDied(1);
+            }
         }
     }
 }

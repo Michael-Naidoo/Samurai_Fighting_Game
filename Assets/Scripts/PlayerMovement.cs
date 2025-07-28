@@ -45,11 +45,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform HHB;
     public Transform LHB;
     private float cd;
-
-    public GameObject button1;
-    public GameObject button2;
-    public GameObject button3;
-    public float selectionTimer;
     [SerializeField]private Vector2 attackDirection;
     public float attackDistance;
     [SerializeField]private LayerMask player1Layer;
@@ -272,14 +267,6 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(moveInput); 
         
         cd -= Time.deltaTime;
-        selectionTimer -= Time.deltaTime;
-
-        if (selectionTimer <= 0)
-        {
-            button1.SetActive(true);
-            button2.SetActive(true);
-            button3.SetActive(true);
-        }
     }
 
     // Optional: Draw gizmos to visualize the check areas in the editor
@@ -348,29 +335,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseSpeed()
     {
-        moveSpeed += 0.5f; 
-        selectionTimer = 45;
-        button1.SetActive(false);
-        button2.SetActive(false);
-        button3.SetActive(false);
+        moveSpeed += 0.5f;
     }
 
     public void IncreaseStrength()
     {
         Strength += 2;
-        selectionTimer = 45;
-        button1.SetActive(false);
-        button2.SetActive(false);
-        button3.SetActive(false);
     }
 
     public void IncreaseJump()
     {
         jumpForce += 1f;
-        selectionTimer = 45;
-        button1.SetActive(false);
-        button2.SetActive(false);
-        button3.SetActive(false);
     }
     
     public void CalculateDirection(GameObject other)

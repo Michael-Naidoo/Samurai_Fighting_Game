@@ -323,6 +323,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6a292d1f-3068-4e27-8826-02fe10fc6712
     m_ActionName: 'BasicControls/SwapWeapon[/DualShock4GamepadHID/rightShoulder]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 942f6035-70e1-4b49-a8b2-9341ae84fafd
+    m_ActionName: 'UI/Navigate[/DualShock4GamepadHID1/leftStick/up,/DualShock4GamepadHID1/rightStick/up,/DualShock4GamepadHID1/leftStick/down,/DualShock4GamepadHID1/rightStick/down,/DualShock4GamepadHID1/leftStick/left,/DualShock4GamepadHID1/rightStick/left,/DualShock4GamepadHID1/leftStick/right,/DualShock4GamepadHID1/rightStick/right,/DualShock4GamepadHID1/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6674f7c9-ca7d-4ead-8fd1-eec26c9caa95
+    m_ActionName: 'UI/Submit[/DualShock4GamepadHID1/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a7b9631d-cca4-461a-aa8a-2f03e65c8f72
+    m_ActionName: 'UI/Cancel[/DualShock4GamepadHID1/buttonEast]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2646111-f765-47c6-b3bf-ec96f12c5e9a
+    m_ActionName: 'UI/Point[/Mouse/position,/Simulated Touchscreen/touch0/position,/Simulated
+      Touchscreen/touch1/position,/Simulated Touchscreen/touch2/position,/Simulated
+      Touchscreen/touch3/position,/Simulated Touchscreen/touch4/position,/Simulated
+      Touchscreen/touch5/position,/Simulated Touchscreen/touch6/position,/Simulated
+      Touchscreen/touch7/position,/Simulated Touchscreen/touch8/position,/Simulated
+      Touchscreen/touch9/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b8ac39d9-a8bf-49ab-9bcf-3763596dc255
+    m_ActionName: 'UI/Click[/Mouse/leftButton,/Simulated Touchscreen/touch0/press,/Simulated
+      Touchscreen/touch1/press,/Simulated Touchscreen/touch2/press,/Simulated Touchscreen/touch3/press,/Simulated
+      Touchscreen/touch4/press,/Simulated Touchscreen/touch5/press,/Simulated Touchscreen/touch6/press,/Simulated
+      Touchscreen/touch7/press,/Simulated Touchscreen/touch8/press,/Simulated Touchscreen/touch9/press]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 12674fa2-87a3-4b85-aae9-1e86b4ad7dba
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6d2760a1-2273-4c8b-9e04-284e8e01b690
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ad8d8c61-6d7d-4256-9429-d87ec26f275d
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9b23db84-5809-472d-86c9-18e25b141b53
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f7f0e760-9f8b-4551-99d3-8bf87b959b21
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controler
   m_DefaultActionMap: BasicControls

@@ -12,6 +12,9 @@ TagManager:
   - Player2
   - Player1Health
   - Player2Health
+  - Button1
+  - Button2
+  - Button3
   layers:
   - Default
   - TransparentFX
