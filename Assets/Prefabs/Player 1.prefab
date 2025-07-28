@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1407050235292016830}
   - component: {fileID: 6483251812447539175}
   - component: {fileID: 6030744959253035086}
+  - component: {fileID: 5987369279297911574}
   m_Layer: 8
   m_Name: Player 1
   m_TagString: Player2
@@ -306,6 +307,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d717b339-ef0e-4335-82d2-e241f5f9ab34
     m_ActionName: 'BasicControls/LowLightAttack[/Keyboard/v]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1407050235292016830}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnSwapWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6a292d1f-3068-4e27-8826-02fe10fc6712
+    m_ActionName: 'BasicControls/SwapWeapon[/DualShock4GamepadHID/rightShoulder]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controler
   m_DefaultActionMap: BasicControls
@@ -353,6 +370,7 @@ MonoBehaviour:
   player2Layer:
     serializedVersion: 2
     m_Bits: 256
+  currentCooldown: 0.25
 --- !u!61 &6483251812447539175
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -413,6 +431,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 100
   HPDislay: {fileID: 0}
+  lowParry: 0
+  highParry: 0
+  maxParryTimer: 0.2
+  attackType: 0
+--- !u!114 &5987369279297911574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254150008358032308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b1fc9659a947f41ae8a66c1dbdf456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primaryWeapon: 1
+  primaryAttackDistance: 0
+  primaryCooldown: 0
+  secondaryWeapon: 1
+  secondaryAttackDistance: 0
+  secondaryCooldown: 0
+  usingPrimaryWeapon: 1
 --- !u!1 &2648598690435774760
 GameObject:
   m_ObjectHideFlags: 0

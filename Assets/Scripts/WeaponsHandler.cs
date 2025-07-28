@@ -4,84 +4,69 @@ using UnityEngine;
 
 public class WeaponsHandler : MonoBehaviour
 {
-    public bool facingRight;
+    [Header("Primary Weapon")] public Weapons primaryWeapon;
 
-    [Header("Primary Weapon")]
-    public Weapons primaryWeapon;
+    public float primaryAttackDistance;
 
-    public Vector2[] primaryWeaponHitBox = new Vector2[4];
+    public float primaryCooldown;
+
+    [Header("Secondary Weapon")] public Weapons secondaryWeapon;
+
+    public float secondaryAttackDistance;
+
+    public float secondaryCooldown;
+
+    public bool usingPrimaryWeapon = true;
     
-    [Header("Secondary Weapon")]
-    public Weapons secondaryWeapon;
-
-    public Vector2[] secondaryWeaponHitBox = new Vector2[4];
-
-    [Header("Sword Parameters")] 
-    public float swordHitBoxHeight = 0.5f;
-
-    public float swordHitBoxLength = 1.5f;
-    
-    [Header("Dagger Parameters")] 
-    public float daggerHitBoxHeight = 0.5f;
-
-    public float daggerHitBoxLength = 0.5f;
-
     public enum Weapons
     {
-    sword,
-    dagger
+        sword = 1,
+        dagger = 2
     }
 
     private void Start()
     {
-        if (gameObject.CompareTag("Player 1"))
-        {
-            facingRight = true;
-        }
-        else if (CompareTag("Player 2"))
-        {
-            facingRight = false;
-        }
-        else
-        {
-            Debug.LogWarning("Weapons handler not attached to player. It is attached to " + gameObject.name);
-        }
-    }
-
-    public void CalculateHitBox()
-    {
-        Vector2 position = gameObject.transform.position;
         switch (primaryWeapon)
         {
             case Weapons.sword:
-                primaryWeaponHitBox[0] = new Vector2(position.x, position.y + swordHitBoxHeight / 2);
-                primaryWeaponHitBox[0] = new Vector2(position.x, position.y - swordHitBoxHeight / 2);
-                if (facingRight)
-                {
-                    primaryWeaponHitBox[0] = new Vector2(position.x + swordHitBoxLength, position.y + swordHitBoxHeight / 2);
-                    primaryWeaponHitBox[0] = new Vector2(position.x + swordHitBoxLength, position.y - swordHitBoxHeight / 2);
-                }
-                else
-                {
-                    primaryWeaponHitBox[0] = new Vector2(position.x - swordHitBoxLength, position.y + swordHitBoxHeight / 2);
-                    primaryWeaponHitBox[0] = new Vector2(position.x - swordHitBoxLength, position.y - swordHitBoxHeight / 2);
-                }
-                return;
+                primaryAttackDistance = 2f;
+                primaryCooldown = 0.25f;
+                break;
             case Weapons.dagger:
-                primaryWeaponHitBox[0] = new Vector2(position.x, position.y + daggerHitBoxHeight / 2);
-                primaryWeaponHitBox[0] = new Vector2(position.x, position.y - daggerHitBoxHeight / 2);
-                if (facingRight)
-                {
-                    primaryWeaponHitBox[0] = new Vector2(position.x + daggerHitBoxLength, position.y + daggerHitBoxHeight / 2);
-                    primaryWeaponHitBox[0] = new Vector2(position.x + daggerHitBoxLength, position.y - daggerHitBoxHeight / 2);
-                }
-                else
-                {
-                    primaryWeaponHitBox[0] = new Vector2(position.x - daggerHitBoxLength, position.y + daggerHitBoxHeight / 2);
-                    primaryWeaponHitBox[0] = new Vector2(position.x - daggerHitBoxLength, position.y - daggerHitBoxHeight / 2);
-                }
-                return;
-            return;
+                primaryAttackDistance = 1f;
+                primaryCooldown = 0.1f;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        switch (secondaryWeapon)
+        {
+            case Weapons.sword:
+                secondaryAttackDistance = 2f;
+                secondaryCooldown = 0.25f;
+                break;
+            case Weapons.dagger:
+                secondaryAttackDistance = 1f;
+                secondaryCooldown = 0.1f;
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    public void SwitchWeapon()
+    {
+        if (usingPrimaryWeapon)
+        {
+            gameObject.GetComponent<PlayerMovement>().attackDistance = secondaryAttackDistance;
+            gameObject.GetComponent<PlayerMovement>().currentCooldown = secondaryCooldown;
+            usingPrimaryWeapon = false;
+        }
+        else if (!usingPrimaryWeapon)
+        {
+            gameObject.GetComponent<PlayerMovement>().attackDistance = primaryAttackDistance;
+            gameObject.GetComponent<PlayerMovement>().currentCooldown = primaryCooldown;
+            usingPrimaryWeapon = true;   
         }
     }
 }

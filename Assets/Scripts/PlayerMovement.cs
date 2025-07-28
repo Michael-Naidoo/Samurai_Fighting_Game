@@ -51,74 +51,21 @@ public class PlayerMovement : MonoBehaviour
     public GameObject button3;
     public float selectionTimer;
     [SerializeField]private Vector2 attackDirection;
-    [SerializeField]private float attackDistance;
+    public float attackDistance;
     [SerializeField]private LayerMask player1Layer;
     [SerializeField]private LayerMask player2Layer;
     private Collider2D player;
+    public float currentCooldown = 0.25f;
 
     private void Awake()
     {
         playerCollider = gameObject.GetComponent<Collider2D>();
     }
 
-    /*public void OnEnable()
+    public void OnSwapWeapon(InputAction.CallbackContext context)
     {
-        // Find the action map and move action
-        var actionMap = inputActions.FindActionMap("BasicControls");
-        moveAction = actionMap.FindAction("Movement");
-        HHA = actionMap.FindAction("HHA");
-        HLA = actionMap.FindAction("HLA");
-        LHA = actionMap.FindAction("LHA");
-        LLA = actionMap.FindAction("LLA");
-
-        // Enable input actions
-        actionMap.Enable();
-        moveAction.Enable();
-        HHA.Enable();
-        HLA.Enable();
-        LHA.Enable();
-        LLA.Enable();
-
-        // Subscribe to input performed/canceled events
-        moveAction.performed += OnMove;
-        moveAction.canceled += OnMoveCancelled;
-        HHA.performed += OnHHA;
-        HHA.canceled += OnHHACancelled;
-        HLA.performed += OnHLA;
-        HLA.canceled += OnHLACancelled;
-        LHA.performed += OnLHA;
-        LHA.canceled += OnLHACancelled;
-        LLA.performed += OnLLA; 
-        LLA.canceled += OnLLACancelled;
-        
-        // Get the player's main collider
-        playerCollider = GetComponent<Collider2D>();
-        if (playerCollider == null)
-        {
-            Debug.LogError(
-                "PlayerMovement: No Collider2D found on this GameObject. A collider is required for collision detection.");
-        }
+        gameObject.GetComponent<WeaponsHandler>().SwitchWeapon();
     }
-
-    public void OnDisable()
-    {
-        // Disable input actions and unsubscribe events
-        moveAction.performed -= OnMove;
-        moveAction.canceled -= OnMoveCancelled;
-        moveAction.Disable();
-        HHA.performed -= OnHHA;
-        HHA.canceled -= OnHHACancelled;
-        HHA.Disable();
-        HLA.performed -= OnHLA;
-        HLA.canceled -= OnHLACancelled;
-        HLA.Disable();
-        LHA.performed -= OnLHA;
-        LHA.canceled -= OnLHACancelled;
-        LHA.Disable();
-        LLA.performed -= OnLLA;
-        LLA.canceled -= OnLLACancelled;
-        LLA.Disable();
-    }*/
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -160,8 +107,8 @@ public class PlayerMovement : MonoBehaviour
         
         if (player && cd <= 0)
         {
-            player.GetComponent<DummyStats>().DecrementHP(Strength);
-            cd = 0.25f;
+            player.GetComponent<DummyStats>().DecrementHP(Strength, DummyStats.AttackType.High);
+            cd = currentCooldown;
         }
     }
 
@@ -170,11 +117,8 @@ public class PlayerMovement : MonoBehaviour
     public void OnHLA(InputAction.CallbackContext context)
     {
         Debug.Log(context);
-       // if (HHB.isInRange && cd <= 0)
-        {
-          //  HHB.Dummy.GetComponent<DummyStats>().DecrementHP(Strength);
-            cd = 0.25f;
-        }
+        gameObject.GetComponent<DummyStats>().HighParry();
+        cd = 0.2f;
     }
 
     public void OnHLACancelled(InputAction.CallbackContext context) {}
@@ -196,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (player && cd <= 0)
         {
-            player.GetComponent<DummyStats>().DecrementHP(Strength);
+            player.GetComponent<DummyStats>().DecrementHP(Strength, DummyStats.AttackType.Low);
             cd = 0.25f;
         }
     }
@@ -206,11 +150,8 @@ public class PlayerMovement : MonoBehaviour
     public void OnLLA(InputAction.CallbackContext context)
     {
         Debug.Log(context);
-       // if (LHB.isInRange && cd <= 0)
-        {
-           // LHB.Dummy.GetComponent<DummyStats>().DecrementHP(Strength);
-            cd = 0.25f;
-        }
+        gameObject.GetComponent<DummyStats>().LowParry();
+        cd = 0.2f;
     }
 
     public void OnLLACancelled(InputAction.CallbackContext context) {}

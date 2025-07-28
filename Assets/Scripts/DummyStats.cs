@@ -8,6 +8,20 @@ namespace DefaultNamespace
     {
         public float HP;
         public Slider HPDislay;
+        [SerializeField] private bool lowParry;
+        [SerializeField] private bool highParry;
+        private float lowParryTimer = 0.2f;
+        private float highParryTimer = 0.2f;
+        [SerializeField] private float maxParryTimer = 0.2f;
+
+        public enum AttackType
+        {
+            Low,
+            High,
+            General
+        }
+
+        public AttackType attackType;
 
         private void Start()
         {
@@ -21,9 +35,30 @@ namespace DefaultNamespace
             }
         }
 
-        public void DecrementHP(float damage)
+        public void DecrementHP(float damage, AttackType attackType)
         {
-            HP -= damage;
+            switch (attackType)
+            {
+                case AttackType.Low:
+                    if (!lowParry)
+                    {
+                        HP -= damage;
+                    }
+                    break;
+                case AttackType.High:
+                    if (!highParry)
+                    {
+                        HP -= damage;
+                    }
+                    break;
+                case AttackType.General:
+                    if (!lowParry || !highParry)
+                    {
+                        HP -= damage;
+                    }
+                    break;
+                return;
+            }
         }
 
         private void Update()
@@ -33,7 +68,35 @@ namespace DefaultNamespace
                 HP = 100;
             }
 
+            if (lowParryTimer > 0)
+            {
+                lowParryTimer -= Time.deltaTime;
+            }
+            else
+            {
+                lowParry = false;
+            }
+            if (highParryTimer > 0)
+            {
+                highParryTimer -= Time.deltaTime;
+            }
+            else
+            {
+                highParry = false;
+            }
+
             HPDislay.value = HP / 100;
+        }
+
+        public void LowParry()
+        {
+            lowParry = true;
+            lowParryTimer = maxParryTimer;
+        }
+        public void HighParry()
+        {
+            highParry = true;
+            highParryTimer = maxParryTimer;
         }
     }
 }
