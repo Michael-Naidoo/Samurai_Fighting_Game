@@ -798,6 +798,145 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "MapSelection",
+            "id": "85113778-5699-4d15-ae64-9f807fbef201",
+            "actions": [
+                {
+                    "name": "ButtonSouth",
+                    "type": "Button",
+                    "id": "fed81bbb-c0dd-47bc-8e01-ad78fc97fee5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonNorth",
+                    "type": "Button",
+                    "id": "29370007-78b2-4267-8c8a-05c2d077c06d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadUp",
+                    "type": "Button",
+                    "id": "518d0a68-89df-48bf-b606-bc5cbdc54046",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadDown",
+                    "type": "Button",
+                    "id": "6a6d4597-238e-4222-b69f-0f4faaefd58d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadLeft",
+                    "type": "Button",
+                    "id": "296dfacd-d547-41ea-9f95-7fc50a4df242",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DPadRight",
+                    "type": "Button",
+                    "id": "e9c1f51c-5920-41ae-9452-e6dcd613fbd6",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "37fe57af-e2ca-40db-b126-5c8cb097f888",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controler",
+                    "action": "ButtonSouth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "15f07405-4666-45fc-be3b-326ea1745a24",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "ButtonSouth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "32e2b70d-4cec-475f-8a2f-54f091e8eeb6",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controler",
+                    "action": "ButtonNorth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1d6ed71-d969-40ef-99f5-313c7be3d9ca",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controler",
+                    "action": "DPadUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d94ab71-5774-4515-9472-cf9b0b3ff263",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controler",
+                    "action": "DPadDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6cbd8f6-2f5c-4163-b513-b2cb97eacdff",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controler",
+                    "action": "DPadLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b85bc8ed-b566-41c1-83f1-85053052baf1",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Controler",
+                    "action": "DPadRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
