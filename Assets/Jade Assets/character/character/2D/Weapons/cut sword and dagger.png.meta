@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: a505d99d08df5b942b86fa9ec5f1d057
+guid: cd5caf90e0bda4a4c9c5fda620b5a1e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -252512787811944687
-    second: Sword and dagger_0
+      213: 9048075224947666374
+    second: cut sword and dagger_0
   - first:
-      213: -3400434464789370773
-    second: Sword and dagger_1
+      213: 391216117458983652
+    second: cut sword and dagger_1
+  - first:
+      213: 6983654693432099102
+    second: cut sword and dagger_2
+  - first:
+      213: -4803386019239021936
+    second: cut sword and dagger_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sword and dagger_0
+      name: Sword_Top
       rect:
         serializedVersion: 2
-        x: 224
-        y: 627
-        width: 464
-        height: 342
+        x: 276
+        y: 711
+        width: 369
+        height: 278
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 117b93515f4ee7cf0800000000000000
-      internalID: -252512787811944687
+      spriteID: 6cda4047a78319d70800000000000000
+      internalID: 9048075224947666374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sword and dagger_1
+      name: Sword_Bottom
       rect:
         serializedVersion: 2
-        x: 601
-        y: 460
-        width: 384
-        height: 129
+        x: 183
+        y: 652
+        width: 58
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +146,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b68eb3cdeda3fc0d0800000000000000
-      internalID: -3400434464789370773
+      spriteID: 4eadc8f6cf0ed6500800000000000000
+      internalID: 391216117458983652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dagger_Bottom
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 282
+        width: 49
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e11820451fceae060800000000000000
+      internalID: 6983654693432099102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dagger_Top
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 305
+        width: 231
+        height: 172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0923e2c6dd1f65db0800000000000000
+      internalID: -4803386019239021936
       vertices: []
       indices: 
       edges: []
@@ -150,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6ddc71b7206f4f343ab398b9245104d9
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sword and dagger_0: -252512787811944687
-      Sword and dagger_1: -3400434464789370773
+      Dagger_Bottom: 6983654693432099102
+      Dagger_Top: -4803386019239021936
+      Sword_Bottom: 391216117458983652
+      Sword_Top: 9048075224947666374
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

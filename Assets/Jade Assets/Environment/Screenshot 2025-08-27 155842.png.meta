@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: a505d99d08df5b942b86fa9ec5f1d057
+guid: 2defccf4fde73da408ab665deabb2f36
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -252512787811944687
-    second: Sword and dagger_0
-  - first:
-      213: -3400434464789370773
-    second: Sword and dagger_1
+      213: 4441855350556412640
+    second: Screenshot 2025-08-27 155842_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sword and dagger_0
+      name: Screenshot 2025-08-27 155842_0
       rect:
         serializedVersion: 2
-        x: 224
-        y: 627
-        width: 464
-        height: 342
+        x: 0
+        y: 0
+        width: 409
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 117b93515f4ee7cf0800000000000000
-      internalID: -252512787811944687
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sword and dagger_1
-      rect:
-        serializedVersion: 2
-        x: 601
-        y: 460
-        width: 384
-        height: 129
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b68eb3cdeda3fc0d0800000000000000
-      internalID: -3400434464789370773
+      spriteID: 0ea459948e3a4ad30800000000000000
+      internalID: 4441855350556412640
       vertices: []
       indices: 
       edges: []
@@ -159,9 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Sword and dagger_0: -252512787811944687
-      Sword and dagger_1: -3400434464789370773
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

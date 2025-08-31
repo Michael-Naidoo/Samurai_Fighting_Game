@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a505d99d08df5b942b86fa9ec5f1d057
+guid: ecd195d0000ff8e409b161bbe86fea65
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -54,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sword and dagger_0
+      name: Sword
       rect:
         serializedVersion: 2
-        x: 224
-        y: 627
-        width: 464
-        height: 342
+        x: 225
+        y: 629
+        width: 462
+        height: 339
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,13 +125,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sword and dagger_1
+      name: Dagger
       rect:
         serializedVersion: 2
-        x: 601
-        y: 460
-        width: 384
-        height: 129
+        x: 602
+        y: 462
+        width: 381
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f6a162567a73e764e97e1e5da4c8862c
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sword and dagger_0: -252512787811944687
-      Sword and dagger_1: -3400434464789370773
+      Dagger: -3400434464789370773
+      Sword: -252512787811944687
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
