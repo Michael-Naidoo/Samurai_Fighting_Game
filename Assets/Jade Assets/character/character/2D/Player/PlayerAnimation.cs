@@ -61,6 +61,14 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.SetBool("LowAttack", false);
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetBool("Parry", true);
+        }
+        else
+        {
+            animator.SetBool("Parry", false);
+        }
 
         //if (isWalking && Input.GetKeyDown(KeyCode.LeftShift))
         //{
