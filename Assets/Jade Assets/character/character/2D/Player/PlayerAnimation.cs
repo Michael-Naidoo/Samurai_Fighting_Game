@@ -66,10 +66,11 @@ public class PlayerAnimation : MonoBehaviour
 
     }
 
-    //public void OnLanding()
-    //{
-    //    animator.SetBool("Jump", false);
-    //}
+    public void OnLanding()
+    {
+        animator.SetBool("Jump", false);
+    }
+
     //public void AttackEnd()
     //{
     //    animator.SetBool("LightAttack", false);
