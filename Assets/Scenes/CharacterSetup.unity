@@ -503,6 +503,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.67850506
       objectReference: {fileID: 0}
+    - target: {fileID: 3658828817269459205, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 91.62537
+      objectReference: {fileID: 0}
     - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
