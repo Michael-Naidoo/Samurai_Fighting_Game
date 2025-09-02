@@ -7,6 +7,8 @@ public class MapSelect : MonoBehaviour
 {
     private PlayerDataManager dataManager;
     private PlayerInput playerInput;
+
+    private MapSelectActivation mapSelectActivation;
     private int deviceID;
     private bool isPlayer1;
     [SerializeField] private int mapIndex;
@@ -15,7 +17,9 @@ public class MapSelect : MonoBehaviour
     {
         // Get the PlayerDataManager instance
         dataManager = PlayerDataManager.Instance;
-                
+        
+        mapSelectActivation = MapSelectActivation.Instance;
+
         // This script is NOT a singleton. The PlayerInputManager creates a new instance for each player.
         playerInput = GetComponent<PlayerInput>();
         deviceID = playerInput.devices[0].deviceId;
@@ -49,6 +53,8 @@ public class MapSelect : MonoBehaviour
             {
                 mapIndex = 1;
             }
+            
+            mapSelectActivation.ChangeMapIndicator(mapIndex);
         }
     }
     
@@ -64,6 +70,8 @@ public class MapSelect : MonoBehaviour
             {
                 Debug.Log("Cannot select left");
             }
+            
+            mapSelectActivation.ChangeMapIndicator(mapIndex);
         }
     }
 

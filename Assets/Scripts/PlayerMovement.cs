@@ -1,8 +1,11 @@
 using System;
+using System.Collections;
 using DefaultNamespace;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Object = UnityEngine.Object;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -55,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask player2Layer;
     private Collider2D player;
     public float currentCooldown = 0.25f;
+    public int startUpTime = 5;
 
     private void Awake()
     {
@@ -88,28 +92,69 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = Vector2.zero;
     }
+    float drawTime = 0;
+    float difference = 0;
+    public GameObject arrowPrefab;
 
     public void OnHHA(InputAction.CallbackContext context)
     {
-        Debug.DrawLine(HHB.position,
-            new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
-        if (gameObject.CompareTag("Player1"))
+        var weaponsHandler = GetComponent<WeaponsHandler>();
+        if (context.started)
         {
-            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
-        }
-        else if (gameObject.CompareTag("Player2"))
-        {
-            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
-        }
+            if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
+                (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
+            {
+                difference = 0;
+                drawTime = Time.time;
+            }
+            else
+            {
+                Debug.DrawLine(HHB.position,
+                    new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
+                if (gameObject.CompareTag("Player1"))
+                {
+                    Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+                }
+                else if (gameObject.CompareTag("Player2"))
+                {
+                    Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
+                }
 
-        if (player && cd <= 0)
-        {
-            Debug.Log(Strength * weaponDamage);
-            player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.High);
-            cd = currentCooldown;
+                if (player && cd <= 0)
+                {
+                    Debug.Log(Strength * weaponDamage);
+                    StartCoroutine(WaitHigh(startUpTime));
+                    cd = currentCooldown;
+                }
+            }
         }
+        else if(context.canceled)
+        {
+            if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
+                (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
+            {
+                Debug.Log("working till this point");
+                var releaseTime = Time.time;
+                difference = Mathf.Clamp(releaseTime - drawTime, 0, 3);
+                GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity, GameObject.FindWithTag("MainCamera").transform);
+                Debug.Log(arrow);
+                var arrowScript = arrow.GetComponent<ArrowScript>();
+                arrowScript.initialTime = Time.time;
+                arrowScript.gravity = -1;
+                arrowScript.InitialVelocityMagnitude = difference;
+                arrowScript.angle = (attackDirection.x == 1) ? 30f : 150f;
+                arrowScript.initialPosition = transform.position;
+                arrowScript.damage = weaponDamage * Strength;
+                arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
+            }
+        }
+    }
+
+    private void DrawBow()
+    {
+        //start timer
     }
 
     public void OnHHACancelled(InputAction.CallbackContext context)
@@ -128,23 +173,54 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLHA(InputAction.CallbackContext context)
     {
-        Debug.DrawLine(LHB.position,
-            new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
-        if (gameObject.CompareTag("Player1"))
+        var weaponsHandler = GetComponent<WeaponsHandler>();
+        if (context.started)
         {
-            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
-        }
-        else if (gameObject.CompareTag("Player2"))
-        {
-            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
-        }
+            
+            if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
+                (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
+            {
+                difference = 0;
+                drawTime = Time.time;
+            }
+            
+            Debug.DrawLine(LHB.position,
+                new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
+            if (gameObject.CompareTag("Player1"))
+            {
+                Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+            }
+            else if (gameObject.CompareTag("Player2"))
+            {
+                Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
+            }
 
-        if (player && cd <= 0)
+            if (player && cd <= 0)
+            {
+                StartCoroutine(WaitLow(startUpTime));
+            
+                cd = currentCooldown;
+            }
+        }
+        else if(context.canceled)
         {
-            player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.Low);
-            cd = currentCooldown;
+            if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
+                (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
+            {
+                var releaseTime = Time.time;
+                difference = Mathf.Clamp(releaseTime - drawTime, 0, 3);
+                GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity, GameObject.FindWithTag("MainCamera").transform);
+                var arrowScript = arrow.GetComponent<ArrowScript>();
+                arrowScript.initialTime = Time.time;
+                arrowScript.gravity = 0;
+                arrowScript.InitialVelocityMagnitude = difference;
+                arrowScript.angle = (attackDirection.x == 1) ? 180f : 0f;
+                arrowScript.initialPosition = transform.position;
+                arrowScript.damage = weaponDamage * Strength;
+                arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
+            }
         }
     }
 
@@ -380,5 +456,16 @@ public class PlayerMovement : MonoBehaviour
         {
             attackDirection.x = -1;
         }
+    }
+    
+    IEnumerator WaitLow(int time)
+    {
+        yield return new WaitForSeconds(time);
+        player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.Low);
+    }
+    IEnumerator WaitHigh(int time)
+    {
+        yield return new WaitForSeconds(time);
+        player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.High);
     }
 }
