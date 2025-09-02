@@ -77,6 +77,14 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.SetBool("HighDagger", false);
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            animator.SetBool("DrawBow", true);
+        }
+        else
+        {
+            animator.SetBool("DrawBow", false);
+        }
 
         //if (isWalking && Input.GetKeyDown(KeyCode.LeftShift))
         //{
