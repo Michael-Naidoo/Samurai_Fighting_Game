@@ -810,7 +810,7 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ButtonNorth",
@@ -863,7 +863,7 @@
                     "name": "",
                     "id": "37fe57af-e2ca-40db-b126-5c8cb097f888",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
+                    "interactions": "Tap(duration=0.2,pressPoint=0.5)",
                     "processors": "",
                     "groups": ";Controler",
                     "action": "ButtonSouth",

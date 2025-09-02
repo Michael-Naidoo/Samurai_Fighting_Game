@@ -25,10 +25,11 @@ public class PlayerMovement : MonoBehaviour
 
     // Check Transforms and Radius
     public Transform groundCheck; // An empty GameObject child at the player's feet
+
     // These `leftWallCheck` and `rightWallCheck` transforms can still be useful for visually setting
     // the general area for wall checks, but the raycast origins will be more precise.
-    public Transform leftWallCheck; 
-    public Transform rightWallCheck; 
+    public Transform leftWallCheck;
+    public Transform rightWallCheck;
     public float groundCheckRadius = 0.2f; // Radius for ground detection (also used for wall checks for simplicity)
 
     // Reference to the player's main collider for BoxCast/CapsuleCast
@@ -38,17 +39,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool againstLeftWall;
     [SerializeField] private bool againstRightWall;
     [SerializeField] private RaycastHit2D approachingLeftWall;
+
     [SerializeField] private RaycastHit2D approachingRightWall;
+
     // Small offset to ensure the ray starts just outside the player's collider
     public float raycastOffset = 0.01f; // A very small value, adjust if needed
 
     public Transform HHB;
     public Transform LHB;
     private float cd;
-    [SerializeField]private Vector2 attackDirection;
+    [SerializeField] private Vector2 attackDirection;
     public float attackDistance;
-    [SerializeField]private LayerMask player1Layer;
-    [SerializeField]private LayerMask player2Layer;
+    public float weaponDamage;
+    [SerializeField] private LayerMask player1Layer;
+    [SerializeField] private LayerMask player2Layer;
     private Collider2D player;
     public float currentCooldown = 0.25f;
 
@@ -87,60 +91,66 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnHHA(InputAction.CallbackContext context)
     {
-        Debug.DrawLine(HHB.position, new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
+        Debug.DrawLine(HHB.position,
+            new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
         if (gameObject.CompareTag("Player1"))
         {
-            Debug.Log(context);
-            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
             player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
         }
         else if (gameObject.CompareTag("Player2"))
         {
-            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
             player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
         }
-        
+
         if (player && cd <= 0)
         {
-            player.GetComponent<DummyStats>().DecrementHP(Strength, DummyStats.AttackType.High);
+            Debug.Log(Strength * weaponDamage);
+            player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.High);
             cd = currentCooldown;
         }
     }
 
-    public void OnHHACancelled(InputAction.CallbackContext context) {}
+    public void OnHHACancelled(InputAction.CallbackContext context)
+    {
+    }
 
     public void OnHLA(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
         gameObject.GetComponent<DummyStats>().HighParry();
         cd = 0.2f;
     }
 
-    public void OnHLACancelled(InputAction.CallbackContext context) {}
+    public void OnHLACancelled(InputAction.CallbackContext context)
+    {
+    }
 
     public void OnLHA(InputAction.CallbackContext context)
     {
-        Debug.DrawLine(LHB.position, new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
+        Debug.DrawLine(LHB.position,
+            new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
         if (gameObject.CompareTag("Player1"))
         {
-            Debug.Log(context);
-            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
+            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
             player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
         }
         else if (gameObject.CompareTag("Player2"))
         {
-            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance/2 * attackDirection.x, 0);
-            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+            Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+            player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
         }
-        
+
         if (player && cd <= 0)
         {
-            player.GetComponent<DummyStats>().DecrementHP(Strength, DummyStats.AttackType.Low);
-            cd = 0.25f;
+            player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.Low);
+            cd = currentCooldown;
         }
     }
 
-    public void OnLHACancelled(InputAction.CallbackContext context) {}
+    public void OnLHACancelled(InputAction.CallbackContext context)
+    {
+    }
 
     public void OnLLA(InputAction.CallbackContext context)
     {
@@ -149,7 +159,9 @@ public class PlayerMovement : MonoBehaviour
         cd = 0.2f;
     }
 
-    public void OnLLACancelled(InputAction.CallbackContext context) {}
+    public void OnLLACancelled(InputAction.CallbackContext context)
+    {
+    }
 
     public void Update()
     {
@@ -165,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
 
         // --- Horizontal Movement with Collision Prediction ---
         float targetXVelocity = moveInput.x * moveSpeed;
-        float moveDistanceThisFrame = targetXVelocity * Time.deltaTime; 
+        float moveDistanceThisFrame = targetXVelocity * Time.deltaTime;
 
         // Initialize raycast hits for the current frame
         approachingLeftWall = new RaycastHit2D();
@@ -178,7 +190,7 @@ public class PlayerMovement : MonoBehaviour
         // It should be at least enough to cover the current frame's intended movement
         // plus the player's half-width to project from the center to the edge, plus a small buffer.
         float maxRayDistance = Mathf.Abs(moveDistanceThisFrame) + raycastOffset;
-        
+
         // Default horizontal velocity to target, will be clamped if a wall is hit
         currentVelocity.x = targetXVelocity;
 
@@ -187,8 +199,9 @@ public class PlayerMovement : MonoBehaviour
             if (moveInput.x < 0) // Moving Left
             {
                 // Raycast origin from the left edge of the player
-                Vector2 rayOriginLeft = new Vector2(transform.position.x - playerHalfWidth, playerCollider.bounds.center.y);
-                
+                Vector2 rayOriginLeft =
+                    new Vector2(transform.position.x - playerHalfWidth, playerCollider.bounds.center.y);
+
                 approachingLeftWall = Physics2D.Raycast(rayOriginLeft, Vector2.left, maxRayDistance, groundLayer);
 
                 // Visualize the raycast for debugging in Scene view
@@ -198,22 +211,27 @@ public class PlayerMovement : MonoBehaviour
                 {
                     // Calculate the actual distance the player's edge can move
                     float actualMoveDistance = approachingLeftWall.distance - playerHalfWidth - raycastOffset;
-                    
+
                     // Clamp the horizontal velocity if we're about to hit a wall
                     if (actualMoveDistance < Mathf.Abs(moveDistanceThisFrame))
                     {
                         currentVelocity.x = -actualMoveDistance / Time.deltaTime;
-                        if (currentVelocity.x > 0) currentVelocity.x = 0; // Prevent pushing backwards if already past hit point
+                        if (currentVelocity.x > 0)
+                            currentVelocity.x = 0; // Prevent pushing backwards if already past hit point
                     }
+
                     againstLeftWall = actualMoveDistance <= 0.05f; // Set status if very close to wall
-                } else {
+                }
+                else
+                {
                     againstLeftWall = false; // Not against wall if no hit
                 }
             }
             else if (moveInput.x > 0) // Moving Right
             {
                 // Raycast origin from the right edge of the player
-                Vector2 rayOriginRight = new Vector2(transform.position.x + playerHalfWidth, playerCollider.bounds.center.y);
+                Vector2 rayOriginRight =
+                    new Vector2(transform.position.x + playerHalfWidth, playerCollider.bounds.center.y);
 
                 approachingRightWall = Physics2D.Raycast(rayOriginRight, Vector2.right, maxRayDistance, groundLayer);
 
@@ -229,8 +247,11 @@ public class PlayerMovement : MonoBehaviour
                         currentVelocity.x = actualMoveDistance / Time.deltaTime;
                         if (currentVelocity.x < 0) currentVelocity.x = 0; // Prevent pushing backwards
                     }
+
                     againstRightWall = actualMoveDistance <= 0.05f; // Set status if very close to wall
-                } else {
+                }
+                else
+                {
                     againstRightWall = false; // Not against wall if no hit
                 }
             }
@@ -251,10 +272,10 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Jump
-        if (moveInput.y > 0.1f && Grounded) 
+        if (moveInput.y > 0.1f && Grounded)
         {
             currentVelocity.y = jumpForce;
-            Grounded = false; 
+            Grounded = false;
         }
 
         // Apply movement
@@ -264,8 +285,8 @@ public class PlayerMovement : MonoBehaviour
         Grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
 
-        Debug.Log(moveInput); 
-        
+        Debug.Log(moveInput);
+
         cd -= Time.deltaTime;
     }
 
@@ -277,22 +298,23 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
-        
+
         if (player)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, player.transform.position);
         }
-        
+
         // These are just for general reference if you want specific points
         if (leftWallCheck != null)
         {
             Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(leftWallCheck.position, groundCheckRadius);
         }
+
         if (rightWallCheck != null)
         {
-            Gizmos.color = Color.cyan; 
+            Gizmos.color = Color.cyan;
             Gizmos.DrawWireSphere(rightWallCheck.position, groundCheckRadius);
         }
 
@@ -301,14 +323,14 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.blue;
             // Draw a wire cube representing the player's collider bounds
             Gizmos.DrawWireCube(playerCollider.bounds.center, playerCollider.bounds.size);
-            
+
             // Visualize the actual raycasts for horizontal movement
             float playerHalfWidth = playerCollider.bounds.extents.x;
             float raycastOffset = 0.01f;
             // Use the current velocity (or target velocity for a full expected ray) for gizmo length
-            float maxGizmoRayDistance = Mathf.Abs(currentVelocity.x * Time.deltaTime) + playerHalfWidth + raycastOffset; 
+            float maxGizmoRayDistance = Mathf.Abs(currentVelocity.x * Time.deltaTime) + playerHalfWidth + raycastOffset;
             // Clamp minimum length so you always see it
-            if (maxGizmoRayDistance < 0.1f) maxGizmoRayDistance = 0.1f; 
+            if (maxGizmoRayDistance < 0.1f) maxGizmoRayDistance = 0.1f;
 
             if (moveInput.x < 0) // If player is trying to move Left
             {
@@ -347,7 +369,7 @@ public class PlayerMovement : MonoBehaviour
     {
         jumpForce += 1f;
     }
-    
+
     public void CalculateDirection(GameObject other)
     {
         if (gameObject.transform.position.x <= other.transform.position.x)

@@ -8,6 +8,8 @@ using UnityEngine.InputSystem;
     { // The PlayerInput component attached to this object.
         private PlayerInput playerInput;
 
+        private CharacterSelectActivation characterSelectActivation;
+
         public bool player1Connected = false;
         public int player1Index = -1;
 
@@ -23,44 +25,52 @@ using UnityEngine.InputSystem;
         {
             // Get the PlayerDataManager instance
             dataManager = PlayerDataManager.Instance;
+            
+            characterSelectActivation = CharacterSelectActivation.Instance;
         
             // This script is NOT a singleton. The PlayerInputManager creates a new instance for each player.
             playerInput = GetComponent<PlayerInput>();
         }
-
         public void OnButtonSouth(InputAction.CallbackContext context)
         {
-            int deviceID = playerInput.devices[0].deviceId;
-
-            if (!player1Connected)
+            if (context.performed)
             {
-                player1Index = deviceID;
-                player1Connected = true;
-                Debug.Log("Player 1 connected with Device ID: " + player1Index);
+                int deviceID = playerInput.devices[0].deviceId;
 
-                if (dataManager.player1Index == -1)
+                if (!player1Connected)
                 {
-                    dataManager.player1Index = player1Index;
-                    isPlayer1 = true;
-                }
-                else if (dataManager.player2Index == -1)
-                {
-                    dataManager.player2Index = player1Index;
-                    isPlayer1 = false;
-                }
-            }
-            else
-            {
-                if (isPlayer1)
-                {
-                    dataManager.SelectCharacterPlayer1();
+                    player1Index = deviceID;
+                    player1Connected = true;
+                    Debug.Log("Player 1 connected with Device ID: " + player1Index);
+
+                    if (dataManager.player1Index == -1)
+                    {
+                        dataManager.player1Index = player1Index;
+                        isPlayer1 = true;
+                    }
+                    else if (dataManager.player2Index == -1)
+                    {
+                        dataManager.player2Index = player1Index;
+                        isPlayer1 = false;
+                    }
+                    
+                    SelectCharacter();
                 }
                 else
                 {
-                    dataManager.SelectCharacterPlayer2();
-                }
+                    if (isPlayer1)
+                    {
+                        dataManager.SelectCharacterPlayer1();
+                    }
+                    else
+                    {
+                        dataManager.SelectCharacterPlayer2();
+                    }
 
-                selectedCharacter = true;
+                    Debug.Log("Too Many Inputs Registered");
+
+                    selectedCharacter = true;
+                }
             }
         }
         
@@ -80,103 +90,115 @@ using UnityEngine.InputSystem;
         
         public void OnDPadUp(InputAction.CallbackContext context)
         {
-            if (!selectedCharacter)
+            if (context.performed)
             {
-                if (chosenCharacter == 1)
+                if (!selectedCharacter)
                 {
-                    Debug.Log("Cannot select up");
-                }
-                else if (chosenCharacter == 2)
-                {
-                    Debug.Log("Cannot select up");
-                }
-                else if (chosenCharacter == 3)
-                {
-                    chosenCharacter = 1;
-                }
-                else if (chosenCharacter == 4)
-                {
-                    chosenCharacter = 2;
+                    if (chosenCharacter == 1)
+                    {
+                        Debug.Log("Cannot select up");
+                    }
+                    else if (chosenCharacter == 2)
+                    {
+                        Debug.Log("Cannot select up");
+                    }
+                    else if (chosenCharacter == 3)
+                    {
+                        chosenCharacter = 1;
+                    }
+                    else if (chosenCharacter == 4)
+                    {
+                        chosenCharacter = 2;
                 
-                }
+                    }
 
-                SelectCharacter();
+                    SelectCharacter();
+                }
             }
         }
         
         public void OnDPadDown(InputAction.CallbackContext context)
         {
-            if (!selectedCharacter)
+            if (context.performed)
             {
-                if (chosenCharacter == 1)
+                if (!selectedCharacter)
                 {
-                    chosenCharacter = 3;
-                }
-                else if (chosenCharacter == 2)
-                {
-                    chosenCharacter = 4;
-                }
-                else if (chosenCharacter == 3)
-                {
-                    Debug.Log("Cannot select down");
+                    if (chosenCharacter == 1)
+                    {
+                        chosenCharacter = 3;
+                    }
+                    else if (chosenCharacter == 2)
+                    {
+                        chosenCharacter = 4;
+                    }
+                    else if (chosenCharacter == 3)
+                    {
+                        Debug.Log("Cannot select down");
                 
-                }
-                else if (chosenCharacter == 4)
-                {
-                    Debug.Log("Cannot select down");
+                    }
+                    else if (chosenCharacter == 4)
+                    {
+                        Debug.Log("Cannot select down");
                 
+                    }
+                    SelectCharacter();
                 }
-                SelectCharacter();
             }
         }
         
         public void OnDPadLeft(InputAction.CallbackContext context)
         {
-            if (!selectedCharacter)
+            if (context.performed)
             {
-                if (chosenCharacter == 1)
+                if (!selectedCharacter)
                 {
-                    Debug.Log("Cannot select left");
-                }
-                else if (chosenCharacter == 2)
-                {
-                    chosenCharacter = 1;
-                }
-                else if (chosenCharacter == 3)
-                {
-                    Debug.Log("Cannot select left");
+                    if (chosenCharacter == 1)
+                    {
+                        Debug.Log("Cannot select left");
+                    }
+                    else if (chosenCharacter == 2)
+                    {
+                        chosenCharacter = 1;
+                    }
+                    else if (chosenCharacter == 3)
+                    {
+                        Debug.Log("Cannot select left");
                 
-                }
-                else if (chosenCharacter == 4)
-                {
-                    chosenCharacter = 3;
+                    }
+                    else if (chosenCharacter == 4)
+                    {
+                        chosenCharacter = 3;
                 
+                    }
+                    SelectCharacter();
                 }
-                SelectCharacter();
             }
         }
         
         public void OnDPadRight(InputAction.CallbackContext context)
         {
-            if (!selectedCharacter)
+            if (context.performed)
             {
-                if (chosenCharacter == 1)
+                if (!selectedCharacter)
                 {
-                    chosenCharacter = 2;
+                    if (chosenCharacter == 1)
+                    {
+                        chosenCharacter = 2;
+                    }
+                    else if (chosenCharacter == 2)
+                    {
+                        Debug.Log("Cannot select right");
+                    }
+                    else if (chosenCharacter == 3)
+                    {
+                        chosenCharacter = 4;
+                    }
+                    else if (chosenCharacter == 4)
+                    {
+                        Debug.Log("Cannot select right");
+                    }
+                    SelectCharacter();
                 }
-                else if (chosenCharacter == 2)
-                {
-                    Debug.Log("Cannot select right");
-                }
-                else if (chosenCharacter == 3)
-                {
-                    chosenCharacter = 4;
-                }
-                else if (chosenCharacter == 4)
-                {
-                    Debug.Log("Cannot select right");
-                }
-                SelectCharacter();
             }
         }
 
@@ -185,10 +207,12 @@ using UnityEngine.InputSystem;
             if (isPlayer1)
             {
                 dataManager.player1Character = chosenCharacter;
+                characterSelectActivation.ChangeP1Indicator(chosenCharacter);
             }
             else
             {
                 dataManager.player2Character = chosenCharacter;   
+                characterSelectActivation.ChangeP2Indicator(chosenCharacter);
             }
         }
     }

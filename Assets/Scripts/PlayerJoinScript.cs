@@ -15,24 +15,33 @@ public class PlayerJoinScript: MonoBehaviour
     {
         playerDataManager = PlayerDataManager.Instance;   
         player1Obj = Instantiate(player1, spawnPoint1.position, spawnPoint1.rotation);
+        player2Obj = Instantiate(player2, spawnPoint2.position, spawnPoint2.rotation);
+        
         player1ControllerID = player1Obj.GetComponent<PlayerInput>().GetDevice<Gamepad>().deviceId;
         if (player1ControllerID == playerDataManager.player1Index)
         {
-            realPlayer1 = player1;
+            realPlayer1 = player1Obj;
+            player1Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1Primary;
+            player1Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1secondary;
         }
         else if (player1ControllerID == playerDataManager.player2Index)
         {
-            realPlayer2 = player1;
+            realPlayer2 = player1Obj;
+            player2Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2Primary;
+            player2Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2secondary;
         }
-
-        player2Obj = Instantiate(player2, spawnPoint2.position, spawnPoint2.rotation);
+        
         if (player2ControllerID == playerDataManager.player1Index)
         {
-            realPlayer2 = player1;
+            realPlayer1 = player2Obj;
+            player1Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1Primary;
+            player1Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1secondary;
         }
         else if (player2ControllerID == playerDataManager.player2Index)
         {
-            realPlayer2 = player2;
+            realPlayer2 = player2Obj;
+            player2Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2Primary;
+            player2Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2secondary;
         }
 
         realPlayer1.transform.position = spawnPoint1.position;
