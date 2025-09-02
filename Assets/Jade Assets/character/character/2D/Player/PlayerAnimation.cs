@@ -69,6 +69,14 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.SetBool("Parry", false);
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            animator.SetBool("HighDagger", true);
+        }
+        else
+        {
+            animator.SetBool("HighDagger", false);
+        }
 
         //if (isWalking && Input.GetKeyDown(KeyCode.LeftShift))
         //{
