@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &243739356 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+  m_PrefabInstance: {fileID: 1316090542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566ddd0c493273244b2e94fdde330b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &331824438
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +503,34 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.67850506
       objectReference: {fileID: 0}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 243739356}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLanding
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4384824520822065530, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: OnLandEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4475073310083950621, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.98076165
@@ -514,11 +553,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602150417555544644, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99606454
+      value: 0.99844897
       objectReference: {fileID: 0}
     - target: {fileID: 5602150417555544644, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0886311
+      value: -0.05567489
       objectReference: {fileID: 0}
     - target: {fileID: 5855028573322372967, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_IsActive
@@ -534,11 +573,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7713173788258475074, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.35613686
+      value: 0.051967278
       objectReference: {fileID: 0}
     - target: {fileID: 7713173788258475074, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.9344339
+      value: -0.9986488
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859968604101599436, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: m_Size.y
+      value: 8.452333
+      objectReference: {fileID: 0}
+    - target: {fileID: 7859968604101599436, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
+      propertyPath: m_Offset.y
+      value: 6.304143
       objectReference: {fileID: 0}
     - target: {fileID: 8111574354786319653, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.w
@@ -550,11 +597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8408508584448256257, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.89755994
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8408508584448256257, guid: cc288cbdbc7fad04f95b323fb904b6ac, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.44089258
+      value: -0.000001903398
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
