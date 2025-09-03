@@ -137,17 +137,19 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("working till this point");
                 var releaseTime = Time.time;
-                difference = Mathf.Clamp(releaseTime - drawTime, 0, 3);
+                difference = Mathf.Clamp(releaseTime - drawTime, 0.5f, 1.3f);
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity, GameObject.FindWithTag("MainCamera").transform);
                 Debug.Log(arrow);
                 var arrowScript = arrow.GetComponent<ArrowScript>();
                 arrowScript.initialTime = Time.time;
-                arrowScript.gravity = -1;
+                arrowScript.gravity = -0.5f;
+                arrowScript.multiplyer = 0.2f;
                 arrowScript.InitialVelocityMagnitude = difference;
-                arrowScript.angle = (attackDirection.x == 1) ? 30f : 150f;
+                arrowScript.angle = attackDirection.x;
                 arrowScript.initialPosition = transform.position;
                 arrowScript.damage = weaponDamage * Strength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
+                arrowScript.speed = 15;
             }
         }
     }
@@ -216,10 +218,11 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.initialTime = Time.time;
                 arrowScript.gravity = 0;
                 arrowScript.InitialVelocityMagnitude = difference;
-                arrowScript.angle = (attackDirection.x == 1) ? 180f : 0f;
+                arrowScript.angle = attackDirection.x;
                 arrowScript.initialPosition = transform.position;
                 arrowScript.damage = weaponDamage * Strength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
+                arrowScript.speed = 20;
             }
         }
     }
