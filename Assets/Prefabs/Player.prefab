@@ -371,6 +371,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: f7f0e760-9f8b-4551-99d3-8bf87b959b21
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fed81bbb-c0dd-47bc-8e01-ad78fc97fee5
+    m_ActionName: 'MapSelection/ButtonSouth[/Keyboard/upArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29370007-78b2-4267-8c8a-05c2d077c06d
+    m_ActionName: MapSelection/ButtonNorth
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 518d0a68-89df-48bf-b606-bc5cbdc54046
+    m_ActionName: MapSelection/DPadUp
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6a6d4597-238e-4222-b69f-0f4faaefd58d
+    m_ActionName: MapSelection/DPadDown
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 296dfacd-d547-41ea-9f95-7fc50a4df242
+    m_ActionName: MapSelection/DPadLeft
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e9c1f51c-5920-41ae-9452-e6dcd613fbd6
+    m_ActionName: MapSelection/DPadRight
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controler
   m_DefaultActionMap: BasicControls
@@ -408,6 +432,7 @@ MonoBehaviour:
   LHB: {fileID: 775111957985786259}
   attackDirection: {x: 1, y: 0}
   attackDistance: 2
+  weaponDamage: 0
   player1Layer:
     serializedVersion: 2
     m_Bits: 128
@@ -415,6 +440,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   currentCooldown: 0.25
+  startUpTime: 5
+  arrowPrefab: {fileID: 5460985930011771610, guid: a3efec3b3f2b81949bba318fadfd0e4c, type: 3}
 --- !u!61 &6483251812447539175
 BoxCollider2D:
   m_ObjectHideFlags: 0
