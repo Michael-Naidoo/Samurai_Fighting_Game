@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction LHA;
     private InputAction LLA;
     private Vector2 moveInput;
+    private Animator animator;
 
     // Manual physics variables
     public float gravity = -20f; // Gravity strength
@@ -58,11 +59,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask player2Layer;
     private Collider2D player;
     public float currentCooldown = 0.25f;
-    public int startUpTime = 5;
+    public float startUpTime = 5;
 
     private void Awake()
     {
         playerCollider = gameObject.GetComponent<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
@@ -86,6 +88,14 @@ public class PlayerMovement : MonoBehaviour
                 CalculateDirection(other);
             }
         }
+        if (context.canceled)
+        {
+            animator.SetFloat("AnimState", 0);   
+        }
+        else
+        {
+            animator.SetFloat("AnimState", 7);
+        }
     }
 
     public void OnMoveCancelled(InputAction.CallbackContext context)
@@ -106,9 +116,17 @@ public class PlayerMovement : MonoBehaviour
             {
                 difference = 0;
                 drawTime = Time.time;
+                if (cd <= 0)
+                {
+                    animator.SetInteger("AnimState", 3);
+                }
             }
             else
             {
+                if (cd <= 0)
+                {
+                    animator.SetInteger("AnimState", 5);
+                }
                 Debug.DrawLine(HHB.position,
                     new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
                 if (gameObject.CompareTag("Player1"))
@@ -132,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if(context.canceled)
         {
+            animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
             {
@@ -165,8 +184,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnHLA(InputAction.CallbackContext context)
     {
+        animator.SetInteger("AnimState", 1);
         gameObject.GetComponent<DummyStats>().HighParry();
         cd = 0.2f;
+        animator.SetInteger("AnimState", 0);
     }
 
     public void OnHLACancelled(InputAction.CallbackContext context)
@@ -184,30 +205,41 @@ public class PlayerMovement : MonoBehaviour
             {
                 difference = 0;
                 drawTime = Time.time;
-            }
-            
-            Debug.DrawLine(LHB.position,
-                new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
-            if (gameObject.CompareTag("Player1"))
-            {
-                Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-                player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
-            }
-            else if (gameObject.CompareTag("Player2"))
-            {
-                Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-                player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
+                if (cd <= 0)
+                {
+                    animator.SetInteger("AnimState", 3);
+                }
             }
 
-            if (player && cd <= 0)
+            else
             {
-                StartCoroutine(WaitLow(startUpTime));
+                if (cd <= 0)
+                {
+                    animator.SetInteger("AnimState", 6);
+                }
+                Debug.DrawLine(LHB.position,
+                    new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
+                if (gameObject.CompareTag("Player1"))
+                {
+                    Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+                }
+                else if (gameObject.CompareTag("Player2"))
+                {
+                    Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
+                }
+                if (player && cd <= 0)
+                {
+                    StartCoroutine(WaitLow(startUpTime));
             
-                cd = currentCooldown;
+                    cd = currentCooldown;
+                }
             }
         }
         else if(context.canceled)
         {
+            animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
             {
@@ -234,8 +266,10 @@ public class PlayerMovement : MonoBehaviour
     public void OnLLA(InputAction.CallbackContext context)
     {
         Debug.Log(context);
+        animator.SetInteger("AnimState", 1);
         gameObject.GetComponent<DummyStats>().LowParry();
         cd = 0.2f;
+        animator.SetInteger("AnimState", 0);
     }
 
     public void OnLLACancelled(InputAction.CallbackContext context)
@@ -461,12 +495,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    IEnumerator WaitLow(int time)
+    IEnumerator WaitLow(float time)
     {
         yield return new WaitForSeconds(time);
         player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.Low);
     }
-    IEnumerator WaitHigh(int time)
+    IEnumerator WaitHigh(float time)
     {
         yield return new WaitForSeconds(time);
         player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.High);

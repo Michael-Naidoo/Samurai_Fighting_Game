@@ -2,6 +2,7 @@ using System;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]private GameObject Button1;
     [SerializeField]private GameObject Button2;
     [SerializeField]private GameObject Button3;
+
+    private int player1Deaths;
+    private int player2Deaths;
 
     private int deadPlayer;
 
@@ -37,15 +41,32 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDied(int playerIndex)
     {
-        Time.timeScale = 0;
-        Button1.SetActive(true);
-        Button2.SetActive(true);
-        Button3.SetActive(true);
-        GameObject.FindWithTag("Player1").GetComponent<PlayerMovement>().enabled = false;
-        GameObject.FindWithTag("Player2").GetComponent<PlayerMovement>().enabled = false;
-        GameObject.FindWithTag("Player1").GetComponent<DummyStats>().HP = 100;
-        GameObject.FindWithTag("Player2").GetComponent<DummyStats>().HP = 100;
-        deadPlayer = playerIndex;
+        switch (deadPlayer)
+        {
+            case 0:
+                player1Deaths++;
+                break;
+            case 1:
+                player2Deaths++;
+                break;
+        }
+
+        if (player1Deaths == 3 || player2Deaths == 3)
+        {
+            SceneManager.LoadScene("Post Fight");
+        }
+        else
+        {
+            Time.timeScale = 0;
+            Button1.SetActive(true);
+            Button2.SetActive(true);
+            Button3.SetActive(true);
+            GameObject.FindWithTag("Player1").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.FindWithTag("Player2").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.FindWithTag("Player1").GetComponent<DummyStats>().HP = 100;
+            GameObject.FindWithTag("Player2").GetComponent<DummyStats>().HP = 100;
+            deadPlayer = playerIndex;
+        }
     }
     
     public void OnButton1()
