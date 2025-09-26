@@ -78,13 +78,18 @@ using UnityEngine.InputSystem;
         {
             if (isPlayer1)
             {
-                dataManager.player1Ready = true;
+                if (dataManager.player1chosen)
+                {
+                    dataManager.player1Ready = true;
+                }
             }
             else
             {
-                dataManager.player2Ready = true;
+                if (dataManager.player2chosen)
+                {
+                    dataManager.player2Ready = true;
+                }
             }
-            
             dataManager.ReadyUp();
         }
         

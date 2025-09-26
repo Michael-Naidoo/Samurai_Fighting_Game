@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,8 @@ public class PlayerDataManager : MonoBehaviour
     
     public bool player1Ready = false;
     public bool player2Ready = false;
+    public bool player1chosen = false;
+    public bool player2chosen = false;
     [SerializeField] private GameObject characterSelectPrefab;
     [SerializeField]private GameObject mapSelectPrefab;
 
@@ -48,11 +51,11 @@ public class PlayerDataManager : MonoBehaviour
         {
             gameObject.GetComponent<PlayerInputManager>().enabled = false;
         }
-        
     }
 
     public void SelectCharacterPlayer1()
     {
+        player1chosen = true;
         switch (player1Character)
         {
             case 1:
@@ -75,6 +78,7 @@ public class PlayerDataManager : MonoBehaviour
     }
     public void SelectCharacterPlayer2()
     {
+        player2chosen = true;
         switch (player2Character)
         {
             case 1:
