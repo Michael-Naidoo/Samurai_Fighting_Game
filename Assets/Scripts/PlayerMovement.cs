@@ -4,6 +4,7 @@ using DefaultNamespace;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using Object = UnityEngine.Object;
 
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction LLA;
     private Vector2 moveInput;
     private Animator animator;
+    
 
     // Manual physics variables
     public float gravity = -20f; // Gravity strength
@@ -61,10 +63,22 @@ public class PlayerMovement : MonoBehaviour
     public float currentCooldown = 0.25f;
     public float startUpTime = 5;
 
+    public float staminaGage;
+    public Slider staminaSlider;
+
+
     private void Awake()
     {
         playerCollider = gameObject.GetComponent<Collider2D>();
         animator = GetComponentInChildren<Animator>();
+        if (gameObject.CompareTag("Player1"))
+        {
+            staminaSlider = GameObject.FindWithTag("P1Stamina").GetComponent<Slider>();
+        }
+        else if (gameObject.CompareTag("Player2"))
+        {
+            staminaSlider = GameObject.FindWithTag("P2Stamina").GetComponent<Slider>();
+        }
     }
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
@@ -109,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnHHA(InputAction.CallbackContext context)
     {
         var weaponsHandler = GetComponent<WeaponsHandler>();
-        if (context.started)
+        if (context.started && staminaGage > 20)
         {
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
@@ -147,6 +161,8 @@ public class PlayerMovement : MonoBehaviour
                     cd = currentCooldown;
                 }
             }
+
+            staminaGage -= 20;
         }
         else if(context.canceled)
         {
@@ -197,7 +213,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnLHA(InputAction.CallbackContext context)
     {
         var weaponsHandler = GetComponent<WeaponsHandler>();
-        if (context.started)
+        if (context.started && staminaGage > 10)
         {
             
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -236,6 +252,8 @@ public class PlayerMovement : MonoBehaviour
                     cd = currentCooldown;
                 }
             }
+
+            staminaGage -= 10;
         }
         else if(context.canceled)
         {
@@ -278,6 +296,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+        staminaSlider.value = staminaGage;
+        if (staminaGage < 100)
+        {
+            staminaGage += Time.deltaTime;
+        }
+        else if (staminaGage > 100)
+        {
+            staminaGage = 100;
+        }
         // Manual Gravity
         if (!Grounded)
         {

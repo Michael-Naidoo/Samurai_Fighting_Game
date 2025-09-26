@@ -16,6 +16,8 @@ TagManager:
   - Button2
   - Button3
   - Map
+  - P1Stamina
+  - P2Stamina
   layers:
   - Default
   - TransparentFX
