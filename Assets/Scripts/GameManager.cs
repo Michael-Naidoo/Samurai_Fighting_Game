@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     private int player1Deaths;
     private int player2Deaths;
 
+    [SerializeField] private Transform player1Spawn;
+    [SerializeField] private Transform player2Spawn;
+
     private int deadPlayer;
 
     private void Awake()
@@ -51,7 +54,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        if (player1Deaths == 3 || player2Deaths == 3)
+        if (player1Deaths == 2 || player2Deaths == 2)
         {
             SceneManager.LoadScene("Post Fight");
         }
@@ -66,6 +69,8 @@ public class GameManager : MonoBehaviour
             GameObject.FindWithTag("Player1").GetComponent<DummyStats>().HP = 100;
             GameObject.FindWithTag("Player2").GetComponent<DummyStats>().HP = 100;
             deadPlayer = playerIndex;
+            GameObject.FindWithTag("Player1").transform.position = player1Spawn.position;
+            GameObject.FindWithTag("Player2").transform.position = player2Spawn.position;
         }
     }
     

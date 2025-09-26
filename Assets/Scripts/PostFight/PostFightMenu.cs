@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,14 @@ public class PostFightMenu : MonoBehaviour
     [SerializeField] private GameObject selectedButton1;
     [SerializeField] private GameObject selectedButton2;
     [SerializeField] private GameObject selectedButton3;
-    
+
+    private PlayerDataManager playerData;
+
+    private void Awake()
+    {
+        playerData = PlayerDataManager.Instance;
+    }
+
     public void OnButtonSouth(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -22,12 +30,40 @@ public class PostFightMenu : MonoBehaviour
                     break;
                 case 1:
                     SceneManager.LoadScene("Character Select");
+                    playerData.player1Index = -1;
+                    playerData.player1Primary = 0;
+                    playerData.player1secondary = 0;
+                    playerData.player1Character = 1;
+            
+                    playerData.player2Index = -1;
+                    playerData.player2Primary = 0;
+                    playerData.player2secondary = 0;
+                    playerData.player2Character = 1;
+            
+                    playerData.player1Ready = false;
+                    playerData.player2Ready = false;
+                    playerData.player1chosen = false;
+                    playerData.player2chosen = false;
                     break;
                 case 2:
                     SceneManager.LoadScene("Map Select");
                     break;
                 case 3:
                     SceneManager.LoadScene("Main Menu");
+                    playerData.player1Index = -1;
+                    playerData.player1Primary = 0;
+                    playerData.player1secondary = 0;
+                    playerData.player1Character = 1;
+            
+                    playerData.player2Index = -1;
+                    playerData.player2Primary = 0;
+                    playerData.player2secondary = 0;
+                    playerData.player2Character = 1;
+            
+                    playerData.player1Ready = false;
+                    playerData.player2Ready = false;
+                    playerData.player1chosen = false;
+                    playerData.player2chosen = false;
                     break;
                 default:
                     return;
