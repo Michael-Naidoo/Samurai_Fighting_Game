@@ -58,16 +58,16 @@ using UnityEngine.InputSystem;
                 }
                 else
                 {
+                    Debug.Log("Error is in " + dataManager.name);
                     if (isPlayer1)
                     {
+                        
                         dataManager.SelectCharacterPlayer1();
                     }
                     else
                     {
                         dataManager.SelectCharacterPlayer2();
                     }
-
-                    Debug.Log("Too Many Inputs Registered");
 
                     selectedCharacter = true;
                 }
