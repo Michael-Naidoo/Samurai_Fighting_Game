@@ -82,6 +82,7 @@ namespace DefaultNamespace
             else
             {
                 lowParry = false;
+                highParry = false;
             }
             if (highParryTimer > 0)
             {
@@ -89,6 +90,7 @@ namespace DefaultNamespace
             }
             else
             {
+                lowParry = false;
                 highParry = false;
             }
 
@@ -98,12 +100,16 @@ namespace DefaultNamespace
         public void LowParry()
         {
             lowParry = true;
+            highParry = true;
             lowParryTimer = maxParryTimer;
+            highParryTimer = maxParryTimer;
         }
         public void HighParry()
         {
             highParry = true;
+            lowParry = true;
             highParryTimer = maxParryTimer;
+            lowParryTimer = maxParryTimer;
         }
 
         public void Die()

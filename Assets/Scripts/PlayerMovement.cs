@@ -168,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
 
             
         }
-        else if(context.canceled && staminaGage > 20)
+        else if(context.canceled && staminaGage > 35)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -191,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.speed = 15;
             }
 
-            staminaGage -= 20;
+            staminaGage -= 35;
         }
     }
 
@@ -229,11 +229,11 @@ public class PlayerMovement : MonoBehaviour
                 drawTime = Time.time;
                 if (cd <= 0)
                 {
-                    animator.SetInteger("AnimState", 3);
+                    animator.SetInteger("AnimState", 4);
                 }
             }
 
-            else if (staminaGage > 10)
+            else if (staminaGage > 25)
             {
                 if (cd <= 0)
                 {
@@ -257,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
             
                     cd = currentCooldown;
                 }
-                staminaGage -= 10;
+                staminaGage -= 25;
             }
         }
         else if(context.canceled && staminaGage > 10)
