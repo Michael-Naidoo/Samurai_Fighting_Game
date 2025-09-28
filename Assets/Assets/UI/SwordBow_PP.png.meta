@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fb86373229fa46041a8e8dcf38b99b26
+guid: 51a4c51887ebe4b4b81bce0292094165
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7616091188222584591
-    second: Background2_PP_0
+      213: -2245013643310050946
+    second: SwordBow_PP_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Background2_PP_0
+      name: SwordBow_PP_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1965
-        height: 2000
+        width: 1158
+        height: 1023
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f076dfa759ac1b960800000000000000
-      internalID: 7616091188222584591
+      spriteID: e71599a6cfb18d0e0800000000000000
+      internalID: -2245013643310050946
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Background2_PP_0: 7616091188222584591
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
