@@ -39,7 +39,7 @@ public class WeaponsHandler : MonoBehaviour
         {
             case Weapons.sword:
                 primaryDamage = 1f;
-                primaryAttackDistance = 2f;
+                primaryAttackDistance = 1.5f;
                 primaryCooldown = 0.25f;
                 swordObj.SetActive(true);
                 daggerObj.SetActive(false);
@@ -57,7 +57,7 @@ public class WeaponsHandler : MonoBehaviour
                 break;
             case Weapons.mace:
                 primaryDamage = 1.5f;
-                primaryAttackDistance = 1.5f;
+                primaryAttackDistance = 2f;
                 primaryCooldown = 0.5f;
                 swordObj.SetActive(false);
                 daggerObj.SetActive(false);
@@ -80,7 +80,7 @@ public class WeaponsHandler : MonoBehaviour
         {
             case Weapons.sword:
                 secondaryDamage = 1f;
-                secondaryAttackDistance = 2f;
+                secondaryAttackDistance = 1.5f;
                 secondaryCooldown = 0.25f;
                 swordObj.SetActive(true);
                 daggerObj.SetActive(false);
@@ -98,8 +98,8 @@ public class WeaponsHandler : MonoBehaviour
                 break;
             case Weapons.mace:
                 secondaryDamage = 1.5f;
-                primaryAttackDistance = 1.5f;
-                primaryCooldown = 0.5f;
+                secondaryAttackDistance = 2f;
+                secondaryCooldown = 0.5f;
                 swordObj.SetActive(false);
                 daggerObj.SetActive(false);
                 maceObj.SetActive(true);
@@ -107,8 +107,8 @@ public class WeaponsHandler : MonoBehaviour
                 break;
             case Weapons.bow:
                 secondaryDamage = 0.75f;
-                primaryAttackDistance = 10f;
-                primaryCooldown = 0.15f;
+                secondaryAttackDistance = 10f;
+                secondaryCooldown = 0.15f;
                 swordObj.SetActive(false);
                 daggerObj.SetActive(false);
                 maceObj.SetActive(false);
@@ -194,5 +194,9 @@ public class WeaponsHandler : MonoBehaviour
                     throw new ArgumentOutOfRangeException();
             }
         }
+        
+        Debug.Log("Damage is " + gameObject.GetComponent<PlayerMovement>().weaponDamage +  
+        ", Attack Distance is " + gameObject.GetComponent<PlayerMovement>().attackDistance + 
+        ", Cooldown is " + gameObject.GetComponent<PlayerMovement>().currentCooldown);
     }
 }
