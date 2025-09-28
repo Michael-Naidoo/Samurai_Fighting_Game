@@ -46,5 +46,8 @@ public class PlayerJoinScript: MonoBehaviour
 
         realPlayer1.transform.position = spawnPoint1.position;
         realPlayer2.transform.position = spawnPoint2.position;
+        
+        Debug.Log(player1Obj);
+        Debug.Log(player2Obj);
     }
 }
