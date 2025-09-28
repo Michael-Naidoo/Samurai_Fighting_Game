@@ -71,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
     {
         playerCollider = gameObject.GetComponent<Collider2D>();
         animator = GetComponentInChildren<Animator>();
+        staminaRecoveryRate = 10;
+        
         if (gameObject.CompareTag("Player1"))
         {
             staminaSlider = GameObject.FindWithTag("P1Stamina").GetComponent<Slider>();
@@ -119,11 +121,12 @@ public class PlayerMovement : MonoBehaviour
     float drawTime = 0;
     float difference = 0;
     public GameObject arrowPrefab;
+    [SerializeField] private float staminaRecoveryRate;
 
     public void OnHHA(InputAction.CallbackContext context)
     {
         var weaponsHandler = GetComponent<WeaponsHandler>();
-        if (context.started && staminaGage > 20)
+        if (context.started)
         {
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
@@ -135,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetInteger("AnimState", 3);
                 }
             }
-            else
+            else if (staminaGage > 20)
             {
                 if (cd <= 0)
                 {
@@ -160,11 +163,12 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(WaitHigh(startUpTime));
                     cd = currentCooldown;
                 }
+                staminaGage -= 20;
             }
 
-            staminaGage -= 20;
+            
         }
-        else if(context.canceled)
+        else if(context.canceled && staminaGage > 20)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -186,6 +190,8 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 15;
             }
+
+            staminaGage -= 20;
         }
     }
 
@@ -213,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnLHA(InputAction.CallbackContext context)
     {
         var weaponsHandler = GetComponent<WeaponsHandler>();
-        if (context.started && staminaGage > 10)
+        if (context.started)
         {
             
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -227,7 +233,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            else
+            else if (staminaGage > 10)
             {
                 if (cd <= 0)
                 {
@@ -251,11 +257,10 @@ public class PlayerMovement : MonoBehaviour
             
                     cd = currentCooldown;
                 }
+                staminaGage -= 10;
             }
-
-            staminaGage -= 10;
         }
-        else if(context.canceled)
+        else if(context.canceled && staminaGage > 10)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -274,6 +279,7 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 20;
             }
+            staminaGage -= 10;
         }
     }
 
@@ -299,7 +305,7 @@ public class PlayerMovement : MonoBehaviour
         staminaSlider.value = staminaGage;
         if (staminaGage < 100)
         {
-            staminaGage += Time.deltaTime;
+            staminaGage += (100 * (staminaRecoveryRate / 60)) * Time.deltaTime;
         }
         else if (staminaGage > 100)
         {
