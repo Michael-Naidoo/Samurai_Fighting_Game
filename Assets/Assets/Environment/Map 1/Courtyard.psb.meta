@@ -1,0 +1,758 @@
+fileFormatVersion: 2
+guid: 0fb523d3f5138634a8b8942ea7f2400e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 4287dc9455bedb64cacb86207612cbd5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+    spritePosition: {x: 0, y: 0}
+  multiSpriteImportData: []
+  layeredSpriteImportData:
+  - name: Courtyard_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 2985
+      width: 1926
+      height: 178
+    spriteID: d160f4be2961b1846a47344cba830a63
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1, y: 2985}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 693
+      y: 2937
+      width: 44
+      height: 42
+    spriteID: 54cef3e2ca503cd43bfd80e000f80865
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 693, y: 2937}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 741
+      y: 2851
+      width: 288
+      height: 122
+    spriteID: 6b3652ab9c102be44a7189d8c8f62114
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 741, y: 2851}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 3
+      y: 2507
+      width: 344
+      height: 130
+    spriteID: 801706ed109a98744b4e5970bfd5511a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 3, y: 2507}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_4
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 741
+      y: 2507
+      width: 312
+      height: 340
+    spriteID: 94b1bfd8b3be25745ac1dec01d13a080
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 741, y: 2507}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_5
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1059
+      y: 2505
+      width: 354
+      height: 160
+    spriteID: 4b6074e0978f1ee45932461c65cf7507
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1059, y: 2505}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1417
+      y: 2507
+      width: 318
+      height: 134
+    spriteID: 23907af14b4611f47a085fa9bc25f428
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1417, y: 2507}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_7
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1739
+      y: 2607
+      width: 52
+      height: 26
+    spriteID: 859020b4fdbf48b4293f0201553bebf8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1739, y: 2607}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_8
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1819
+      y: 2597
+      width: 142
+      height: 34
+    spriteID: 060cbad8f400f204d831cec10b24c325
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1819, y: 2597}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_9
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1985
+      y: 2599
+      width: 46
+      height: 24
+    spriteID: 0caed8990bad6244fba18efd52ee4a62
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1985, y: 2599}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_10
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1741
+      y: 2505
+      width: 148
+      height: 88
+    spriteID: a92bbdf4e51cf394d95f33eb2ec34bd6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1741, y: 2505}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_11
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1893
+      y: 2507
+      width: 46
+      height: 58
+    spriteID: a7833abc415b59d4883dda78f39d0957
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1893, y: 2507}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1941
+      y: 2507
+      width: 24
+      height: 50
+    spriteID: 07206a3222138ea4f818650d5e2eae53
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1941, y: 2507}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_13
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1969
+      y: 2507
+      width: 24
+      height: 48
+    spriteID: af26f60a076d7fc4dad0f77c5d7ac374
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1969, y: 2507}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1997
+      y: 2505
+      width: 24
+      height: 46
+    spriteID: c673891dc595b144dbeec219679cc122
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1997, y: 2505}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 2141
+      width: 584
+      height: 360
+    spriteID: 7d0c877df4ee4604eaa510e3c8548888
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1, y: 2141}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_16
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1341
+      y: 2139
+      width: 586
+      height: 362
+    spriteID: 0ba9b1e10c631db47aeb659513b91311
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1341, y: 2139}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_17
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 1657
+      width: 1926
+      height: 478
+    spriteID: 8d8db8556d818c749915bef376403626
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1, y: 1657}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_18
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 1037
+      width: 1926
+      height: 616
+    spriteID: 74e7b2f72a0e05e46bb6dbdbeb33044c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1, y: 1037}
+    spritePosition: {x: 0, y: 0}
+  - name: Courtyard_19
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 1
+      y: 1
+      width: 1926
+      height: 1031
+    spriteID: 6816cb5dea916d34188e62fdaeb9a3ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1, y: 1}
+    spritePosition: {x: 0, y: 0}
+  spriteImportData: []
+  rigSpriteImportData: []
+  sharedRigSpriteImportData: []
+  mosaicSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    pivot: {x: 0, y: 0}
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  padding: 4
+  spriteSizeExpand: 0
+  skeletonAssetReferenceID: 
+  pipeline: {instanceID: 0}
+  pipelineVersion: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  pSDLayerImportSetting: []
+  psdLayers:
+  - name: Decor
+    spriteName: Decor
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7383ae7145713e843a453fc54b9d26f4
+    layerID: 0
+    mosaicPosition: {x: 1742, y: 2598}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Table
+    spriteName: Table
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 437d9bcfd0d10d84e99f6ba98d16e75b
+    layerID: 1934916830
+    mosaicPosition: {x: 4, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: torch
+    spriteName: torch
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 33e3d462588138c42932942bc3f762a3
+    layerID: 1448522040
+    mosaicPosition: {x: 1895, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Fire 3
+    spriteName: Fire 3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 930b769e05f069b468c5b3e3924ae37d
+    layerID: -542025517
+    mosaicPosition: {x: 1998, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Fire 2
+    spriteName: Fire 2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c318d6a8b495cfd44a23162a6ab2f616
+    layerID: 1024058424
+    mosaicPosition: {x: 1944, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Fire 1
+    spriteName: Fire 1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: beb7363cc5a3399478d4c5501a07c87e
+    layerID: 620773897
+    mosaicPosition: {x: 1971, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cloud4
+    spriteName: Cloud4
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c2f0c1356bbe384429d623c63c673368
+    layerID: -1081471275
+    mosaicPosition: {x: 1742, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cloud3
+    spriteName: Cloud3
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 387f26a23208e934ebbf3f0776f1406c
+    layerID: 1291181720
+    mosaicPosition: {x: 743, y: 2853}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cloud2
+    spriteName: Cloud2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 0f1babc8dc756714884c246385a29576
+    layerID: -274902221
+    mosaicPosition: {x: 1060, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Cloud1
+    spriteName: Cloud1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e578886395b892b4a9a66ae0fa9547c7
+    layerID: -1840986162
+    mosaicPosition: {x: 1420, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Weapons
+    spriteName: Weapons
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 9d67b4b312a66dc48903dc0e30bcac26
+    layerID: -234223067
+    mosaicPosition: {x: 743, y: 2508}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: FG
+    spriteName: FG
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 68ec136796e848f41851edc20ca84373
+    layerID: 433908365
+    mosaicPosition: {x: 4, y: 2141}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Ground
+    spriteName: Ground
+    isGroup: 0
+    parentIndex: -1
+    spriteID: e934f0110e0aed941b356d4fd1338520
+    layerID: -375209215
+    mosaicPosition: {x: 4, y: 1659}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: MG
+    spriteName: MG
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 41ca3bf7d0561934bafe0727567f214d
+    layerID: 433908466
+    mosaicPosition: {x: 4, y: 2986}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BG2
+    spriteName: BG2
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 7f7492a478855734aa2db29ff4addac6
+    layerID: -1623555137
+    mosaicPosition: {x: 4, y: 1039}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: BG1
+    spriteName: BG1
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 466ef3ff869bae944a0cf9b3849005a0
+    layerID: -1623555136
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Background
+    spriteName: 
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 2e9b21e5a89a47243bc5f08386051404
+    layerID: -1498723586
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  mosaicPSDLayers: []
+  rigPSDLayers: []
+  sharedRigPSDLayers: []
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  spriteSizeExpandChanged: 0
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
