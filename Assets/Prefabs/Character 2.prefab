@@ -1192,7 +1192,7 @@ PrefabInstance:
       addedObject: {fileID: 4438093400788473550}
     - targetCorrespondingSourceObject: {fileID: -8653719598885068355, guid: c0c59cad3bd1b8c46bb1cda2d3b32dc5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5967183829738679622}
+      addedObject: {fileID: 1441196683795726500}
   m_SourcePrefab: {fileID: 4843985084834002234, guid: c0c59cad3bd1b8c46bb1cda2d3b32dc5, type: 3}
 --- !u!4 &17829941022844572 stripped
 Transform:
@@ -1297,7 +1297,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5967183829738679622
+--- !u!114 &1441196683795726500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1316,10 +1316,10 @@ MonoBehaviour:
   secondaryAttackDistance: 0
   secondaryCooldown: 0
   usingPrimaryWeapon: 1
-  swordObj: {fileID: 0}
-  daggerObj: {fileID: 0}
-  maceObj: {fileID: 0}
-  bowObj: {fileID: 0}
+  swordObj: {fileID: 7346708647352091668, guid: 70c2b8b5821d10546a431e77709607b4, type: 3}
+  daggerObj: {fileID: 7239745107421854739, guid: c1733a5b45920d44098a96a97c66e9ef, type: 3}
+  maceObj: {fileID: 7127226792758635835, guid: fa815572234b8f649af9fac4df0d7b5f, type: 3}
+  bowObj: {fileID: 3347449412594541462, guid: 1cdbe2df46e285f47a1b354fda169fc3, type: 3}
 --- !u!4 &2277152017879332173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 311580695235782034, guid: c0c59cad3bd1b8c46bb1cda2d3b32dc5, type: 3}
