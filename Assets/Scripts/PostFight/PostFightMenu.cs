@@ -31,13 +31,9 @@ public class PostFightMenu : MonoBehaviour
                 case 1:
                     SceneManager.LoadScene("Character Select");
                     playerData.player1Index = -1;
-                    playerData.player1Primary = 0;
-                    playerData.player1secondary = 0;
                     playerData.player1Character = 1;
             
                     playerData.player2Index = -1;
-                    playerData.player2Primary = 0;
-                    playerData.player2secondary = 0;
                     playerData.player2Character = 1;
             
                     playerData.player1Ready = false;
@@ -51,13 +47,9 @@ public class PostFightMenu : MonoBehaviour
                 case 3:
                     SceneManager.LoadScene("Main Menu");
                     playerData.player1Index = -1;
-                    playerData.player1Primary = 0;
-                    playerData.player1secondary = 0;
                     playerData.player1Character = 1;
             
                     playerData.player2Index = -1;
-                    playerData.player2Primary = 0;
-                    playerData.player2secondary = 0;
                     playerData.player2Character = 1;
             
                     playerData.player1Ready = false;

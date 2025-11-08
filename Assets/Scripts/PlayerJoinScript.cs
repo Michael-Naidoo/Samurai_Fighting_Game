@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerJoinScript: MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerJoinScript: MonoBehaviour
     private int player1ControllerID, player2ControllerID;
     private GameObject realPlayer1, realPlayer2;
     private PlayerDataManager playerDataManager;
+    [SerializeField] private GameObject[] characters;
 
 
     private void Awake()
@@ -21,27 +23,31 @@ public class PlayerJoinScript: MonoBehaviour
         if (player1ControllerID == playerDataManager.player1Index)
         {
             realPlayer1 = player1Obj;
-            player1Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1Primary;
-            player1Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1secondary;
+            //Add in the character prefab as a child to the player
+            Instantiate(characters[playerDataManager.player1Index - 1], player1Obj.transform.position, quaternion.identity,
+                player1Obj.transform);
+
         }
         else if (player1ControllerID == playerDataManager.player2Index)
         {
             realPlayer2 = player1Obj;
-            player2Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2Primary;
-            player2Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2secondary;
+            //Add in the character prefab as a child to the player
+            Instantiate(characters[playerDataManager.player2Index - 1], player1Obj.transform.position, quaternion.identity,
+                player1Obj.transform);
         }
         
         if (player2ControllerID == playerDataManager.player1Index)
         {
             realPlayer1 = player2Obj;
-            player1Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1Primary;
-            player1Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player1secondary;
+            //Add in the character prefab as a child to the player
+            Instantiate(characters[playerDataManager.player1Index - 1], player1Obj.transform.position, quaternion.identity,
+                player1Obj.transform);
         }
         else if (player2ControllerID == playerDataManager.player2Index)
         {
             realPlayer2 = player2Obj;
-            player2Obj.GetComponent<WeaponsHandler>().primaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2Primary;
-            player2Obj.GetComponent<WeaponsHandler>().secondaryWeapon = (WeaponsHandler.Weapons)playerDataManager.player2secondary;
+            Instantiate(characters[playerDataManager.player1Index - 1], player1Obj.transform.position, quaternion.identity,
+                player1Obj.transform);
         }
 
         realPlayer1.transform.position = spawnPoint1.position;

@@ -69,13 +69,11 @@ using TMPro;
                     Debug.Log("Error is in " + dataManager.name);
                     if (isPlayer1)
                     {
-                        dataManager.SelectCharacterPlayer1();
                         dataManager.player1Ready = true;
                         player1Text.text = "Player 1 Ready!";
                     }
                     else
                     {
-                        dataManager.SelectCharacterPlayer2();
                         dataManager.player2Ready = true;
                         player2Text.text = "Player 2 Ready!";
                     }

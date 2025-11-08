@@ -11,10 +11,11 @@ using Object = UnityEngine.Object;
 public class PlayerMovement : MonoBehaviour
 {
     private PlayerCharacter playerCharacter;
-    
+    private WeaponsHandler weaponsHandler => GetComponentInChildren<WeaponsHandler>();
+
     // No longer needed: private Rigidbody2D rb2D;
     public InputActionAsset inputActions;
-    
+
     private InputAction moveAction;
     private InputAction HHA;
     private InputAction HLA;
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction LLA;
     private Vector2 moveInput;
     private Animator animator;
-    
+
 
     // Manual physics variables
     public float gravity = -20f; // Gravity strength
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = gameObject.GetComponent<Collider2D>();
         animator = GetComponentInChildren<Animator>();
         staminaRecoveryRate = 10;
-        
+
         if (gameObject.CompareTag("Player1"))
         {
             staminaSlider = GameObject.FindWithTag("P1Stamina").GetComponent<Slider>();
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             staminaSlider = GameObject.FindWithTag("P2Stamina").GetComponent<Slider>();
         }
+
         playerCharacter = GetComponent<PlayerCharacter>(); // NEW: Cache the component
     }
 
@@ -105,9 +107,10 @@ public class PlayerMovement : MonoBehaviour
                 CalculateDirection(other);
             }
         }
+
         if (context.canceled)
         {
-            animator.SetFloat("AnimState", 0);   
+            animator.SetFloat("AnimState", 0);
         }
         else
         {
@@ -119,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
     {
         moveInput = Vector2.zero;
     }
+
     float drawTime = 0;
     float difference = 0;
     public GameObject arrowPrefab;
@@ -126,7 +130,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnHHA(InputAction.CallbackContext context)
     {
-        var weaponsHandler = GetComponent<WeaponsHandler>();
         if (context.started)
         {
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -145,6 +148,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     animator.SetInteger("AnimState", 5);
                 }
+
                 Debug.DrawLine(HHB.position,
                     new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
                 if (gameObject.CompareTag("Player1"))
@@ -164,12 +168,11 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(WaitHigh(startUpTime));
                     cd = currentCooldown;
                 }
+
                 staminaGage -= 20 * playerCharacter.FinalStamina;
             }
-
-            
         }
-        else if(context.canceled && staminaGage > 35 * playerCharacter.FinalStamina)
+        else if (context.canceled && staminaGage > 35 * playerCharacter.FinalStamina)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -178,7 +181,8 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("working till this point");
                 var releaseTime = Time.time;
                 difference = Mathf.Clamp(releaseTime - drawTime, 0.5f, 1.3f);
-                GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity, GameObject.FindWithTag("MainCamera").transform);
+                GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity,
+                    GameObject.FindWithTag("MainCamera").transform);
                 Debug.Log(arrow);
                 var arrowScript = arrow.GetComponent<ArrowScript>();
                 arrowScript.initialTime = Time.time;
@@ -219,10 +223,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLHA(InputAction.CallbackContext context)
     {
-        var weaponsHandler = GetComponent<WeaponsHandler>();
         if (context.started)
         {
-            
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
             {
@@ -240,6 +242,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     animator.SetInteger("AnimState", 6);
                 }
+
                 Debug.DrawLine(LHB.position,
                     new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
                 if (gameObject.CompareTag("Player1"))
@@ -252,16 +255,18 @@ public class PlayerMovement : MonoBehaviour
                     Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
                     player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
                 }
+
                 if (player && cd <= 0)
                 {
                     StartCoroutine(WaitLow(startUpTime));
-            
+
                     cd = currentCooldown;
                 }
+
                 staminaGage -= 25 * playerCharacter.FinalStamina;
             }
         }
-        else if(context.canceled && staminaGage > 10 * playerCharacter.FinalStamina)
+        else if (context.canceled && staminaGage > 10 * playerCharacter.FinalStamina)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -269,7 +274,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 var releaseTime = Time.time;
                 difference = Mathf.Clamp(releaseTime - drawTime, 0, 3);
-                GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity, GameObject.FindWithTag("MainCamera").transform);
+                GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity,
+                    GameObject.FindWithTag("MainCamera").transform);
                 var arrowScript = arrow.GetComponent<ArrowScript>();
                 arrowScript.initialTime = Time.time;
                 arrowScript.gravity = 0;
@@ -280,6 +286,7 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 20;
             }
+
             staminaGage -= 10 * playerCharacter.FinalStamina;
         }
     }
@@ -312,6 +319,7 @@ public class PlayerMovement : MonoBehaviour
         {
             staminaGage = 100;
         }
+
         // Manual Gravity
         if (!Grounded)
         {
@@ -509,12 +517,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseStrength()
     {
-       // Strength += 2;
+        // Strength += 2;
     }
 
     public void IncreaseJump()
     {
-       // jumpForce += 1f;
+        // jumpForce += 1f;
     }
 
     public void CalculateDirection(GameObject other)
@@ -528,15 +536,18 @@ public class PlayerMovement : MonoBehaviour
             attackDirection.x = -1;
         }
     }
-    
+
     IEnumerator WaitLow(float time)
     {
         yield return new WaitForSeconds(time);
-        player.GetComponent<DummyStats>().DecrementHP(playerCharacter.FinalStrength * weaponDamage, DummyStats.AttackType.Low);
+        player.GetComponent<DummyStats>()
+            .DecrementHP(playerCharacter.FinalStrength * weaponDamage, DummyStats.AttackType.Low);
     }
+
     IEnumerator WaitHigh(float time)
     {
         yield return new WaitForSeconds(time);
-        player.GetComponent<DummyStats>().DecrementHP(playerCharacter.FinalStrength * weaponDamage, DummyStats.AttackType.High);
+        player.GetComponent<DummyStats>()
+            .DecrementHP(playerCharacter.FinalStrength * weaponDamage, DummyStats.AttackType.High);
     }
 }
