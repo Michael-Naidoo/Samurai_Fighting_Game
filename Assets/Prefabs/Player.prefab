@@ -108,6 +108,8 @@ GameObject:
   - component: {fileID: 6030744959253035086}
   - component: {fileID: 8528378088127271328}
   - component: {fileID: 2982861242990661017}
+  - component: {fileID: 2464245144311899771}
+  - component: {fileID: 4846955967556170257}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player1
@@ -341,6 +343,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e9c1f51c-5920-41ae-9452-e6dcd613fbd6
     m_ActionName: MapSelection/DPadRight
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4846955967556170257}
+        m_TargetAssemblyTypeName: PlayerChoiceAssignment, Assembly-CSharp
+        m_MethodName: Choice1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 00286a83-0909-45ba-8777-69b40de6cf63
+    m_ActionName: 'BasicControls/TUM_Activate[/DualShock4GamepadHID/leftShoulder]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4846955967556170257}
+        m_TargetAssemblyTypeName: PlayerChoiceAssignment, Assembly-CSharp
+        m_MethodName: Choice2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d5ff720c-d3c2-4c32-832b-62e6a7411ac6
+    m_ActionName: 'BasicControls/TUM_Activate 2[/DualShock4GamepadHID/leftTrigger,/DualShock4GamepadHID1/leftTrigger]'
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Controler
   m_DefaultActionMap: BasicControls
@@ -359,9 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 639b0a7dd4b2a7e48a1dcb8257dd0dd3, type: 3}
-  moveSpeed: 5
-  jumpForce: 8
-  Strength: 5
   gravity: -20
   groundLayer:
     serializedVersion: 2
@@ -534,6 +565,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2464245144311899771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254150008358032308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ab7e79a37a4ed2870a7e3be63be1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIndex: 0
+  isBuffActive: 0
+  baseStrength: 5
+  baseMoveSpeed: 5
+  baseJumpForce: 8
+--- !u!114 &4846955967556170257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254150008358032308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6941996d783f95428056efadd68ceb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player1: 1
 --- !u!1 &2648598690435774760
 GameObject:
   m_ObjectHideFlags: 0

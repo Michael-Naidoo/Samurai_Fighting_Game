@@ -18,6 +18,12 @@ TagManager:
   - Map
   - P1Stamina
   - P2Stamina
+  - P1Text
+  - P2Text
+  - P1C1
+  - P1C2
+  - P2C1
+  - P2C2
   layers:
   - Default
   - TransparentFX

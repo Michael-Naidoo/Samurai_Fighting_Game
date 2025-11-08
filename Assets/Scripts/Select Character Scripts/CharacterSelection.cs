@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using TMPro;
     public class CharacterSelection : MonoBehaviour 
     { // The PlayerInput component attached to this object.
         private PlayerInput playerInput;
@@ -20,6 +21,8 @@ using UnityEngine.InputSystem;
 
         // Use a reference to the PlayerDataManager
         private PlayerDataManager dataManager;
+        [SerializeField]private TextMeshProUGUI player1Text;
+        [SerializeField]private TextMeshProUGUI player2Text;
 
         private void Awake()
         {
@@ -30,6 +33,9 @@ using UnityEngine.InputSystem;
         
             // This script is NOT a singleton. The PlayerInputManager creates a new instance for each player.
             playerInput = GetComponent<PlayerInput>();
+
+            player1Text = GameObject.FindWithTag("P1Text").GetComponent<TextMeshProUGUI>();
+            player2Text = GameObject.FindWithTag("P2Text").GetComponent<TextMeshProUGUI>();
         }
         public void OnButtonSouth(InputAction.CallbackContext context)
         {
@@ -47,11 +53,13 @@ using UnityEngine.InputSystem;
                     {
                         dataManager.player1Index = player1Index;
                         isPlayer1 = true;
+                        player1Text.text = "Press X/A to select your character";
                     }
                     else if (dataManager.player2Index == -1)
                     {
                         dataManager.player2Index = player1Index;
                         isPlayer1 = false;
+                        player2Text.text = "Press X/A to select your character";
                     }
                     
                     SelectCharacter();
@@ -61,20 +69,24 @@ using UnityEngine.InputSystem;
                     Debug.Log("Error is in " + dataManager.name);
                     if (isPlayer1)
                     {
-                        
                         dataManager.SelectCharacterPlayer1();
+                        dataManager.player1Ready = true;
+                        player1Text.text = "Player 1 Ready!";
                     }
                     else
                     {
                         dataManager.SelectCharacterPlayer2();
+                        dataManager.player2Ready = true;
+                        player2Text.text = "Player 2 Ready!";
                     }
 
                     selectedCharacter = true;
+                    dataManager.ReadyUp();
                 }
             }
         }
         
-        public void OnButtonNorth(InputAction.CallbackContext context)
+        /*public void OnButtonNorth(InputAction.CallbackContext context)
         {
             if (isPlayer1)
             {
@@ -91,7 +103,7 @@ using UnityEngine.InputSystem;
                 }
             }
             dataManager.ReadyUp();
-        }
+        }*/
         
         public void OnDPadUp(InputAction.CallbackContext context)
         {

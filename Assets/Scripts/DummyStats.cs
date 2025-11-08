@@ -131,6 +131,7 @@ IEnumerator FadeSpriteRenderer(SpriteRenderer renderer, float targetAlpha, float
             if (HP <= 0)
             {
                 Die();
+                HP = 100;
             }
 
             if (lowParryTimer > 0)

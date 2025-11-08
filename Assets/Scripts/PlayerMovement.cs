@@ -10,11 +10,11 @@ using Object = UnityEngine.Object;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private PlayerCharacter playerCharacter;
+    
     // No longer needed: private Rigidbody2D rb2D;
     public InputActionAsset inputActions;
-    public float moveSpeed = 5f; // Adjusted for Transform.Translate (meters per second)
-    public float jumpForce = 8f; // Adjusted for Transform.Translate (initial jump velocity)
-    public float Strength = 5f;
+    
     private InputAction moveAction;
     private InputAction HHA;
     private InputAction HLA;
@@ -81,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         {
             staminaSlider = GameObject.FindWithTag("P2Stamina").GetComponent<Slider>();
         }
+        playerCharacter = GetComponent<PlayerCharacter>(); // NEW: Cache the component
     }
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
@@ -138,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                     animator.SetInteger("AnimState", 3);
                 }
             }
-            else if (staminaGage > 20)
+            else if (staminaGage > 20 * playerCharacter.FinalStamina)
             {
                 if (cd <= 0)
                 {
@@ -159,16 +160,16 @@ public class PlayerMovement : MonoBehaviour
 
                 if (player && cd <= 0)
                 {
-                    Debug.Log(Strength * weaponDamage);
+                    Debug.Log(playerCharacter.FinalStrength * weaponDamage);
                     StartCoroutine(WaitHigh(startUpTime));
                     cd = currentCooldown;
                 }
-                staminaGage -= 20;
+                staminaGage -= 20 * playerCharacter.FinalStamina;
             }
 
             
         }
-        else if(context.canceled && staminaGage > 35)
+        else if(context.canceled && staminaGage > 35 * playerCharacter.FinalStamina)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -186,12 +187,12 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.InitialVelocityMagnitude = difference;
                 arrowScript.angle = attackDirection.x;
                 arrowScript.initialPosition = transform.position;
-                arrowScript.damage = weaponDamage * Strength;
+                arrowScript.damage = weaponDamage * playerCharacter.FinalStrength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 15;
             }
 
-            staminaGage -= 35;
+            staminaGage -= 35 * playerCharacter.FinalStamina;
         }
     }
 
@@ -233,7 +234,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            else if (staminaGage > 25)
+            else if (staminaGage > 25 * playerCharacter.FinalStamina)
             {
                 if (cd <= 0)
                 {
@@ -257,10 +258,10 @@ public class PlayerMovement : MonoBehaviour
             
                     cd = currentCooldown;
                 }
-                staminaGage -= 25;
+                staminaGage -= 25 * playerCharacter.FinalStamina;
             }
         }
-        else if(context.canceled && staminaGage > 10)
+        else if(context.canceled && staminaGage > 10 * playerCharacter.FinalStamina)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -275,11 +276,11 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.InitialVelocityMagnitude = difference;
                 arrowScript.angle = attackDirection.x;
                 arrowScript.initialPosition = transform.position;
-                arrowScript.damage = weaponDamage * Strength;
+                arrowScript.damage = weaponDamage * playerCharacter.FinalStrength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 20;
             }
-            staminaGage -= 10;
+            staminaGage -= 10 * playerCharacter.FinalStamina;
         }
     }
 
@@ -322,7 +323,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // --- Horizontal Movement with Collision Prediction ---
-        float targetXVelocity = moveInput.x * moveSpeed;
+        float targetXVelocity = moveInput.x * playerCharacter.FinalMoveSpeed;
         float moveDistanceThisFrame = targetXVelocity * Time.deltaTime;
 
         // Initialize raycast hits for the current frame
@@ -420,7 +421,7 @@ public class PlayerMovement : MonoBehaviour
         // Jump
         if (moveInput.y > 0.1f && Grounded)
         {
-            currentVelocity.y = jumpForce;
+            currentVelocity.y = playerCharacter.FinalJumpForce;
             Grounded = false;
         }
 
@@ -503,17 +504,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void IncreaseSpeed()
     {
-        moveSpeed += 0.5f;
+        //moveSpeed += 0.5f;
     }
 
     public void IncreaseStrength()
     {
-        Strength += 2;
+       // Strength += 2;
     }
 
     public void IncreaseJump()
     {
-        jumpForce += 1f;
+       // jumpForce += 1f;
     }
 
     public void CalculateDirection(GameObject other)
@@ -531,11 +532,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator WaitLow(float time)
     {
         yield return new WaitForSeconds(time);
-        player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.Low);
+        player.GetComponent<DummyStats>().DecrementHP(playerCharacter.FinalStrength * weaponDamage, DummyStats.AttackType.Low);
     }
     IEnumerator WaitHigh(float time)
     {
         yield return new WaitForSeconds(time);
-        player.GetComponent<DummyStats>().DecrementHP(Strength * weaponDamage, DummyStats.AttackType.High);
+        player.GetComponent<DummyStats>().DecrementHP(playerCharacter.FinalStrength * weaponDamage, DummyStats.AttackType.High);
     }
 }
