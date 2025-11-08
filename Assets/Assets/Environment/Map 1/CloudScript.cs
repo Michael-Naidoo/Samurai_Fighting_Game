@@ -3,7 +3,7 @@ using UnityEngine;
 public class CloudScript : MonoBehaviour
 {
 
-    public float _speed = 1;
+    public float _speed = 0.5f;
     public float _endPosX;
 
 
