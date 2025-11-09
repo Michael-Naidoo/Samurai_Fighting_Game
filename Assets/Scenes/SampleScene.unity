@@ -4679,6 +4679,11 @@ MonoBehaviour:
   spawnPoint2: {fileID: 1956498228}
   player1: {fileID: 1254150008358032308, guid: e8e0f177b15f3034f8853fecf2118c9d, type: 3}
   player2: {fileID: 1254150008358032308, guid: 88aaeb2de8a0cfc44b64a2972ecfe3d6, type: 3}
+  characters:
+  - {fileID: 4264012553849062664, guid: a5d1748a4c78e7d499e10715d62a3150, type: 3}
+  - {fileID: 7296229914498541370, guid: 9a9168bb0e20e36469855c74536c7df1, type: 3}
+  - {fileID: 5764405719401266611, guid: 4952ff2b453a15a468ff18b6f72f8c39, type: 3}
+  - {fileID: 6846434855541540418, guid: 399fb1df1345c9c4aa42e3ba50cb54c3, type: 3}
 --- !u!114 &2087232258
 MonoBehaviour:
   m_ObjectHideFlags: 0

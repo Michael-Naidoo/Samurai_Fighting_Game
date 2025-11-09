@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction LHA;
     private InputAction LLA;
     private Vector2 moveInput;
-    private Animator animator;
+    [SerializeField] private Animator animator;
 
 
     // Manual physics variables
@@ -71,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerCollider = gameObject.GetComponent<Collider2D>();
-        animator = GetComponentInChildren<Animator>();
         staminaRecoveryRate = 10;
 
         if (gameObject.CompareTag("Player1"))
@@ -84,6 +83,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerCharacter = GetComponent<PlayerCharacter>(); // NEW: Cache the component
+    }
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void OnSwapWeapon(InputAction.CallbackContext context)

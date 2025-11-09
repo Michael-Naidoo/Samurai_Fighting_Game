@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mace
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 34018913f2cecb64a9efeb15b593f4b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 34018913f2cecb64a9efeb15b593f4b1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.468

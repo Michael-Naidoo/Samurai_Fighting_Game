@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponsHandler : MonoBehaviour
@@ -41,37 +40,97 @@ public class WeaponsHandler : MonoBehaviour
                 primaryDamage = 1f;
                 primaryAttackDistance = 1.5f;
                 primaryCooldown = 0.25f;
-                swordObj.SetActive(true);
-                daggerObj.SetActive(false);
-                maceObj.SetActive(false);
-                bowObj.SetActive(false);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(true);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(false);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(false);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(false);
+                }
                 break;
             case Weapons.dagger:
                 primaryDamage = 0.5f;
                 primaryAttackDistance = 1f;
                 primaryCooldown = 0.1f;
-                swordObj.SetActive(false);
-                daggerObj.SetActive(true);
-                maceObj.SetActive(false);
-                bowObj.SetActive(false);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(false);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(true);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(false);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(false);
+                }
                 break;
             case Weapons.mace:
                 primaryDamage = 1.5f;
                 primaryAttackDistance = 2f;
                 primaryCooldown = 0.5f;
-                swordObj.SetActive(false);
-                daggerObj.SetActive(false);
-                maceObj.SetActive(true);
-                bowObj.SetActive(false);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(false);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(false);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(true);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(false);
+                }
                 break;
             case Weapons.bow:
                 primaryDamage = 0.75f;
                 primaryAttackDistance = 10f;
                 primaryCooldown = 0.15f;
-                swordObj.SetActive(false);
-                daggerObj.SetActive(false);
-                maceObj.SetActive(false);
-                bowObj.SetActive(true);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(false);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(false);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(false);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(true);
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -82,37 +141,97 @@ public class WeaponsHandler : MonoBehaviour
                 secondaryDamage = 1f;
                 secondaryAttackDistance = 1.5f;
                 secondaryCooldown = 0.25f;
-                swordObj.SetActive(true);
-                daggerObj.SetActive(false);
-                maceObj.SetActive(false);
-                bowObj.SetActive(false);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(true);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(false);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(false);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(false);
+                }
                 break;
             case Weapons.dagger:
                 secondaryDamage = 0.5f;
                 secondaryAttackDistance = 1f;
                 secondaryCooldown = 0.1f;
-                swordObj.SetActive(false);
-                daggerObj.SetActive(true);
-                maceObj.SetActive(false);
-                bowObj.SetActive(false);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(false);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(true);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(false);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(false);
+                }
                 break;
             case Weapons.mace:
                 secondaryDamage = 1.5f;
                 secondaryAttackDistance = 2f;
                 secondaryCooldown = 0.5f;
-                swordObj.SetActive(false);
-                daggerObj.SetActive(false);
-                maceObj.SetActive(true);
-                bowObj.SetActive(false);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(false);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(false);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(true);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(false);
+                }
                 break;
             case Weapons.bow:
                 secondaryDamage = 0.75f;
                 secondaryAttackDistance = 10f;
                 secondaryCooldown = 0.15f;
-                swordObj.SetActive(false);
-                daggerObj.SetActive(false);
-                maceObj.SetActive(false);
-                bowObj.SetActive(true);
+                if (swordObj != null)
+                {
+                    swordObj.SetActive(false);
+                }
+
+                if (daggerObj != null)
+                {
+                    daggerObj.SetActive(false);
+                }
+
+                if (maceObj != null)
+                {
+                    maceObj.SetActive(false);
+                }
+
+                if (bowObj != null)
+                {
+                    bowObj.SetActive(true);
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -131,28 +250,88 @@ public class WeaponsHandler : MonoBehaviour
             switch (secondaryWeapon)
             {
                 case Weapons.sword:
-                    swordObj.SetActive(true);
-                    daggerObj.SetActive(false);
-                    maceObj.SetActive(false);
-                    bowObj.SetActive(false);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(true);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(false);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(false);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(false);
+                    }
                     break;
                 case Weapons.dagger:
-                    swordObj.SetActive(false);
-                    daggerObj.SetActive(true);
-                    maceObj.SetActive(false);
-                    bowObj.SetActive(false);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(false);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(true);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(false);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(false);
+                    }
                     break;
                 case Weapons.mace:
-                    swordObj.SetActive(false);
-                    daggerObj.SetActive(false);
-                    maceObj.SetActive(true);
-                    bowObj.SetActive(false);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(false);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(false);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(true);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(false);
+                    }
                     break;
                 case Weapons.bow:
-                    swordObj.SetActive(false);
-                    daggerObj.SetActive(false);
-                    maceObj.SetActive(false);
-                    bowObj.SetActive(true);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(false);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(false);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(false);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(true);
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -167,28 +346,88 @@ public class WeaponsHandler : MonoBehaviour
             switch (primaryWeapon)
             {
                 case Weapons.sword:
-                    swordObj.SetActive(true);
-                    daggerObj.SetActive(false);
-                    maceObj.SetActive(false);
-                    bowObj.SetActive(false);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(true);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(false);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(false);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(false);
+                    }
                     break;
                 case Weapons.dagger:
-                    swordObj.SetActive(false);
-                    daggerObj.SetActive(true);
-                    maceObj.SetActive(false);
-                    bowObj.SetActive(false);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(false);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(true);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(false);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(false);
+                    }
                     break;
                 case Weapons.mace:
-                    swordObj.SetActive(false);
-                    daggerObj.SetActive(false);
-                    maceObj.SetActive(true);
-                    bowObj.SetActive(false);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(false);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(false);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(true);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(false);
+                    }
                     break;
                 case Weapons.bow:
-                    swordObj.SetActive(false);
-                    daggerObj.SetActive(false);
-                    maceObj.SetActive(false);
-                    bowObj.SetActive(true);
+                    if (swordObj != null)
+                    {
+                        swordObj.SetActive(false);
+                    }
+
+                    if (daggerObj != null)
+                    {
+                        daggerObj.SetActive(false);
+                    }
+
+                    if (maceObj != null)
+                    {
+                        maceObj.SetActive(false);
+                    }
+
+                    if (bowObj != null)
+                    {
+                        bowObj.SetActive(true);
+                    }
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
