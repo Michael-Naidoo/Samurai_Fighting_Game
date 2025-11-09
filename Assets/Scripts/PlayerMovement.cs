@@ -176,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
                 staminaGage -= 20 * playerCharacter.FinalStamina;
             }
         }
-        else if (context.canceled && staminaGage > 35 * playerCharacter.FinalStamina)
+        else if (context.canceled && staminaGage > 30 * playerCharacter.FinalStamina)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -198,9 +198,8 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.damage = weaponDamage * playerCharacter.FinalStrength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 15;
+                staminaGage -= 30 * playerCharacter.FinalStamina;
             }
-
-            staminaGage -= 35 * playerCharacter.FinalStamina;
         }
     }
 
@@ -240,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
 
-            else if (staminaGage > 25 * playerCharacter.FinalStamina)
+            else if (staminaGage > 15 * playerCharacter.FinalStamina)
             {
                 if (cd <= 0)
                 {
@@ -267,10 +266,10 @@ public class PlayerMovement : MonoBehaviour
                     cd = currentCooldown;
                 }
 
-                staminaGage -= 25 * playerCharacter.FinalStamina;
+                staminaGage -= 15 * playerCharacter.FinalStamina;
             }
         }
-        else if (context.canceled && staminaGage > 10 * playerCharacter.FinalStamina)
+        else if (context.canceled && staminaGage > 20 * playerCharacter.FinalStamina)
         {
             animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
@@ -289,9 +288,9 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.damage = weaponDamage * playerCharacter.FinalStrength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 20;
+                
+                staminaGage -= 20 * playerCharacter.FinalStamina;
             }
-
-            staminaGage -= 10 * playerCharacter.FinalStamina;
         }
     }
 
