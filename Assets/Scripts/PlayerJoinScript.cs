@@ -1,99 +1,166 @@
-using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerJoinScript: MonoBehaviour
-{
-    public Transform spawnPoint1, spawnPoint2;
-    public GameObject player1, player2;
-    private GameObject player1Obj, player2Obj;
-    private int player1ControllerID, player2ControllerID;
-    private GameObject realPlayer1, realPlayer2;
-    private PlayerDataManager playerDataManager;
-    [SerializeField] private GameObject[] characters;
-    private GameObject player1Character, player2Character;
 
+public class PlayerJoinScript : MonoBehaviour
+{
+    // --- Public/Serialized Fields (Reverted to separate prefabs) ---
+    public Transform spawnPoint1, spawnPoint2;
+    public GameObject player1Prefab, player2Prefab; // The base Player 1 and Player 2 prefabs
+    
+    [SerializeField] private GameObject[] characters;
+    
+    // --- Private/Internal Fields ---
+    // These will hold the INSTANTIATED objects correctly mapped to their roles
+    private GameObject realPlayer1, realPlayer2; 
+    private GameObject player1Character, player2Character;
+    private PlayerDataManager playerDataManager;
+    
+    // Helper class to store temporary data
+    private class PlayerSpawn
+    {
+        public int controllerId;
+        public GameObject playerObject;
+        public int desiredPlayerIndex; // 1 for P1Prefab, 2 for P2Prefab
+    }
 
     private void Awake()
     {
-        playerDataManager = PlayerDataManager.Instance;   
-        player1Obj = Instantiate(player1, spawnPoint1.position, spawnPoint1.rotation);
-        player2Obj = Instantiate(player2, spawnPoint2.position, spawnPoint2.rotation);
-        
-        player1ControllerID = player1Obj.GetComponent<PlayerInput>().GetDevice<Gamepad>().deviceId;
-        player2ControllerID = player2Obj.GetComponent<PlayerInput>().GetDevice<Gamepad>().deviceId;
-        
-        if (player1ControllerID == playerDataManager.player1Index)
+        // 1. Initialize PlayerDataManager
+        playerDataManager = PlayerDataManager.Instance;
+        if (playerDataManager == null)
         {
-            realPlayer2 = player1Obj;
-            //Add in the character prefab as a child to the player
-            player1Character = Instantiate(characters[playerDataManager.player1Character - 1], player1Obj.transform.position, quaternion.identity,
-                player1Obj.transform);
-            Debug.Log("Player 1 Character is " + player1Character);
-
-        }
-        else if (player1ControllerID == playerDataManager.player2Index)
-        {
-            realPlayer2 = player1Obj;
-            //Add in the character prefab as a child to the player
-            player2Character = Instantiate(characters[playerDataManager.player2Character - 1], player2Obj.transform.position, quaternion.identity,
-                player2Obj.transform);
-            Debug.Log("Player 2 Character is " + player2Character);
-        }
-        Debug.Log(player2ControllerID + "/n" + playerDataManager.player1Index + "/n" + playerDataManager.player2Index);
-        if (player2ControllerID == playerDataManager.player1Index)
-        {
-            realPlayer1 = player2Obj;
-            //Add in the character prefab as a child to the player
-            player1Character = Instantiate(characters[playerDataManager.player1Character - 1], player1Obj.transform.position, quaternion.identity,
-                player1Obj.transform);
-            Debug.Log("Player 1 Character is " + player1Character);
-        }
-        else if (player2ControllerID == playerDataManager.player2Index)
-        {
-            realPlayer2 = player2Obj;
-            player2Character = Instantiate(characters[playerDataManager.player2Character - 1], player2Obj.transform.position, quaternion.identity,
-                player2Obj.transform);
-            Debug.Log("Player 2 Character is " + player2Character);
+            Debug.LogError("PlayerDataManager not found. Cannot initialize players.");
+            return;
         }
 
+        // 2. Instantiate Base Player Objects (P1 Prefab at Spawn1, P2 Prefab at Spawn2)
+        GameObject tempP1Obj = Instantiate(player1Prefab, spawnPoint1.position, spawnPoint1.rotation);
+        GameObject tempP2Obj = Instantiate(player2Prefab, spawnPoint2.position, spawnPoint2.rotation);
+
+        // 3. Get Controller IDs and package data
+        PlayerSpawn data1 = GetPlayerSpawnData(tempP1Obj, 1);
+        PlayerSpawn data2 = GetPlayerSpawnData(tempP2Obj, 2);
+
+        if (data1 == null || data2 == null)
+        {
+            Debug.LogError("Could not get Gamepad data for both player objects.");
+            return;
+        }
+        
+        Debug.Log($"P1 Index (Saved): {playerDataManager.player1Index}, P2 Index (Saved): {playerDataManager.player2Index}");
+        Debug.Log($"Temp P1 Obj ID: {data1.controllerId}, Temp P2 Obj ID: {data2.controllerId}");
+
+        // 4. Map the instantiated objects to their final roles (realPlayer1/realPlayer2)
+        
+        // Scenario 1: P1 Prefab (data1) grabbed the P1 controller ID
+        if (data1.controllerId == playerDataManager.player1Index)
+        {
+            realPlayer1 = data1.playerObject; // P1Prefab is the Real P1
+            realPlayer2 = data2.playerObject; // P2Prefab is the Real P2
+        }
+        // Scenario 2: P1 Prefab (data1) grabbed the P2 controller ID
+        else if (data1.controllerId == playerDataManager.player2Index)
+        {
+            realPlayer1 = data2.playerObject; // P2Prefab must be the Real P1
+            realPlayer2 = data1.playerObject; // P1Prefab is the Real P2
+        }
+        else
+        {
+            // Fallback/Error case (e.g., mismatched IDs, only one controller)
+            Debug.LogError("Controller IDs do not match saved Player Indices. Using default assignment (TempP1Obj=RealP1, TempP2Obj=RealP2).");
+            realPlayer1 = data1.playerObject;
+            realPlayer2 = data2.playerObject;
+        }
+
+        // 5. Final Setup: Character instantiation and Position Adjustment
+        
+        // Ensure Real P1 is at Spawn Point 1
         realPlayer1.transform.position = spawnPoint1.position;
-        //player1Character.transform.position = realPlayer1.transform.position;
-        switch (playerDataManager.player1Character)
-        {
-            case 1:
-                player1Character.transform.position = realPlayer1.transform.position;
-                break;
-            case 2:
-                player1Character.transform.position = new Vector3(realPlayer1.transform.position.x, realPlayer1.transform.position.y);
-                break;
-            case 3:
-                player1Character.transform.position = new Vector3(realPlayer1.transform.position.x+2.48f, realPlayer1.transform.position.y-5.56f);
-                break;
-            case 4:
-                player1Character.transform.position = new Vector3(realPlayer1.transform.position.x, realPlayer1.transform.position.y-0.2f);
-                break;
-        }
+        // Instantiate and position P1's character
+        player1Character = InstantiateCharacter(realPlayer1, playerDataManager.player1Character);
+        // Call updated function without position argument
+        ApplyCharacterPositionOffset(player1Character, playerDataManager.player1Character, true); 
+        
+        // Ensure Real P2 is at Spawn Point 2
         realPlayer2.transform.position = spawnPoint2.position;
-        //player2Character.transform.position = spawnPoint2.transform.position;
-        switch (playerDataManager.player2Character)
+        // Instantiate and position P2's character
+        player2Character = InstantiateCharacter(realPlayer2, playerDataManager.player2Character);
+        // Call updated function without position argument
+        ApplyCharacterPositionOffset(player2Character, playerDataManager.player2Character, false);
+        
+
+        // 6. Final Debugging
+        Debug.Log($"Real Player 1: {realPlayer1.name}, Character: {player1Character.name}");
+        Debug.Log($"Real Player 2: {realPlayer2.name}, Character: {player2Character.name}");
+    }
+
+    // --- Helper Methods ---
+
+    private PlayerSpawn GetPlayerSpawnData(GameObject playerObj, int desiredIndex)
+    {
+        PlayerInput playerInput = playerObj.GetComponent<PlayerInput>();
+        if (playerInput == null)
+        {
+            Debug.LogError($"PlayerInput component not found on {playerObj.name}");
+            return null;
+        }
+
+        Gamepad gamepad = playerInput.GetDevice<Gamepad>();
+        if (gamepad == null)
+        {
+            Debug.LogWarning($"Gamepad not found for {playerObj.name}. Using a fallback ID.");
+            // If no Gamepad, assign an ID that won't match the saved PlayerDataManager IDs (which are typically 1 or 2)
+            return new PlayerSpawn { controllerId = -99, playerObject = playerObj, desiredPlayerIndex = desiredIndex };
+        }
+
+        return new PlayerSpawn { controllerId = gamepad.deviceId, playerObject = playerObj, desiredPlayerIndex = desiredIndex };
+    }
+
+    private GameObject InstantiateCharacter(GameObject playerContainer, int characterIndex)
+    {
+        int arrayIndex = characterIndex - 1;
+
+        if (arrayIndex >= 0 && arrayIndex < characters.Length && characters[arrayIndex] != null)
+        {
+            // Instantiate the character prefab as a child of the player container
+            GameObject character = Instantiate(characters[arrayIndex],
+                playerContainer.transform.position, // Start at parent's world position
+                quaternion.identity,
+                playerContainer.transform);
+
+            // ⭐ CRUCIAL FIX: Set the character's local position to zero
+            // This ensures the character's root is centered exactly on the parent's pivot.
+            character.transform.localPosition = Vector3.zero;
+
+            return character;
+        }
+        // Add logging for clarity and return null if the character cannot be instantiated
+        Debug.LogError($"Invalid character index ({characterIndex}) or character prefab not found for array index {arrayIndex}.");
+        return null; // Must return a GameObject (or null) outside the 'if' block
+    }
+    
+    private void ApplyCharacterPositionOffset(GameObject character, int characterIndex, bool isPlayer1)
+    {
+        if (character == null) return;
+        
+        Vector3 localOffset = Vector3.zero;
+
+        switch (characterIndex)
         {
             case 1:
-                player2Character.transform.position = realPlayer2.transform.position;
-                break;
             case 2:
-                player2Character.transform.position = new Vector3(realPlayer2.transform.position.x , realPlayer2.transform.position.y);
+                // No offset (or zero offset)
                 break;
             case 3:
-                player2Character.transform.position = new Vector3(realPlayer2.transform.position.x - 6.5f, realPlayer2.transform.position.y - 5.56f);
+                    localOffset = new Vector3(2.4f, -2.7f, 0);
                 break;
             case 4:
-                player2Character.transform.position = new Vector3(realPlayer2.transform.position.x, realPlayer2.transform.position.y-0.2f);
+                localOffset = new Vector3(0, 0, 0);
                 break;
         }
-        Debug.Log(realPlayer1 + " p1");
-        Debug.Log(realPlayer2 + " p2");
-        Debug.Log(player1Obj + " p1");
-        Debug.Log(player2Obj + " p2");
+        
+        // ⭐ CRUCIAL FIX: Apply the calculated offset to the local position
+        character.transform.localPosition += localOffset;
     }
 }

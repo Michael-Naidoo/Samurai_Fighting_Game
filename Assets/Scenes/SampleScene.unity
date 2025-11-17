@@ -3711,8 +3711,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575120956}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3554.1318, y: 903.03, z: 28.382685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4059,7 +4059,7 @@ Transform:
   m_GameObject: {fileID: 1956498227}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3545.1318, y: 903.03, z: 28.382685}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4655,7 +4655,7 @@ Transform:
   m_GameObject: {fileID: 2087232254}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3549.6318, y: -902.99133, z: -28.382685}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4677,8 +4677,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint1: {fileID: 1575120957}
   spawnPoint2: {fileID: 1956498228}
-  player1: {fileID: 1254150008358032308, guid: e8e0f177b15f3034f8853fecf2118c9d, type: 3}
-  player2: {fileID: 1254150008358032308, guid: 88aaeb2de8a0cfc44b64a2972ecfe3d6, type: 3}
+  player1Prefab: {fileID: 1254150008358032308, guid: e8e0f177b15f3034f8853fecf2118c9d, type: 3}
+  player2Prefab: {fileID: 1254150008358032308, guid: 88aaeb2de8a0cfc44b64a2972ecfe3d6, type: 3}
   characters:
   - {fileID: 4264012553849062664, guid: a5d1748a4c78e7d499e10715d62a3150, type: 3}
   - {fileID: 7296229914498541370, guid: 9a9168bb0e20e36469855c74536c7df1, type: 3}
