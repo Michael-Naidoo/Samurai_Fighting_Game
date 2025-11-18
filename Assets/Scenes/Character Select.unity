@@ -967,7 +967,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 70.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2431,12 +2431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1Index: -1
   player1Character: 1
-  player1Primary: 0
-  player1secondary: 0
   player2Index: -1
   player2Character: 1
-  player2Primary: 0
-  player2secondary: 0
   player1Ready: 0
   player2Ready: 0
   player1chosen: 0

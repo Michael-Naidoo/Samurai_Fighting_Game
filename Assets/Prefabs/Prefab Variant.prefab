@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2409917368244566723
 Transform:
   m_ObjectHideFlags: 0
@@ -113,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 38970855690742055, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 262371051927574009, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
       propertyPath: m_Name
@@ -215,6 +215,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.853862
       objectReference: {fileID: 0}
+    - target: {fileID: 3551818804076401198, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3713844331377980233, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9679871
@@ -315,11 +319,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3798423123817236454, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
   m_PrefabInstance: {fileID: 4073771702382219505}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4035931216922147286 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 38970855690742055, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
-  m_PrefabInstance: {fileID: 4073771702382219505}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4264012553849062664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 262371051927574009, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}
@@ -346,8 +345,8 @@ MonoBehaviour:
   usingPrimaryWeapon: 1
   swordObj: {fileID: 7230901360451972290}
   daggerObj: {fileID: 882217839220905751}
-  maceObj: {fileID: 805714762778317792}
-  bowObj: {fileID: 4035931216922147286}
+  maceObj: {fileID: 0}
+  bowObj: {fileID: 0}
 --- !u!4 &4491845883623189260 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495061500641082365, guid: b2ffd96302b99e14693b64a2f11093a7, type: 3}

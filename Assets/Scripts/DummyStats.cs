@@ -33,14 +33,6 @@ namespace DefaultNamespace
         private void Start()
         {
             gameManager = GameManager.instance;
-            if (gameObject.CompareTag("Player1"))
-            {
-                HPDislay = GameObject.FindWithTag("Player1Health").GetComponent<Slider>();
-            }
-            else if (gameObject.CompareTag("Player2"))
-            {
-                HPDislay = GameObject.FindWithTag("Player2Health").GetComponent<Slider>();
-            }
         }
 
         public void DecrementHP(float damage, AttackType attackType)

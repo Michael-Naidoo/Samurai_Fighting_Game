@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 479547166780848553}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.5768591, w: 0.81684375}
-  m_LocalPosition: {x: -3.328, y: -2.793, z: 10}
+  m_LocalPosition: {x: 0.051000003, y: 0.217, z: 10}
   m_LocalScale: {x: 0.10830747, y: 0.1098528, z: 0.27463198}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 6062385865816269852}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.6026477, w: 0.79800737}
-  m_LocalPosition: {x: -3.4211, y: -3.0736, z: 10}
+  m_LocalPosition: {x: -0.05, y: -0.08, z: 10}
   m_LocalScale: {x: 0.10830748, y: 0.109852806, z: 0.13731599}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -186,7 +186,7 @@ GameObject:
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -200,7 +200,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.30193657, w: 0.953328}
   m_LocalPosition: {x: 2.32, y: 8.785, z: -10}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7413929846981596225}

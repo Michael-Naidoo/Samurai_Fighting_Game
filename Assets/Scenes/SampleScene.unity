@@ -1886,10 +1886,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1227266620}
-  - {fileID: 1570073428}
   - {fileID: 976214031}
   - {fileID: 163838317}
+  - {fileID: 1227266620}
+  - {fileID: 1570073428}
   - {fileID: 2090747187}
   - {fileID: 1383934973}
   - {fileID: 405388160}
@@ -4684,6 +4684,10 @@ MonoBehaviour:
   - {fileID: 7296229914498541370, guid: 9a9168bb0e20e36469855c74536c7df1, type: 3}
   - {fileID: 5764405719401266611, guid: 4952ff2b453a15a468ff18b6f72f8c39, type: 3}
   - {fileID: 6846434855541540418, guid: 399fb1df1345c9c4aa42e3ba50cb54c3, type: 3}
+  player1HealthSlider: {fileID: 976214032}
+  player2HealthSlider: {fileID: 1227266621}
+  player1StaminaSlider: {fileID: 163838318}
+  player2StaminaSlider: {fileID: 1570073429}
 --- !u!114 &2087232258
 MonoBehaviour:
   m_ObjectHideFlags: 0

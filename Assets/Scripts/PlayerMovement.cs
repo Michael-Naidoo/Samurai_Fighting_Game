@@ -73,14 +73,14 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = gameObject.GetComponent<Collider2D>();
         staminaRecoveryRate = 10;
 
-        if (gameObject.CompareTag("Player1"))
+        /*if (gameObject.CompareTag("Player1"))
         {
             staminaSlider = GameObject.FindWithTag("P1Stamina").GetComponent<Slider>();
         }
         else if (gameObject.CompareTag("Player2"))
         {
             staminaSlider = GameObject.FindWithTag("P2Stamina").GetComponent<Slider>();
-        }
+        }*/
 
         playerCharacter = GetComponent<PlayerCharacter>(); // NEW: Cache the component
     }
@@ -92,7 +92,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
     {
-        gameObject.GetComponent<WeaponsHandler>().SwitchWeapon();
+        if (context.started)
+        {
+            weaponsHandler.SwitchWeapon();
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -112,14 +115,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (context.canceled)
+       /* if (context.started)
         {
-            animator.SetFloat("AnimState", 0);
+            animator.SetInteger("AnimState", 7);
         }
-        else
+        else if (context.canceled)
         {
-            animator.SetFloat("AnimState", 7);
-        }
+            animator.SetInteger("AnimState", 0);
+        }*/
     }
 
     public void OnMoveCancelled(InputAction.CallbackContext context)
@@ -143,45 +146,48 @@ public class PlayerMovement : MonoBehaviour
                 drawTime = Time.time;
                 if (cd <= 0)
                 {
-                    animator.SetInteger("AnimState", 3);
+                    animator.SetTrigger("IsDrawingBowHigh");;
                 }
             }
             else if (staminaGage > 20 * playerCharacter.FinalStamina)
             {
                 if (cd <= 0)
                 {
-                    animator.SetInteger("AnimState", 5);
-                }
+                   // animator.SetInteger("AnimState", 5);
+                   animator.SetTrigger("HighAttack");
 
-                Debug.DrawLine(HHB.position,
-                    new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
-                if (gameObject.CompareTag("Player1"))
-                {
-                    Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
-                }
-                else if (gameObject.CompareTag("Player2"))
-                {
-                    Vector2 boxCenter = (Vector2)HHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
-                }
+                    Debug.DrawLine(HHB.position,
+                        new Vector3((HHB.position.x + attackDistance) * attackDirection.x, HHB.position.y));
+                    if (gameObject.CompareTag("Player1"))
+                    {
+                        Vector2 boxCenter = (Vector2)HHB.position +
+                                            new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                        player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+                    }
+                    else if (gameObject.CompareTag("Player2"))
+                    {
+                        Vector2 boxCenter = (Vector2)HHB.position +
+                                            new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                        player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
+                    }
 
-                if (player && cd <= 0)
-                {
-                    Debug.Log(playerCharacter.FinalStrength * weaponDamage);
-                    StartCoroutine(WaitHigh(startUpTime));
+                    if (player)
+                    {
+                        Debug.Log(playerCharacter.FinalStrength * weaponDamage);
+                        StartCoroutine(WaitHigh(startUpTime));
+                        
+                    }
                     cd = currentCooldown;
+                    staminaGage -= 20 * playerCharacter.FinalStamina;
                 }
-
-                staminaGage -= 20 * playerCharacter.FinalStamina;
             }
         }
         else if (context.canceled && staminaGage > 30 * playerCharacter.FinalStamina)
         {
-            animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
             {
+                //animator.SetInteger("AnimState", 0);
                 Debug.Log("working till this point");
                 var releaseTime = Time.time;
                 difference = Mathf.Clamp(releaseTime - drawTime, 0.5f, 1.3f);
@@ -199,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 15;
                 staminaGage -= 30 * playerCharacter.FinalStamina;
+                cd = currentCooldown;
             }
         }
     }
@@ -214,10 +221,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnHLA(InputAction.CallbackContext context)
     {
-        animator.SetInteger("AnimState", 1);
-        gameObject.GetComponent<DummyStats>().HighParry();
-        cd = 0.2f;
-        animator.SetInteger("AnimState", 0);
+        if (cd <= 0)
+        {
+            animator.SetTrigger("Parry");
+            gameObject.GetComponent<DummyStats>().HighParry();
+            cd = 0.2f;
+        }
     }
 
     public void OnHLACancelled(InputAction.CallbackContext context)
@@ -233,48 +242,53 @@ public class PlayerMovement : MonoBehaviour
             {
                 difference = 0;
                 drawTime = Time.time;
-                if (cd <= 0)
+                /*if (cd <= 0)
                 {
                     animator.SetInteger("AnimState", 4);
-                }
+                }*/
+                animator.SetTrigger("IsDrawingBowLow");
             }
-
             else if (staminaGage > 15 * playerCharacter.FinalStamina)
             {
+                Debug.Log(staminaGage + " and " + (15 * playerCharacter.FinalStamina));
                 if (cd <= 0)
                 {
-                    animator.SetInteger("AnimState", 6);
-                }
+                    //animator.SetInteger("AnimState", 6);
+                    animator.SetTrigger("LowAttack");
+                    Debug.Log(animator.parameters[3].name);
 
-                Debug.DrawLine(LHB.position,
-                    new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
-                if (gameObject.CompareTag("Player1"))
-                {
-                    Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
-                }
-                else if (gameObject.CompareTag("Player2"))
-                {
-                    Vector2 boxCenter = (Vector2)LHB.position + new Vector2(attackDistance / 2 * attackDirection.x, 0);
-                    player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
-                }
+                    Debug.DrawLine(LHB.position,
+                        new Vector3((LHB.position.x + attackDistance) * attackDirection.x, LHB.position.y));
+                    if (gameObject.CompareTag("Player1"))
+                    {
+                        Vector2 boxCenter = (Vector2)LHB.position +
+                                            new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                        player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player2Layer);
+                    }
+                    else if (gameObject.CompareTag("Player2"))
+                    {
+                        Vector2 boxCenter = (Vector2)LHB.position +
+                                            new Vector2(attackDistance / 2 * attackDirection.x, 0);
+                        player = Physics2D.OverlapBox(boxCenter, new Vector2(attackDistance, 0), 0, player1Layer);
+                    }
 
-                if (player && cd <= 0)
-                {
-                    StartCoroutine(WaitLow(startUpTime));
+                    if (player)
+                    {
+                        StartCoroutine(WaitLow(startUpTime));
 
+                        
+                    }
                     cd = currentCooldown;
+                    staminaGage -= 15 * playerCharacter.FinalStamina;
                 }
-
-                staminaGage -= 15 * playerCharacter.FinalStamina;
             }
         }
         else if (context.canceled && staminaGage > 20 * playerCharacter.FinalStamina)
         {
-            animator.SetInteger("AnimState", 0);
             if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
             {
+                //animator.SetInteger("AnimState", 0);
                 var releaseTime = Time.time;
                 difference = Mathf.Clamp(releaseTime - drawTime, 0, 3);
                 GameObject arrow = Instantiate(arrowPrefab, transform.position, quaternion.identity,
@@ -288,7 +302,7 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.damage = weaponDamage * playerCharacter.FinalStrength;
                 arrowScript.thisPlayer = gameObject.GetComponent<Collider2D>();
                 arrowScript.speed = 20;
-                
+                cd = currentCooldown;
                 staminaGage -= 20 * playerCharacter.FinalStamina;
             }
         }
@@ -300,11 +314,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnLLA(InputAction.CallbackContext context)
     {
-        Debug.Log(context);
-        animator.SetInteger("AnimState", 1);
-        gameObject.GetComponent<DummyStats>().LowParry();
-        cd = 0.2f;
-        animator.SetInteger("AnimState", 0);
+        if (cd <= 0)
+        {
+            Debug.Log(context);
+            //animator.SetInteger("AnimState", 1);
+            animator.SetTrigger("Parry");
+            gameObject.GetComponent<DummyStats>().LowParry();
+            cd = 0.2f;
+        }
     }
 
     public void OnLLACancelled(InputAction.CallbackContext context)
@@ -313,6 +330,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Update()
     {
+        /*if (gameObject.CompareTag("Player1"))
+        {
+            Debug.Log($"Cooldown :{cd}");
+        }*/
         staminaSlider.value = staminaGage;
         if (staminaGage < 100)
         {
@@ -444,8 +465,15 @@ public class PlayerMovement : MonoBehaviour
 
 
         Debug.Log(moveInput);
+        
+        animator.SetBool("IsMoving", Mathf.Abs(moveInput.x) > 0.05f);
 
         cd -= Time.deltaTime;
+        // Grounded Check
+        Grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+
+// Set IsGrounded for jump/fall animations
+        animator.SetBool("IsGrounded", Grounded);
     }
 
     // Optional: Draw gizmos to visualize the check areas in the editor

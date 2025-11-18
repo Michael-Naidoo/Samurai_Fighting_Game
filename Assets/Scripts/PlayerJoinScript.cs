@@ -1,6 +1,8 @@
+using DefaultNamespace;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerJoinScript : MonoBehaviour
 {
@@ -15,6 +17,11 @@ public class PlayerJoinScript : MonoBehaviour
     private GameObject realPlayer1, realPlayer2; 
     private GameObject player1Character, player2Character;
     private PlayerDataManager playerDataManager;
+    
+    public Slider player1HealthSlider; 
+    public Slider player2HealthSlider;
+    public Slider player1StaminaSlider;
+    public Slider player2StaminaSlider;
     
     // Helper class to store temporary data
     private class PlayerSpawn
@@ -58,6 +65,8 @@ public class PlayerJoinScript : MonoBehaviour
         {
             realPlayer1 = data1.playerObject; // P1Prefab is the Real P1
             realPlayer2 = data2.playerObject; // P2Prefab is the Real P2
+            
+            
         }
         // Scenario 2: P1 Prefab (data1) grabbed the P2 controller ID
         else if (data1.controllerId == playerDataManager.player2Index)
@@ -89,8 +98,40 @@ public class PlayerJoinScript : MonoBehaviour
         // Call updated function without position argument
         ApplyCharacterPositionOffset(player2Character, playerDataManager.player2Character, false);
         
+        // 6. Assign Health Sliders to DummyStats Components
 
-        // 6. Final Debugging
+        // Get the DummyStats component from the determined real player objects
+        DummyStats stats1 = realPlayer1.GetComponent<DummyStats>();
+        PlayerMovement movement1 = realPlayer1.GetComponent<PlayerMovement>();
+        DummyStats stats2 = realPlayer2.GetComponent<DummyStats>();
+        PlayerMovement movement2 = realPlayer2.GetComponent<PlayerMovement>();
+
+        if (stats1 != null && stats2 != null)
+        {
+            // Assign the Player 1 UI Slider to the Real Player 1 object's script
+            stats1.HPDislay = player1HealthSlider;
+    
+            // Assign the Player 2 UI Slider to the Real Player 2 object's script
+            stats2.HPDislay = player2HealthSlider;
+        }
+        else
+        {
+            Debug.LogError("DummyStats component not found on one or both real player objects!");
+        }
+        if (movement1 != null && movement2 != null)
+        {
+            // Assign the Player 1 UI Slider to the Real Player 1 object's script
+            movement1.staminaSlider = player1StaminaSlider;
+    
+            // Assign the Player 2 UI Slider to the Real Player 2 object's script
+            movement2.staminaSlider = player2StaminaSlider;
+        }
+        else
+        {
+            Debug.LogError("PlayerMovement component not found on one or both real player objects!");
+        }
+        
+        // 7. Final Debugging
         Debug.Log($"Real Player 1: {realPlayer1.name}, Character: {player1Character.name}");
         Debug.Log($"Real Player 2: {realPlayer2.name}, Character: {player2Character.name}");
     }
@@ -149,6 +190,7 @@ public class PlayerJoinScript : MonoBehaviour
         switch (characterIndex)
         {
             case 1:
+                break;
             case 2:
                 // No offset (or zero offset)
                 break;
@@ -156,7 +198,6 @@ public class PlayerJoinScript : MonoBehaviour
                     localOffset = new Vector3(2.4f, -2.7f, 0);
                 break;
             case 4:
-                localOffset = new Vector3(0, 0, 0);
                 break;
         }
         

@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 1407050235292016830}
   - component: {fileID: 6483251812447539175}
   - component: {fileID: 6030744959253035086}
-  - component: {fileID: 8528378088127271328}
   - component: {fileID: 2982861242990661017}
   - component: {fileID: 2464245144311899771}
   - component: {fileID: 4846955967556170257}
@@ -488,29 +487,6 @@ MonoBehaviour:
   maxParryTimer: 0.2
   gameManager: {fileID: 0}
   attackType: 0
---- !u!114 &8528378088127271328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254150008358032308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52b1fc9659a947f41ae8a66c1dbdf456, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  primaryWeapon: 3
-  primaryAttackDistance: 0
-  primaryCooldown: 0
-  secondaryWeapon: 4
-  secondaryAttackDistance: 0
-  secondaryCooldown: 0
-  usingPrimaryWeapon: 1
-  swordObj: {fileID: 0}
-  daggerObj: {fileID: 0}
-  maceObj: {fileID: 0}
-  bowObj: {fileID: 0}
 --- !u!212 &2982861242990661017
 SpriteRenderer:
   m_ObjectHideFlags: 0
