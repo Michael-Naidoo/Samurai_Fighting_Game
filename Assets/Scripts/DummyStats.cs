@@ -15,6 +15,7 @@ namespace DefaultNamespace
         private float highParryTimer = 0.2f;
         [SerializeField] private float maxParryTimer = 0.2f;
         public GameManager gameManager;
+        public bool player1;
 
         public enum AttackType
         {
@@ -165,11 +166,11 @@ IEnumerator FadeSpriteRenderer(SpriteRenderer renderer, float targetAlpha, float
 
         public void Die()
         {
-            if (gameObject.CompareTag("Player1"))
+            if (player1)
             {
                 gameManager.PlayerDied(0);
             }
-            else if (gameObject.CompareTag("Player2"))
+            else
             {
                 gameManager.PlayerDied(1);
             }

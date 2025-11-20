@@ -111,9 +111,11 @@ public class PlayerJoinScript : MonoBehaviour
         {
             // Assign the Player 1 UI Slider to the Real Player 1 object's script
             stats1.HPDislay = player1HealthSlider;
+            stats1.player1 = true;
     
             // Assign the Player 2 UI Slider to the Real Player 2 object's script
             stats2.HPDislay = player2HealthSlider;
+            stats2.player1 = false;
         }
         else
         {
@@ -141,6 +143,14 @@ public class PlayerJoinScript : MonoBehaviour
         // 7. Final Debugging
         Debug.Log($"Real Player 1: {realPlayer1.name}, Character: {player1Character.name}");
         Debug.Log($"Real Player 2: {realPlayer2.name}, Character: {player2Character.name}");
+        
+        GameManager gameManager = gameObject.GetComponent<GameManager>();
+        
+        Debug.Log(gameManager);
+        Debug.Log(realPlayer1.GetComponent<PlayerCharacter>());
+        
+        gameManager.player1Char = realPlayer1.GetComponent<PlayerCharacter>();
+        gameManager.player2Char = realPlayer2.GetComponent<PlayerCharacter>();
     }
 
     // --- Helper Methods ---

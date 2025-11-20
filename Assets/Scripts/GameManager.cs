@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance { get; private set;}
     
     [Header("T.U.M. Buff System Setup")]
     public List<BuffData> allAvailableBuffs; // Assign all BuffData assets here
@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     private BuffData offeredBuff2;
     
     // Cached PlayerCharacter components for T.U.M. logic
-    private PlayerCharacter player1Char;
-    private PlayerCharacter player2Char;
+    public PlayerCharacter player1Char;
+    public PlayerCharacter player2Char;
 
     private void Awake()
     {
@@ -59,8 +59,6 @@ public class GameManager : MonoBehaviour
         P2Choice2.SetActive(false);
         
         // Find and Cache PlayerCharacter references
-        player1Char = GameObject.FindWithTag("Player1")?.GetComponent<PlayerCharacter>();
-        player2Char = GameObject.FindWithTag("Player2")?.GetComponent<PlayerCharacter>();
 
         if (player1Char == null || player2Char == null)
         {
