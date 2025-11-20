@@ -13,6 +13,16 @@ public class MapSelect : MonoBehaviour
     private bool isPlayer1;
     [SerializeField] private int mapIndex;
 
+    public bool manualSelect = false;
+
+    private void Update()
+    {
+        if (manualSelect)
+        {
+            SelectMap();
+        }
+    }
+
     private void Awake()
     {
         // Get the PlayerDataManager instance

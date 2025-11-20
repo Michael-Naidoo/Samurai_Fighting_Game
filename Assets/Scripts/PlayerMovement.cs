@@ -10,6 +10,11 @@ using Object = UnityEngine.Object;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject p1;
+    public GameObject p2;
+
+    private FightAudio fightAudio;
+    
     private PlayerCharacter playerCharacter;
     private WeaponsHandler weaponsHandler => GetComponentInChildren<WeaponsHandler>();
 
@@ -67,6 +72,9 @@ public class PlayerMovement : MonoBehaviour
     public float staminaGage;
     public Slider staminaSlider;
 
+    private float direction;
+    public bool player1;
+
 
     private void Awake()
     {
@@ -83,11 +91,24 @@ public class PlayerMovement : MonoBehaviour
         }*/
 
         playerCharacter = GetComponent<PlayerCharacter>(); // NEW: Cache the component
+        fightAudio = FightAudio.instance;
     }
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
+
+        direction = -animator.gameObject.transform.localScale.x;
+
+            if (player1)
+        {
+            CalculateDirection(p2);
+        }
+        else
+        {
+            CalculateDirection(p1);
+        }
+        
     }
 
     public void OnSwapWeapon(InputAction.CallbackContext context)
@@ -101,18 +122,13 @@ public class PlayerMovement : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         moveInput = context.ReadValue<Vector2>();
-        if (gameObject.CompareTag("Player1"))
+        if (player1)
         {
-            GameObject other = GameObject.FindWithTag("Player2");
-            CalculateDirection(other);
+            CalculateDirection(p2);
         }
         else
         {
-            if (gameObject.CompareTag("Player2"))
-            {
-                GameObject other = GameObject.FindWithTag("Player1");
-                CalculateDirection(other);
-            }
+            CalculateDirection(p1);
         }
 
        /* if (context.started)
@@ -179,6 +195,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     cd = currentCooldown;
                     staminaGage -= 20 * playerCharacter.FinalStamina;
+                    ApplySound1();
                 }
             }
         }
@@ -206,6 +223,7 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.speed = 15;
                 staminaGage -= 30 * playerCharacter.FinalStamina;
                 cd = currentCooldown;
+                ApplySound1();
             }
         }
     }
@@ -280,6 +298,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     cd = currentCooldown;
                     staminaGage -= 15 * playerCharacter.FinalStamina;
+                    ApplySound2();
                 }
             }
         }
@@ -304,7 +323,56 @@ public class PlayerMovement : MonoBehaviour
                 arrowScript.speed = 20;
                 cd = currentCooldown;
                 staminaGage -= 20 * playerCharacter.FinalStamina;
+                ApplySound2();
             }
+        }
+    }
+
+    private void ApplySound1()
+    {
+        if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.sword) ||
+            (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.sword))
+        {
+            fightAudio.PlaySword1();
+        }
+        else if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.dagger) ||
+                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.dagger))
+        {
+            fightAudio.PlayDaggar1();
+        }
+        else if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.mace) ||
+                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.mace))
+        {
+            fightAudio.PlayMace1();
+        }
+        else if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
+                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
+        {
+            fightAudio.PlayBow1();
+        }
+    }
+    
+    private void ApplySound2()
+    {
+        if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.sword) ||
+            (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.sword))
+        {
+            fightAudio.PlaySword2();
+        }
+        else if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.dagger) ||
+                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.dagger))
+        {
+            fightAudio.PlayDaggar2();
+        }
+        else if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.mace) ||
+                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.mace))
+        {
+            fightAudio.PlayMace2();
+        }
+        else if ((weaponsHandler.usingPrimaryWeapon && weaponsHandler.primaryWeapon == WeaponsHandler.Weapons.bow) ||
+                 (!weaponsHandler.usingPrimaryWeapon && weaponsHandler.secondaryWeapon == WeaponsHandler.Weapons.bow))
+        {
+            fightAudio.PlayBow2();
         }
     }
 
@@ -558,13 +626,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void CalculateDirection(GameObject other)
     {
+        var transformLocalScale = animator.gameObject.transform.localScale;
         if (gameObject.transform.position.x <= other.transform.position.x)
         {
             attackDirection.x = 1;
+            transformLocalScale.x = - direction;
+            animator.gameObject.transform.localScale = transformLocalScale;
+            Debug.Log(transformLocalScale);
         }
         else if (gameObject.transform.position.x > other.transform.position.x)
         {
             attackDirection.x = -1;
+            transformLocalScale.x = direction;
+            animator.gameObject.transform.localScale = transformLocalScale;
+            Debug.Log(transformLocalScale);
         }
     }
 

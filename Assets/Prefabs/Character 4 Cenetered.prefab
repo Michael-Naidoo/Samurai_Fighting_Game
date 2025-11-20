@@ -260,6 +260,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.45115384
       objectReference: {fileID: 0}
+    - target: {fileID: 4881536748635822695, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
+      propertyPath: bowObj
+      value: 
+      objectReference: {fileID: 7300619054771001774}
+    - target: {fileID: 4881536748635822695, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
+      propertyPath: maceObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881536748635822695, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
+      propertyPath: swordObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881536748635822695, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
+      propertyPath: daggerObj
+      value: 
+      objectReference: {fileID: 5296716449073757574}
     - target: {fileID: 4888665800818370653, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.11540733
@@ -432,5 +448,15 @@ PrefabInstance:
 --- !u!4 &4274880365932354513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3294022805789655990, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
+  m_PrefabInstance: {fileID: 1649959314482288743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5296716449073757574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6873727564529149409, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
+  m_PrefabInstance: {fileID: 1649959314482288743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7300619054771001774 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8337525311092720073, guid: a696183d4bd8cd74b97fdd47321f6770, type: 3}
   m_PrefabInstance: {fileID: 1649959314482288743}
   m_PrefabAsset: {fileID: 0}

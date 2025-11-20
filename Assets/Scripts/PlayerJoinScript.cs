@@ -100,7 +100,8 @@ public class PlayerJoinScript : MonoBehaviour
         
         // 6. Assign Health Sliders to DummyStats Components
 
-        // Get the DummyStats component from the determined real player objects
+        // Get the DummyStats component from the determined real player object
+
         DummyStats stats1 = realPlayer1.GetComponent<DummyStats>();
         PlayerMovement movement1 = realPlayer1.GetComponent<PlayerMovement>();
         DummyStats stats2 = realPlayer2.GetComponent<DummyStats>();
@@ -122,9 +123,15 @@ public class PlayerJoinScript : MonoBehaviour
         {
             // Assign the Player 1 UI Slider to the Real Player 1 object's script
             movement1.staminaSlider = player1StaminaSlider;
+            movement1.player1 = true;
+            movement1.p1 = realPlayer1;
+            movement1.p2 = realPlayer2;
     
             // Assign the Player 2 UI Slider to the Real Player 2 object's script
             movement2.staminaSlider = player2StaminaSlider;
+            movement2.player1 = false;
+            movement2.p1 = realPlayer1;
+            movement2.p2 = realPlayer2;
         }
         else
         {
@@ -195,7 +202,6 @@ public class PlayerJoinScript : MonoBehaviour
                 // No offset (or zero offset)
                 break;
             case 3:
-                    localOffset = new Vector3(2.4f, -2.7f, 0);
                 break;
             case 4:
                 break;

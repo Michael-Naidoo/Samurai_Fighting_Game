@@ -128,6 +128,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1441196683795726500, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+      propertyPath: bowObj
+      value: 
+      objectReference: {fileID: 5257739241288737520}
+    - target: {fileID: 1441196683795726500, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+      propertyPath: maceObj
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441196683795726500, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+      propertyPath: swordObj
+      value: 
+      objectReference: {fileID: 4562467603853832217}
+    - target: {fileID: 1441196683795726500, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+      propertyPath: daggerObj
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1799643247600061634, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.982
@@ -385,6 +401,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+--- !u!1 &4562467603853832217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9154424043878108002, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+  m_PrefabInstance: {fileID: 4637062981682281339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5257739241288737520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 625179893603015051, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}
+  m_PrefabInstance: {fileID: 4637062981682281339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5529606095959216762 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 929768218601646337, guid: 0c8352d525959b84296e66cda96c38d1, type: 3}

@@ -11,13 +11,13 @@ public class Scene_Manager: MonoBehaviour
     public float displayDuration = 1.0f;
     public float fadeOutDuration = 0.5f;
 
-    public GameObject[] text;
+   // public GameObject[] text;
     private int i = 0;
 
     private void Start()
     {
-        text[0].SetActive(false);
-        text[1].SetActive(false);
+        //text[0].SetActive(false);
+        //text[1].SetActive(false);
         StartCoroutine(SequenceManager());
     }
 
@@ -28,8 +28,8 @@ public class Scene_Manager: MonoBehaviour
             yield return StartCoroutine(FadeImage(image, 1f, fadeInDuration));
             if (i > 0)
             {
-                text[i].SetActive(true);
-                text[i-1].SetActive(false);
+               // text[i].SetActive(true);
+               // text[i-1].SetActive(false);
             }
             i++;
 

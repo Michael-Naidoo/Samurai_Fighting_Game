@@ -1251,10 +1251,10 @@ MonoBehaviour:
   secondaryAttackDistance: 0
   secondaryCooldown: 0
   usingPrimaryWeapon: 1
-  swordObj: {fileID: 7346708647352091668, guid: 70c2b8b5821d10546a431e77709607b4, type: 3}
-  daggerObj: {fileID: 7239745107421854739, guid: c1733a5b45920d44098a96a97c66e9ef, type: 3}
-  maceObj: {fileID: 7127226792758635835, guid: fa815572234b8f649af9fac4df0d7b5f, type: 3}
-  bowObj: {fileID: 3347449412594541462, guid: 1cdbe2df46e285f47a1b354fda169fc3, type: 3}
+  swordObj: {fileID: 2777924164833710765}
+  daggerObj: {fileID: 0}
+  maceObj: {fileID: 7399821710570057567}
+  bowObj: {fileID: 0}
 --- !u!4 &5353863374273593697 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 311580695235782034, guid: 864b70d87dd71b04f856a7fd163029a4, type: 3}

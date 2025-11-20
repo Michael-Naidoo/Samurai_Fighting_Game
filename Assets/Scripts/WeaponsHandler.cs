@@ -150,14 +150,14 @@ public class WeaponsHandler : MonoBehaviour
         if (usingPrimaryWeapon)
         {
             Debug.Log("switch " + primaryWeapon + " for " + secondaryWeapon);
-            gameObject.GetComponentInParent<PlayerMovement>().weaponDamage = secondaryDamage;
-            gameObject.GetComponentInParent<PlayerMovement>().attackDistance = secondaryAttackDistance;
-            gameObject.GetComponentInParent<PlayerMovement>().currentCooldown = secondaryCooldown;
             Debug.Log("Cooldown = " + gameObject.GetComponentInParent<PlayerMovement>().currentCooldown);
             usingPrimaryWeapon = false;
             switch (secondaryWeapon)
             {
                 case Weapons.sword:
+                    secondaryDamage = 1f;
+                    secondaryAttackDistance = 1.5f;
+                    secondaryCooldown = 0.25f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(true);
@@ -179,6 +179,9 @@ public class WeaponsHandler : MonoBehaviour
                     }
                     break;
                 case Weapons.dagger:
+                    secondaryDamage = 0.5f;
+                    secondaryAttackDistance = 1f;
+                    secondaryCooldown = 0.1f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(false);
@@ -200,6 +203,9 @@ public class WeaponsHandler : MonoBehaviour
                     }
                     break;
                 case Weapons.mace:
+                    secondaryDamage = 1.5f;
+                    secondaryAttackDistance = 2f;
+                    secondaryCooldown = 0.5f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(false);
@@ -221,6 +227,9 @@ public class WeaponsHandler : MonoBehaviour
                     }
                     break;
                 case Weapons.bow:
+                    secondaryDamage = 0.75f;
+                    secondaryAttackDistance = 10f;
+                    secondaryCooldown = 0.15f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(false);
@@ -244,18 +253,21 @@ public class WeaponsHandler : MonoBehaviour
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            gameObject.GetComponentInParent<PlayerMovement>().weaponDamage = secondaryDamage;
+            gameObject.GetComponentInParent<PlayerMovement>().attackDistance = secondaryAttackDistance;
+            gameObject.GetComponentInParent<PlayerMovement>().currentCooldown = secondaryCooldown;
         }
         else if (!usingPrimaryWeapon)
         {
             Debug.Log("switch " + secondaryWeapon + " for " + primaryWeapon);
-            gameObject.GetComponentInParent<PlayerMovement>().weaponDamage = primaryDamage;
-            gameObject.GetComponentInParent<PlayerMovement>().attackDistance = primaryAttackDistance;
-            gameObject.GetComponentInParent<PlayerMovement>().currentCooldown = primaryCooldown;
             Debug.Log("Cooldown = " + gameObject.GetComponentInParent<PlayerMovement>().currentCooldown);
             usingPrimaryWeapon = true;   
             switch (primaryWeapon)
             {
                 case Weapons.sword:
+                    primaryDamage = 1f;
+                    primaryAttackDistance = 1.5f;
+                    primaryCooldown = 0.25f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(true);
@@ -277,6 +289,9 @@ public class WeaponsHandler : MonoBehaviour
                     }
                     break;
                 case Weapons.dagger:
+                    primaryDamage = 0.5f;
+                    primaryAttackDistance = 1f;
+                    primaryCooldown = 0.1f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(false);
@@ -298,6 +313,9 @@ public class WeaponsHandler : MonoBehaviour
                     }
                     break;
                 case Weapons.mace:
+                    primaryDamage = 1.5f;
+                    primaryAttackDistance = 2f;
+                    primaryCooldown = 0.5f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(false);
@@ -319,6 +337,9 @@ public class WeaponsHandler : MonoBehaviour
                     }
                     break;
                 case Weapons.bow:
+                    primaryDamage = 0.75f;
+                    primaryAttackDistance = 10f;
+                    primaryCooldown = 0.15f;
                     if (swordObj != null)
                     {
                         swordObj.SetActive(false);
@@ -342,6 +363,9 @@ public class WeaponsHandler : MonoBehaviour
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            gameObject.GetComponentInParent<PlayerMovement>().weaponDamage = primaryDamage;
+            gameObject.GetComponentInParent<PlayerMovement>().attackDistance = primaryAttackDistance;
+            gameObject.GetComponentInParent<PlayerMovement>().currentCooldown = primaryCooldown;
         }
         
         Debug.Log("Damage is " + gameObject.GetComponentInParent<PlayerMovement>().weaponDamage +  
