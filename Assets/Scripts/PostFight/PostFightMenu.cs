@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PostFightMenu : MonoBehaviour
 {
-    private int selectedScene = 0;
+    [SerializeField] private int selectedScene = 0;
 
     [SerializeField] private GameObject selectedButton0;
     [SerializeField] private GameObject selectedButton1;

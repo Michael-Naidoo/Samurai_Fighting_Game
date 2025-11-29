@@ -5795,7 +5795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_NotificationBehavior: 0
-  m_MaxPlayerCount: 2
+  m_MaxPlayerCount: 3
   m_AllowJoining: 1
   m_JoinBehavior: 2
   m_PlayerJoinedEvent:
@@ -5905,6 +5905,8 @@ MonoBehaviour:
   player2Deaths: 0
   player1Spawn: {fileID: 1575120957}
   player2Spawn: {fileID: 1956498228}
+  player1Char: {fileID: 0}
+  player2Char: {fileID: 0}
 --- !u!1 &2090747186
 GameObject:
   m_ObjectHideFlags: 0

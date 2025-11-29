@@ -26,6 +26,11 @@ using TMPro;
 
         private void Awake()
         {
+            if (SceneManager.GetActiveScene().name == "Post Fight")
+            {
+                Destroy(gameObject);
+            }
+            
             // Get the PlayerDataManager instance
             dataManager = PlayerDataManager.Instance;
             

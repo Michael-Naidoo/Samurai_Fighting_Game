@@ -49,7 +49,11 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
-    
+    private void Update()
+    {
+        
+    }
+
 
     public void ReadyUp()
     {

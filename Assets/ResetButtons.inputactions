@@ -1,0 +1,74 @@
+{
+    "name": "ResetButtons",
+    "maps": [
+        {
+            "name": "ResetButtons",
+            "id": "7e224e18-c931-4d47-9956-0db661a7cfb1",
+            "actions": [
+                {
+                    "name": "ResetButton1",
+                    "type": "Button",
+                    "id": "79b49640-bb67-4aff-8593-8808cf8824c8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ResetButton2",
+                    "type": "Button",
+                    "id": "c54e8d8d-8d3a-468d-85cf-a04f6de97f3d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ResetButton3",
+                    "type": "Button",
+                    "id": "98671ac8-76a8-453a-b6e3-ab592df65dd3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "83691740-4ba6-4d07-a654-a96ffa524320",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetButton1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c83dd18e-512e-46cc-ad86-65b4193d0ed7",
+                    "path": "<Keyboard>/numpad2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetButton2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf5a3008-62d1-4e5f-841e-a575502c742f",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetButton3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
